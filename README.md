@@ -1,83 +1,183 @@
-# Alibi Complete Runnable Demo
+# Alibi
 
-> Development Snapshot — PARTIALLY_VERIFIED
+### Evidence-first intelligence for Polymarket wallets and agents.
 
-Alibi 是一个只读的 Polymarket Trust Agent Demo：它读取公开市场价格和公开交易时间线，使用确定性规则识别重定价窗口，并把可验证证据、coverage gate、限制和 `unattributed` 结果分开呈现。
+**Leaderboards tell you who made money. Alibi shows what public evidence existed when they entered—and whether that context survives your delay, size, and execution constraints.**
 
-它不构成投资建议，不提供买卖方向，不指控任何主体；时间上的先后关系不等于因果、内幕交易或确定的信息优势。
+> **PARTIALLY VERIFIED** · Read-only · Next.js 16 · TypeScript · x402 V2 · MCP
+>
+> [简体中文 README](README.zh-CN.md)
 
-## Platform v0.7
+Alibi is an evidence-first trust-agent demo for Polymarket. It reconstructs observable timing context from public market data, public trades, deterministic repricing rules, and admitted evidence. It separates evidence-supported classification from uncertainty and abstains when coverage is insufficient.
 
-v0.7 保留单一 Investigation Orchestrator，并把确定性管线映射为 Evidence、Attribution、Quality & Risk 和 Audit & Report 四类逻辑 Agent；不引入多 LLM Agent 框架。Console 显示四类高层 Agent 及九个底层 Worker，Audit & Report Agent 只监听并汇总 append-only JSONL 事件。
+This repository is a development snapshot. It is not a live global attribution service, does not prove insider activity or causality, and does not provide buy/sell or copy-trading advice.
 
-本地 RAG 固定使用 `onnx-community/all-MiniLM-L6-v2-ONNX`、revision `aff7a1dc4e8a1ea593e6ea21e95c22ef0a25966f`、384 维 mean pooling + normalize，Transformers.js `3.7.0`，远程模型关闭。模型文件先验 hash 在 `artifacts/rag/model-manifest.json`；加载失败只允许 `rag_degraded` keyword fallback。不会读取 `EMBEDDING_API_KEY` 或调用外部 embedding API。
+## Product screenshot
+
+![Alibi recorded/local demonstration](artifacts/verification/screenshots/cluster-language-desktop.png)
+
+This is a real recorded/local demonstration artifact. It is not a live attribution claim and does not show successful payment settlement.
+
+## Why Alibi
+
+Most wallet analytics answer:
+
+- Who performed well;
+- how much they made;
+- how often they traded.
+
+Alibi adds the missing context:
+
+- what was publicly observable at entry time;
+- when the market repriced;
+- whether local-language and English publication windows can be separated;
+- whether the evidence remains sufficient under a caller's delay, size, and slippage assumptions.
+
+**Leaderboards answer Who. Evidence attribution explains observable Why/When. The fit layer asks Whether it still works for you.** “Why” here means evidence context, not proof of causality.
+
+## Product vision
+
+| Layer | What it is intended to do | Current status |
+|---|---|---|
+| **Discover** | Wallet discovery, ranking, recent-result metrics, lead rate, and coverage | In active development; not presented as a completed capability |
+| **Explain** | Trade, public-source, and repricing timeline with multilingual evidence context | Recorded/local path implemented; live source completeness pending |
+| **Fit** | Delay, size, order-book slippage, retained-return and policy comparisons | Target capability; not presented as verified |
+
+## What is distinctive
+
+- **Evidence-first:** claims carry source, time relation, and limitations when qualified evidence exists.
+- **Multilingual timelines:** local-language and English publication windows remain distinct objective evidence states.
+- **Abstention by design:** low coverage or missing evidence produces `null`, `insufficient_evidence`, `unattributed`, or `unavailable` rather than a stronger claim.
+- **Agent-native:** read-only HTTP APIs, a local MCP server, and an x402 V2 payment boundary for the protected Detail path.
+- **Market-level reuse:** the architecture can reuse a market timeline while aligning wallet activity separately; this is an architectural design, not a production-cost or latency claim.
+
+## Current capability matrix
+
+| Capability | Status | Evidence boundary |
+|---|---|---|
+| Read-only Polymarket Gamma, CLOB, and Data API adapters | Local/recorded verified; live behavior is bounded and provider-dependent | Public read-only data only |
+| Deterministic repricing detection and evidence admission | Local/recorded verified | No LLM price or timestamp decisions |
+| Bilingual source pairing and language-window states | Implemented; calibration/live completeness pending | Unknown/indeterminate when timing is not calibrated |
+| Cluster-language deterministic rules | Implemented locally; reproducible real cluster evidence pending | Does not establish identity, coordination, causality, or insider activity |
+| Agent Console | Local/recorded verified | Four platform Agents and nine logical Workers; read-only observation |
+| x402 V2 HTTP 402 challenge | Local contract verified | `exact`, Base Sepolia, 0.01 USDC terms; no settlement claim |
+| Real x402 settlement | Not verified | Requires safe Base Sepolia configuration and a separately authorized testnet run |
+| MCP eight-tool local server | Local verified | Public endpoint is not verified |
+| Chrome MV3 package | Local package verified | Chrome Web Store identity/public release is not verified |
+| Solidity local compile and smoke | Local verified | No production deployment or mainnet transaction |
+| ERC-8004 schema/preflight | Verified locally | Live registration is not enabled or claimed |
+| PostgreSQL/pgvector runtime | Partial | Docker/database runtime remains unavailable in the current evidence |
+| Wallet discovery/ranking | In development | No completed live ranking claim |
+| Live Anthropic attribution | Not verified | Credential and live response evidence are unavailable |
+
+## Evidence workflow
+
+```mermaid
+flowchart TD
+    A[Input] --> B[Read-only market data]
+    B --> C[Evidence discovery and verification]
+    C --> D[Investigation Orchestrator]
+    D --> E[Deterministic repricing / language / risk rules]
+    E --> F[Summary / Attribution / Agent Console / MCP]
+```
+
+The four logical platform Agents are Evidence, Attribution, Quality & Risk, and Audit & Report. The single Orchestrator coordinates them. LLM output is not responsible for price calculation, time sorting, coverage gates, final state rules, or inventing URLs.
+
+## Data and evidence policy
+
+Alibi uses read-only Polymarket Gamma, CLOB, and Data API paths. Approved evidence adapters also cover sources such as SEC EDGAR, Federal Register, HKSAR, and HKMA where the source contract permits. GDELT and other aggregators are discovery-only; an original page with a valid `published_at` is required before evidence can be admitted.
+
+`live`, `recorded`, `cached`, and `synthetic` are explicit states. Recorded fixtures retain retrieval metadata and limitations. Synthetic data is test-only and never enters the user Demo.
+
+Temporal sequence is not proof of causality, insider activity, or information advantage. A cluster without verified source remains a separate, limited state from a documented language window.
+
+## Free and paid boundary
+
+- Public result metrics and Summary are free.
+- Deep attribution, detailed evidence chains, and fit are the target protected capability.
+- `unattributed`, `insufficient_evidence`, and provider-unavailable outcomes are not charged.
+- The local repository verifies the HTTP 402 challenge boundary only.
+- Base Sepolia settlement, receipt verification, and paid unlock remain unverified.
+- No traditional account subscription should be inferred from this README unless the current contract explicitly enables it.
+
+## API status
+
+### Available in this repository
+
+The following routes are present in the current `app/` tree. Methods are shown explicitly.
+
+| Method | Route | Current role |
+|---|---|---|
+| `POST` | `/summary` | Free Summary |
+| `POST` | `/attribution` | Legacy protected Detail boundary |
+| `GET` | `/health` | Local health and fixture status |
+| `GET` | `/audit` | Read-only JSON/Markdown audit projection |
+| `GET`, `POST` | `/api/v1/summary` | v1 Summary |
+| `POST` | `/api/v1/attribution` | v1 protected Detail boundary |
+| `GET` | `/api/v1/health` | v1 health |
+| `GET` | `/api/v1/agents/runs/<runId>` | Agent-run report |
+| `GET` | `/api/v1/wallets/<address>/report` | Wallet report |
+| `GET` | `/api/v1/rankings?address=<address>` | Recorded ranking replay |
+| `GET` | `/api/v1/erc8004/status` | ERC-8004 status |
+| `GET` | `/api/v1/subscription/status` | Subscription status |
+| `POST` | `/api/v1/subscription/prepare` | Non-sending preparation response |
+| `POST` | `/api/v1/subscription/verify` | Contract-shaped verification response |
+| `GET`, `POST`, `DELETE` | `/mcp` | Local MCP transport |
+
+These routes preserve the existing JSON field names, `run_id`, `data_status`, and payment boundary. This README does not introduce `/api/summary` or `/api/attribution` aliases.
+
+### Target public contract
+
+The following are roadmap targets, not current public endpoints:
+
+`GET /wallet/{addr}/metrics` · `GET /wallet/{addr}/lead-rate` · `POST /assess` · `POST /screen` · `POST /market-screen` · `GET /evidence/{id}` · public MCP tools.
 
 ## Quick start
 
-要求 Node.js `>=20.9 <27`。
+macOS/Linux:
 
-```powershell
+```bash
+git clone https://github.com/goldencorn1/alibi.git
+cd alibi
+cp .env.macos.example .env.local
 npm ci
-npm run verify
-npm run demo
+npm run verify:offline
+npm run dev
 ```
 
-打开 `http://127.0.0.1:3000/`。默认 UI 选择 `recorded`，因此不依赖外部服务或凭据。`npm run setup-and-demo` 是新环境的一条安装并启动命令。
+Open `http://127.0.0.1:3000/`. The default Demo uses recorded data and does not require external credentials. Do not paste private keys or API keys into the terminal or browser.
+
+To stop the local server, press `Control+C`. The desktop launcher, when present, starts the same recorded path and performs a local health check before opening the page.
 
 ## Modes and fixtures
 
-- `recorded`：使用 `fixtures/recorded/manifest.json` 及脱敏回放；不会被标为 live。
-- `live`：只读调用 Gamma、CLOB 和 Data API；没有可用上游时返回结构化错误，不静默切换 synthetic。
-- `synthetic`：仅存在于 `fixtures/synthetic` 和测试/故障注入，不是演示调查数据。
-
-重新筛选公开候选并录制回放：
-
-```powershell
-npm run select-demo
-npm run capture-recorded
-npm run verify:offline
-```
-
-`capture-recorded` 只有在相应 live 读取成功后才写入 fixture；来源 URL、HTTP 状态、检索时间和限制保留在 manifest 中。
-
-## API
-
-| Method | Path | Purpose |
-|---|---|---|
-| POST | `/summary` | 免费摘要，body 为 `{ input, mode }` |
-| POST | `/attribution` | 0.01 USDC、Base Sepolia、x402 exact 保护的 Detail |
-| GET | `/health` | 本地状态和 fixture 状态；不调用付费服务 |
-| GET/POST | `/api/v1/summary` | v1 recorded/live-labeled Summary |
-| POST | `/api/v1/attribution` | v1 Detail；未满足 x402 时返回 402 |
-| GET | `/api/v1/wallets/<address>/report` | 90-day wallet report and coverage |
-| GET | `/api/v1/rankings?address=<address>` | deterministic recorded ranking replay |
-| GET | `/api/v1/agents/runs/<runId>` | audit JSON/Markdown export |
-| GET | `/api/v1/health`, `/api/v1/subscription/*`, `/api/v1/erc8004/status` | v1 capability/status contracts |
-
-本地 MCP 使用 `npm run mcp:verify` 验证 stdio server；`npm run package-extension` 生成 unpacked MV3 与 `artifacts/extension/alibi-extension.zip`。扩展仅读取 Polymarket URL 并调用本地 Summary API，不读取钱包/凭据、不签名、不支付、不交易。
-
-Detail 请求在未配置正式收款地址时仍返回 HTTP 402 和脱敏 challenge-shaped header，供本地 contract 测试；正式 verify/settle 需要安全配置 x402 资源。
+- `recorded`: sanitized public-data replay with explicit recorded provenance.
+- `live`: bounded read-only calls to approved upstreams; failures remain structured and do not silently become synthetic.
+- `synthetic`: test and fault-injection data only; never a user-Demo source.
 
 ## Agent Console and audit reports
 
-每次从 `/summary` 开始的分析都会生成一个 `run_id`，并在 `artifacts/agent-runs/<run_id>/` 写入 append-only `events.jsonl` 以及可重建的 `report.json` / `report.md`。现有 `/` 单页会轮询 `GET /audit?run_id=<run_id>`，显示九个逻辑 Worker 的状态、duration、data status、source count、coverage、retry、cost 和 policy flags；Console 只观察和汇总，不修改分析结果。
+The Console observes the append-only audit stream for a run. It exposes statuses, data states, durations, counts, coverage, retries, cost metadata, policy flags, and redacted export paths. It does not change analysis results or expose raw prompts, model responses, credentials, private keys, full payment headers, or signatures.
 
-Console 的 `Export JSON` 和 `Export Markdown` 链接只读取当前报告，不会重新分析。支付区域只显示金额、网络和脱敏的 challenge 状态；不要在页面或日志中输入私钥、完整 payment header 或 payment signature。
+The four platform Agent cards and nine logical Worker rows are local/recorded implementation evidence. A `recorded` or `unavailable` state is never promoted to `live`.
 
-## Approved credentials
+## Read-only and safety boundary
 
-只在本地安全环境中配置 `.env.local` 或进程环境，不要在聊天中粘贴私钥或 API key：
+Alibi does not connect an end-user wallet, custody funds, place or cancel orders, bridge assets, copy trades, or provide buy/sell direction. x402 server code never handles a server-side private key. Mainnet and public release operations are outside this Demo's verification claim.
 
-`ANTHROPIC_API_KEY`、`ANTHROPIC_MODEL`、`X402_FACILITATOR_URL`、`X402_NETWORK`、`ALIBI_PAYMENT_ADDRESS`、`BASE_SEPOLIA_RPC_URL`、`BUYER_AGENT_PRIVATE_KEY`、`APP_BASE_URL`、`ALIBI_DATA_MODE`、`MAX_EXTERNAL_API_COST_USD`。
+## Project status and documentation
 
-Anthropic adapter 已实现超时、有限重试、JSON contract、证据 ID allowlist、预算控制和 `unattributed` 降级；当前 key 缺失，live attribution 仍未验证。x402 买方脚本只接受 Base Sepolia exact 条款，私钥只在本地 signer 进程读取。
+The overall repository status is **PARTIALLY VERIFIED**, not `COMPLETE` and not `FULLY_LIVE_VERIFIED`.
 
-ERC-8004 只允许一个 `Alibi Evidence Agent` 根身份；IdentityRegistry 与 ReputationRegistry 固定为批准地址，owner 必须等于 `ALIBI_PAYMENT_ADDRESS`，client 必须不同，`agentWallet` 初始为 owner，validation 固定 `not_enabled`。本地 Solidity 使用 Hardhat `3.0.0`、solc `0.8.24` 和 OpenZeppelin `5.4.0`；PostgreSQL 使用 `pgvector/pgvector:0.8.6-pg16`，迁移只在本地数据库可用时执行。
+- [Project status](docs/PROJECT-STATUS.md)
+- [Roadmap](docs/ROADMAP.md)
+- [Verification report](VERIFICATION.md)
+- [Architecture](ARCHITECTURE.md)
+- [Data sources](DATA-SOURCES.md)
+- [Security boundary](SECURITY.md)
+- [Demo runbook](DEMO-RUNBOOK.md)
+- [Live readiness](LIVE-READINESS.md)
 
-## Verification snapshot
+## License
 
-当前状态是 `PARTIALLY VERIFIED`，不是 `COMPLETE`。已经通过的本地证据包括 typecheck、lint、19 个测试文件/41 个 Vitest contract/unit/integration tests、production build、2 个 Playwright E2E、Agent Console 的真实浏览器视觉验收、3 个 recorded presets、完整 v1 API smoke、市场免费 Summary 和未付款 Detail 的 HTTP 402；v0.7 新增模块还通过本地 ONNX 384 维推理、MCP 八工具构造、Solidity 编译与本地链 Subscription/Anchor smoke、MV3 zip 内容检查和 clean-room 重装验收。
-
-仍阻塞完整验收：`ANTHROPIC_API_KEY` 缺失，无法验证 live Anthropic attribution；`ALIBI_PAYMENT_ADDRESS`、`BASE_SEPOLIA_RPC_URL` 和买方测试凭据缺失，无法完成真实 Base Sepolia Web/Agent verify/settle 和 receipt 验证。详见 [VERIFICATION.md](VERIFICATION.md)。
-
-更多边界与数据说明： [ARCHITECTURE.md](ARCHITECTURE.md)、[DATA-SOURCES.md](DATA-SOURCES.md)、[SECURITY.md](SECURITY.md)、[DEMO-SCRIPT-90S.md](DEMO-SCRIPT-90S.md)。
+No license is added or inferred by this showcase update. Check the repository for current licensing terms before reusing code or data.
