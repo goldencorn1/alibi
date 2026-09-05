@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "Alibi Evidence Companion",
+  "version": "0.7.0",
+  "description": "Read-only Polymarket timeline and coverage summary companion.",
+  "permissions": ["activeTab", "storage"],
+  "host_permissions": ["https://polymarket.com/*", "http://127.0.0.1:3000/*"],
+  "background": {"service_worker": "background.js"},
+  "action": {"default_popup": "popup/index.html"},
+  "options_page": "options/index.html",
+  "content_scripts": [{"matches": ["https://polymarket.com/*"], "js": ["content.js"], "run_at": "document_idle"}],
+  "minimum_chrome_version": "110"
+}

@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: pgvector/pgvector:0.8.6-pg16
+    container_name: alibi-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: alibi
+      POSTGRES_USER: alibi
+      POSTGRES_PASSWORD: alibi-local-only
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - alibi_pgdata:/var/lib/postgresql/data
+volumes:
+  alibi_pgdata:

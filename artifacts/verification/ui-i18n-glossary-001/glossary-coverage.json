@@ -1,0 +1,78 @@
+{
+  "schema_version": "ui-glossary-coverage-audit-0.3",
+  "generated_at": "2026-09-05T02:48:12-07:00",
+  "scope": "current Agent Console visible terms and admitted audit values",
+  "source_files": [
+    "app/page-client.tsx",
+    "src/contracts/index.ts",
+    "src/engine/analyze.ts",
+    "src/observability/audit-agent.ts",
+    "artifacts/verification/mac-runtime/audit-export.json"
+  ],
+  "observed_agent_ids": [
+    "evidence",
+    "attribution",
+    "quality-risk",
+    "audit-report",
+    "input",
+    "market-data",
+    "repricing",
+    "wallet-analysis",
+    "policy-verification",
+    "report",
+    "payment"
+  ],
+  "not_observed_agent_ids": [
+    "orchestrator",
+    "source-discovery",
+    "language-evidence",
+    "cluster-analysis"
+  ],
+  "visible_terms": [
+    "agent_evidence", "agent_attribution", "agent_quality_risk", "agent_audit_report",
+    "worker_input", "worker_market_data", "worker_repricing", "worker_evidence",
+    "worker_attribution", "worker_wallet_analysis", "worker_policy_verification",
+    "worker_report", "worker_payment", "metric_status", "metric_data_status",
+    "metric_events", "metric_latency", "metric_sources", "metric_coverage",
+    "metric_retries", "metric_cost", "metric_errors", "metric_policy_flags",
+    "metric_run_id", "metric_limitations", "status_pending", "status_running",
+    "status_ok", "status_blocked", "status_failed", "status_insufficient",
+    "status_skipped", "status_completed", "status_partial", "data_recorded",
+    "data_live", "data_synthetic", "data_cached", "value_na", "value_none",
+    "policy_coverage_below_gate", "policy_unattributed", "policy_payment_required",
+    "policy_credentials_missing", "policy_not_requested", "policy_no_verified_evidence",
+    "policy_recorded_replay", "policy_synthetic_test", "policy_audit_partial",
+    "policy_rag_degraded", "policy_database_unavailable", "policy_provider_unavailable",
+    "policy_stale_data", "policy_not_enabled", "policy_live_unverified"
+  ],
+  "mapped_terms": [
+    "agent_evidence", "agent_attribution", "agent_quality_risk", "agent_audit_report",
+    "worker_input", "worker_market_data", "worker_repricing", "worker_evidence",
+    "worker_attribution", "worker_wallet_analysis", "worker_policy_verification",
+    "worker_report", "worker_payment", "metric_status", "metric_data_status",
+    "metric_events", "metric_latency", "metric_sources", "metric_coverage",
+    "metric_retries", "metric_cost", "metric_errors", "metric_policy_flags",
+    "metric_run_id", "metric_limitations", "status_pending", "status_running",
+    "status_ok", "status_blocked", "status_failed", "status_insufficient",
+    "status_skipped", "status_completed", "status_partial", "data_recorded",
+    "data_live", "data_synthetic", "data_cached", "value_na", "value_none",
+    "policy_coverage_below_gate", "policy_unattributed", "policy_payment_required",
+    "policy_credentials_missing", "policy_not_requested", "policy_no_verified_evidence",
+    "policy_recorded_replay", "policy_synthetic_test", "policy_audit_partial",
+    "policy_rag_degraded", "policy_database_unavailable", "policy_provider_unavailable",
+    "policy_stale_data", "policy_not_enabled", "policy_live_unverified"
+  ],
+  "unmapped_terms": [],
+  "duplicate_term_ids": [],
+  "pending_definition": 0,
+  "coverage_percentage": 100,
+  "gate": {
+    "unmapped_terms": 0,
+    "duplicate_term_ids": 0,
+    "pending_definition": 0,
+    "coverage_percentage": 100
+  },
+  "status": "STATIC_GLOSSARY_PASS_DOM_E2E_PENDING",
+  "dom_termhelp_verified": false,
+  "reason": "The centralized glossary now maps the recorded Agent Console inventory with unique definitions. DOM, visual, keyboard, mobile and 200% zoom verification was intentionally paused before E2E execution; this is not the final acceptance gate."
+}

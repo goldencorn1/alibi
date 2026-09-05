@@ -1,0 +1,27 @@
+{
+  "verification": "DEMO-API-READINESS-001 v0.1",
+  "observed_at": "2026-09-05T06:09:42Z",
+  "mode": "recorded",
+  "synthetic_in_user_demo": false,
+  "checks": {
+    "homepage_opened": true,
+    "free_summary": true,
+    "timeline": true,
+    "cluster_six_dimensions_and_herding_veto": true,
+    "language_window_conservative_empty_or_indeterminate": true,
+    "detail_free_unattributed": true,
+    "unpaid_402_challenge": true,
+    "agent_console_and_audit_export": true,
+    "limitations_and_disclaimer": true,
+    "desktop": true,
+    "mobile": true,
+    "zoom_200_percent": true
+  },
+  "screenshots": [
+    {"path":"artifacts/verification/demo-api-001/demo-desktop.png","viewport":"1440x1100","sha256":"66166f4d207ce200a200139a292f701aec3e94d28b3c53e7846a9bafd88d05ed"},
+    {"path":"artifacts/verification/demo-api-001/demo-mobile.png","viewport":"390x1351 Chromium mobile viewport","sha256":"207e52f01082cdcff10e46c080f3fd4a1622859bf6f14af4b5353df1be1292e0"},
+    {"path":"artifacts/verification/demo-api-001/demo-200-percent.png","viewport":"1280x2258 CSS zoom 200%","sha256":"2bb228e3a7e9edd16c2a20d07e4db9d04360fec3e6e2843ac93266275d5f3c6e"}
+  ],
+  "environment_note": "Playwright WebKit/iPhone device mode was unavailable; Chromium mobile viewport was used. No browser installation was performed.",
+  "claims": {"positive_live_language_first": false,"positive_live_cluster": false,"investment_advice": false}
+}

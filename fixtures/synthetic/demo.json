@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0.0",
+  "fixture_status": "synthetic",
+  "captured_at": "2026-09-04T00:00:00.000Z",
+  "markets": [
+    {
+      "market_id": "condition-synthetic-1",
+      "slug": "synthetic-election-market",
+      "title": "Synthetic election market",
+      "question": "Synthetic election market",
+      "source_url": "https://polymarket.com/event/synthetic-election-market",
+      "token_ids": ["token-synthetic-yes"],
+      "data_status": "synthetic"
+    }
+  ],
+  "prices": [
+    { "market_id": "condition-synthetic-1", "token_id": "token-synthetic-yes", "timestamp": "2026-09-01T09:00:00.000Z", "price": 0.22, "source": "synthetic", "fidelity_minutes": 1, "data_status": "synthetic" },
+    { "market_id": "condition-synthetic-1", "token_id": "token-synthetic-yes", "timestamp": "2026-09-01T09:30:00.000Z", "price": 0.32, "source": "synthetic", "fidelity_minutes": 1, "data_status": "synthetic" },
+    { "market_id": "condition-synthetic-1", "token_id": "token-synthetic-yes", "timestamp": "2026-09-01T10:00:00.000Z", "price": 0.42, "source": "synthetic", "fidelity_minutes": 1, "data_status": "synthetic" },
+    { "market_id": "condition-synthetic-1", "token_id": "token-synthetic-yes", "timestamp": "2026-09-02T09:00:00.000Z", "price": 0.60, "source": "synthetic", "fidelity_minutes": 1, "data_status": "synthetic" },
+    { "market_id": "condition-synthetic-1", "token_id": "token-synthetic-yes", "timestamp": "2026-09-02T10:00:00.000Z", "price": 0.50, "source": "synthetic", "fidelity_minutes": 1, "data_status": "synthetic" }
+  ],
+  "trades": [
+    {
+      "wallet": "wallet-a",
+      "market_id": "condition-synthetic-1",
+      "token_id": "token-synthetic-yes",
+      "timestamp": "2026-09-01T08:45:00.000Z",
+      "side": "BUY",
+      "outcome": "YES",
+      "price": 0.20,
+      "size": 10,
+      "transaction_hash": null,
+      "maker_taker": "TAKER",
+      "source_type": "DIRECT",
+      "data_status": "synthetic"
+    },
+    {
+      "wallet": "wallet-a",
+      "market_id": "condition-synthetic-1",
+      "token_id": "token-synthetic-yes",
+      "timestamp": "2026-09-02T08:00:00.000Z",
+      "side": "BUY",
+      "outcome": "YES",
+      "price": 0.58,
+      "size": 4,
+      "transaction_hash": null,
+      "maker_taker": "MAKER",
+      "source_type": "DIRECT",
+      "data_status": "synthetic"
+    },
+    {
+      "wallet": "wallet-b",
+      "market_id": "condition-synthetic-1",
+      "token_id": "token-synthetic-yes",
+      "timestamp": "2026-09-01T10:30:00.000Z",
+      "side": "BUY",
+      "outcome": "YES",
+      "price": 0.42,
+      "size": 3,
+      "transaction_hash": null,
+      "maker_taker": "TAKER",
+      "source_type": "DIRECT",
+      "data_status": "synthetic"
+    },
+    {
+      "wallet": "wallet-b",
+      "market_id": "condition-synthetic-1",
+      "token_id": null,
+      "timestamp": "2026-09-02T12:00:00.000Z",
+      "side": "UNKNOWN",
+      "outcome": null,
+      "price": null,
+      "size": null,
+      "transaction_hash": null,
+      "maker_taker": "UNKNOWN",
+      "source_type": "UNKNOWN",
+      "data_status": "synthetic"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "synthetic-evidence-1",
+      "url": "https://example.invalid/synthetic-evidence-1",
+      "title": "Synthetic evidence fixture",
+      "published_at": "2026-09-01T09:15:00.000Z",
+      "retrieved_at": "2026-09-04T00:00:00.000Z",
+      "source_level": "synthetic-test-only",
+      "license_or_restriction": "Synthetic test data; not a real source.",
+      "data_status": "synthetic",
+      "time_relation": "during",
+      "excerpt": "Synthetic only; never display as a live source."
+    },
+    {
+      "id": "synthetic-evidence-missing-date",
+      "url": "https://example.invalid/no-published-date",
+      "title": "Synthetic evidence without a date",
+      "published_at": null,
+      "retrieved_at": "2026-09-04T00:00:00.000Z",
+      "source_level": "synthetic-test-only",
+      "license_or_restriction": "Synthetic test data; not a real source.",
+      "data_status": "synthetic",
+      "time_relation": "unknown"
+    }
+  ]
+}

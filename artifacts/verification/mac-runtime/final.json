@@ -1,0 +1,107 @@
+{
+  "protocol": "Alibi macOS Runtime Verification Protocol v1.0",
+  "status": "MAC_PARTIALLY_VERIFIED",
+  "live_external_status": "LIVE_EXTERNAL_VERIFICATION_PENDING",
+  "database_status": "MAC_DB_PENDING",
+  "safety": {
+    "data_mode": "recorded",
+    "max_external_api_cost_usd": 0,
+    "external_calls": false,
+    "secrets_read": false,
+    "real_payments": false,
+    "external_chain_transactions": 0
+  },
+  "environment": {
+    "macos": "14.6.2",
+    "architecture": "arm64",
+    "shell": "/bin/zsh",
+    "git": "2.50.1",
+    "node": "24.19.0",
+    "npm": "11.17.0",
+    "target_node": "24.16.0",
+    "target_npm": "11.15.0",
+    "target_toolchain_status": "BLOCKED",
+    "docker": "missing",
+    "disk_free_approx": "416 GiB"
+  },
+  "checks": {
+    "manifest_sha256": { "status": "PASS", "matched_entries": 195, "failed_entries": 0 },
+    "manifest_payload_files": { "status": "PASS", "count": 194 },
+    "archive_exclusions": { "status": "PASS", "env_local": "absent", "node_modules": "absent", "next": "absent", "windows_native": "absent" },
+    "preflight": "PASS",
+    "lockfile_unchanged": "PASS",
+    "npm_ci": "PASS",
+    "model": "PASS",
+    "typecheck": "PASS",
+    "lint": "PASS",
+    "tests": { "status": "PASS", "files": 19, "tests": 41 },
+    "build": "PASS",
+    "recorded_replay": "PASS",
+    "playwright_e2e": { "status": "PASS", "tests": 2, "browser": "Chromium arm64" },
+    "mcp": "PASS",
+    "extension": "PASS",
+    "solidity_compile": "PASS",
+    "local_chain_smoke": { "status": "PASS", "chain_id": 31337, "external_chain_transactions": 0 },
+    "erc8004_preflight": { "status": "PASS", "result": "unavailable", "secrets_read": false },
+    "postgresql_pgvector": { "status": "BLOCKED", "code": "MAC_DB_PENDING", "reason": "Docker is not installed" },
+    "artifact_secret_scan": "PASS",
+    "service_cleanup": { "status": "PASS", "port_3000": 0, "port_8545": 0, "leftover_service_pids": "none" }
+  },
+  "api": {
+    "health": "PASS",
+    "v1_health": "PASS",
+    "recorded_summary": "PASS",
+    "recorded_ranking": "PASS",
+    "attribution_without_payment": { "status": "PASS", "http": 402 },
+    "subscription_status": "PASS",
+    "erc8004_status": "PASS",
+    "mcp_http_method_boundary": { "status": "PASS", "http": 405, "note": "GET not allowed; MCP contract script passed" },
+    "recorded_402_data_status_consistency": { "status": "FAIL", "observed": "live", "expected": "recorded" }
+  },
+  "ui": {
+    "status": "PASS",
+    "home": true,
+    "recorded_mode": true,
+    "loading": true,
+    "insufficient": true,
+    "unattributed": true,
+    "payment_required": true,
+    "agent_console": true,
+    "worker_count": 9,
+    "json_export": true,
+    "markdown_export": true,
+    "page_errors": 0,
+    "failed_requests": 0,
+    "expected_402_console_errors": 1,
+    "unexpected_console_errors": 0
+  },
+  "source_integrity": {
+    "package_manifest_files_unchanged": true,
+    "package_lock_unchanged": true,
+    "next_env_generated_delta_restored": true,
+    "source_code_modified": false,
+    "spec_or_plan_modified": false,
+    "dependency_versions_modified": false
+  },
+  "artifacts": {
+    "report": "MAC-RUNTIME-VERIFICATION.md",
+    "screenshots_dir": "artifacts/verification/mac-runtime/screenshots",
+    "screenshots": [
+      "01-home.png",
+      "02-loading.png",
+      "03-summary-insufficient.png",
+      "04-summary-unattributed.png",
+      "05-payment-required.png",
+      "06-agent-console-expanded.png"
+    ],
+    "json_export": "artifacts/verification/mac-runtime/audit-export.json",
+    "markdown_export": "artifacts/verification/mac-runtime/audit-export.md"
+  },
+  "findings": [
+    { "status": "BLOCKED", "id": "exact_target_toolchain", "detail": "Node/npm are engines-compatible but not the exact protocol target versions" },
+    { "status": "BLOCKED", "id": "mac_db_pending", "detail": "Docker is unavailable; PostgreSQL/pgvector migration was not run" },
+    { "status": "FAIL", "id": "recorded_402_data_status", "detail": "Existing unpaid Attribution 402 envelope labels data_status as live" },
+    { "status": "NOTICE", "id": "npm_audit", "detail": "npm ci reported four high-severity findings; audit remediation was not authorized" }
+  ],
+  "startup_command": "ALIBI_DATA_MODE=recorded MAX_EXTERNAL_API_COST_USD=0 npm run dev"
+}

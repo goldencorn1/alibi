@@ -1,0 +1,33 @@
+{
+  "verification": "DEMO-API-READINESS-001 v0.1",
+  "observed_at": "2026-09-05T06:03:08Z",
+  "challenge_observed": true,
+  "settlement_attempted": false,
+  "signature_created": false,
+  "chain_transaction_sent": false,
+  "manual_fallback": true,
+  "fields": {
+    "x402Version": 2,
+    "scheme": "exact",
+    "network": "eip155:84532",
+    "amount_atomic": "10000",
+    "amount_display": "0.01 USDC",
+    "asset": "Base Sepolia USDC project-fixed address; value not repeated here",
+    "maxTimeoutSeconds": 120,
+    "legacy_resource": "http://localhost:3000/attribution",
+    "v1_resource": "http://localhost:3000/api/v1/attribution",
+    "payTo": "not configured; manual challenge zero-address fallback"
+  },
+  "request_modes": {
+    "header_x_alibi_mode_recorded": "402 envelope data_status=recorded",
+    "header_x_alibi_mode_live": "402 envelope data_status=live",
+    "body_mode_live_without_header": "currently observed as recorded; Change Request candidate"
+  },
+  "resources": {
+    "ALIBI_PAYMENT_ADDRESS": "missing",
+    "BASE_SEPOLIA_RPC_URL": "missing",
+    "BUYER_AGENT_PRIVATE_KEY": "missing",
+    "facilitator_verify_settle": "not called"
+  },
+  "idempotency": {"implementation":"process-local payment-identifier/idempotency path exists","live_route_parity":"requires direct configured-x402 integration test","persistent_store":"not used"}
+}

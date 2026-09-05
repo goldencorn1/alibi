@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0.0",
+  "verification_mode": "recorded",
+  "status": "passed",
+  "generated_at": "2026-09-05T08:37:13.113Z",
+  "results": [
+    {
+      "preset": "market",
+      "ok": true,
+      "data_status": "recorded",
+      "market_count": 3,
+      "price_count": 18599,
+      "trade_count": 0,
+      "window_count": 98,
+      "unattributed_count": 98,
+      "evidence_count": 0,
+      "attribution_verified": false,
+      "wallet": null
+    },
+    {
+      "preset": "wallet-a",
+      "ok": true,
+      "data_status": "recorded",
+      "market_count": 5,
+      "price_count": 1832,
+      "trade_count": 10000,
+      "window_count": 294,
+      "unattributed_count": 294,
+      "evidence_count": 0,
+      "attribution_verified": false,
+      "wallet": {
+        "coverage_rate": 0.0188,
+        "information_lead_rate": null,
+        "status": "insufficient_evidence"
+      }
+    },
+    {
+      "preset": "wallet-b",
+      "ok": true,
+      "data_status": "recorded",
+      "market_count": 3,
+      "price_count": 1100,
+      "trade_count": 10000,
+      "window_count": 1,
+      "unattributed_count": 1,
+      "evidence_count": 0,
+      "attribution_verified": false,
+      "wallet": {
+        "coverage_rate": 0.0001,
+        "information_lead_rate": null,
+        "status": "insufficient_evidence"
+      }
+    }
+  ],
+  "budget": {
+    "approvedUsd": 10,
+    "spentUsd": 0,
+    "remainingUsd": 10
+  },
+  "live_prerequisites": null,
+  "limitations": [
+    "This report does not validate live Anthropic attribution or real Base Sepolia settlement unless those resources are configured."
+  ]
+}

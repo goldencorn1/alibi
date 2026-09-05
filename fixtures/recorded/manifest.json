@@ -1,0 +1,547 @@
+{
+  "schema_version": "1.0.0",
+  "fixture_status": "recorded",
+  "captured_at": "2026-09-03T21:43:21.891Z",
+  "files": [
+    "demo-market.json",
+    "0x674887d1ac838099a48b629dff53f25b7b87ee08.json",
+    "0xc69bd5567b40ef4d11922eaa57e1f9be1c642076.json"
+  ],
+  "source_status": [
+    {
+      "source": "gamma-markets",
+      "source_url": "https://gamma-api.polymarket.com/markets?slug=will-there-be-no-change-in-fed-interest-rates-after-the-september-2026-meeting-615&limit=20",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:42:51.387Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=5615282760875985231868508008056959876238536896643315063916840237042205273721&interval=1m&fidelity=10",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:42:52.401Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=97050921740416192996389806693742575608111328819185493163189880975611314813724&interval=1m&fidelity=10",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:42:52.672Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "gamma-markets",
+      "source_url": "https://gamma-api.polymarket.com/markets?slug=will-the-fed-increase-interest-rates-by-25-bps-after-the-september-2026-meeting-649&limit=20",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:42:52.940Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=63842529068710005716169325380315470359047749786610778647370693404952498013178&interval=1m&fidelity=10",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:42:53.382Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=2881957189963819690709899387312951271986076905757701114514025622922000576600&interval=1m&fidelity=10",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:42:53.697Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "gamma-markets",
+      "source_url": "https://gamma-api.polymarket.com/markets?slug=atp-darderi-svrcina-2026-09-02&limit=20",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:42:53.957Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=42696162895146078367980857323546116317214085537138654988197861056658099057841&interval=1m&fidelity=10",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:42:54.214Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=37950814475756213324861871416610343680165009368193151835242706345216631508266&interval=1m&fidelity=10",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:42:54.476Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "data-api-trades",
+      "source_url": "https://data-api.polymarket.com/trades?user=0x674887d1ac838099a48b629dff53f25b7b87ee08&start=1780695774&end=1788471774&limit=10000&offset=0",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:42:56.910Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=71141413455856675483187832101708675891696057658630745298863916421499493280067&interval=1h&fidelity=1&startTs=1787175775&endTs=1788471774",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:42:57.362Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=71141413455856675483187832101708675891696057658630745298863916421499493280067&interval=1h&fidelity=1&startTs=1785879775&endTs=1787175774",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:42:57.813Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=71141413455856675483187832101708675891696057658630745298863916421499493280067&interval=1h&fidelity=1&startTs=1784583775&endTs=1785879774",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:42:58.230Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=71141413455856675483187832101708675891696057658630745298863916421499493280067&interval=1h&fidelity=1&startTs=1783287775&endTs=1784583774",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:42:58.683Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=71141413455856675483187832101708675891696057658630745298863916421499493280067&interval=1h&fidelity=1&startTs=1781991775&endTs=1783287774",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:42:59.090Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=71141413455856675483187832101708675891696057658630745298863916421499493280067&interval=1h&fidelity=1&startTs=1780695775&endTs=1781991774",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:42:59.502Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=79852221827094894770228799503784458953412440515146700164554456028099296013150&interval=1h&fidelity=1&startTs=1787175775&endTs=1788471774",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:42:59.944Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=79852221827094894770228799503784458953412440515146700164554456028099296013150&interval=1h&fidelity=1&startTs=1785879775&endTs=1787175774",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:00.356Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=79852221827094894770228799503784458953412440515146700164554456028099296013150&interval=1h&fidelity=1&startTs=1784583775&endTs=1785879774",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:00.781Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=79852221827094894770228799503784458953412440515146700164554456028099296013150&interval=1h&fidelity=1&startTs=1783287775&endTs=1784583774",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:01.173Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=79852221827094894770228799503784458953412440515146700164554456028099296013150&interval=1h&fidelity=1&startTs=1781991775&endTs=1783287774",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:01.563Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=79852221827094894770228799503784458953412440515146700164554456028099296013150&interval=1h&fidelity=1&startTs=1780695775&endTs=1781991774",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:02.006Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=104316244751549294455993010543265880540589234151039499086313384017602928680190&interval=1h&fidelity=1&startTs=1787175775&endTs=1788471774",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:02.487Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=104316244751549294455993010543265880540589234151039499086313384017602928680190&interval=1h&fidelity=1&startTs=1785879775&endTs=1787175774",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:02.909Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=104316244751549294455993010543265880540589234151039499086313384017602928680190&interval=1h&fidelity=1&startTs=1784583775&endTs=1785879774",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:03.371Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=104316244751549294455993010543265880540589234151039499086313384017602928680190&interval=1h&fidelity=1&startTs=1783287775&endTs=1784583774",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:03.791Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=104316244751549294455993010543265880540589234151039499086313384017602928680190&interval=1h&fidelity=1&startTs=1781991775&endTs=1783287774",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:04.255Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=104316244751549294455993010543265880540589234151039499086313384017602928680190&interval=1h&fidelity=1&startTs=1780695775&endTs=1781991774",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:04.659Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=44595363715409534275020898353643237118551198685083351865790409264863562963463&interval=1h&fidelity=1&startTs=1787175775&endTs=1788471774",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:05.066Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=44595363715409534275020898353643237118551198685083351865790409264863562963463&interval=1h&fidelity=1&startTs=1785879775&endTs=1787175774",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:05.473Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=44595363715409534275020898353643237118551198685083351865790409264863562963463&interval=1h&fidelity=1&startTs=1784583775&endTs=1785879774",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:05.962Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=44595363715409534275020898353643237118551198685083351865790409264863562963463&interval=1h&fidelity=1&startTs=1783287775&endTs=1784583774",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:06.411Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=44595363715409534275020898353643237118551198685083351865790409264863562963463&interval=1h&fidelity=1&startTs=1781991775&endTs=1783287774",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:06.839Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=44595363715409534275020898353643237118551198685083351865790409264863562963463&interval=1h&fidelity=1&startTs=1780695775&endTs=1781991774",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:07.256Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=48510537382802073859896865999185537652003541727187488365494492671961454950074&interval=1h&fidelity=1&startTs=1787175775&endTs=1788471774",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:07.720Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=48510537382802073859896865999185537652003541727187488365494492671961454950074&interval=1h&fidelity=1&startTs=1785879775&endTs=1787175774",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:08.125Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=48510537382802073859896865999185537652003541727187488365494492671961454950074&interval=1h&fidelity=1&startTs=1784583775&endTs=1785879774",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:08.527Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=48510537382802073859896865999185537652003541727187488365494492671961454950074&interval=1h&fidelity=1&startTs=1783287775&endTs=1784583774",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:08.960Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=48510537382802073859896865999185537652003541727187488365494492671961454950074&interval=1h&fidelity=1&startTs=1781991775&endTs=1783287774",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:09.403Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=48510537382802073859896865999185537652003541727187488365494492671961454950074&interval=1h&fidelity=1&startTs=1780695775&endTs=1781991774",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:10.001Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "data-api-trades",
+      "source_url": "https://data-api.polymarket.com/trades?user=0xc69bd5567b40ef4d11922eaa57e1f9be1c642076&start=1780695790&end=1788471790&limit=10000&offset=0",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:13.982Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=33339798372916037220786136133406478491116150628220441951753426683441228279665&interval=1h&fidelity=1&startTs=1787175791&endTs=1788471790",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:14.412Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=33339798372916037220786136133406478491116150628220441951753426683441228279665&interval=1h&fidelity=1&startTs=1785879791&endTs=1787175790",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:14.842Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=33339798372916037220786136133406478491116150628220441951753426683441228279665&interval=1h&fidelity=1&startTs=1784583791&endTs=1785879790",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:15.242Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=33339798372916037220786136133406478491116150628220441951753426683441228279665&interval=1h&fidelity=1&startTs=1783287791&endTs=1784583790",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:15.654Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=33339798372916037220786136133406478491116150628220441951753426683441228279665&interval=1h&fidelity=1&startTs=1781991791&endTs=1783287790",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:16.098Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=33339798372916037220786136133406478491116150628220441951753426683441228279665&interval=1h&fidelity=1&startTs=1780695791&endTs=1781991790",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:16.499Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=37109592988275698483244910637877239010647418603157472150857258735198574666723&interval=1h&fidelity=1&startTs=1787175791&endTs=1788471790",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:16.904Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=37109592988275698483244910637877239010647418603157472150857258735198574666723&interval=1h&fidelity=1&startTs=1785879791&endTs=1787175790",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:17.372Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=37109592988275698483244910637877239010647418603157472150857258735198574666723&interval=1h&fidelity=1&startTs=1784583791&endTs=1785879790",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:17.800Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=37109592988275698483244910637877239010647418603157472150857258735198574666723&interval=1h&fidelity=1&startTs=1783287791&endTs=1784583790",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:18.231Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=37109592988275698483244910637877239010647418603157472150857258735198574666723&interval=1h&fidelity=1&startTs=1781991791&endTs=1783287790",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:18.631Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=37109592988275698483244910637877239010647418603157472150857258735198574666723&interval=1h&fidelity=1&startTs=1780695791&endTs=1781991790",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:19.080Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=56329959474500348932677258122661544271338403563908329541801089772266649545753&interval=1h&fidelity=1&startTs=1787175791&endTs=1788471790",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:19.511Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=56329959474500348932677258122661544271338403563908329541801089772266649545753&interval=1h&fidelity=1&startTs=1785879791&endTs=1787175790",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:19.910Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=56329959474500348932677258122661544271338403563908329541801089772266649545753&interval=1h&fidelity=1&startTs=1784583791&endTs=1785879790",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:20.336Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=56329959474500348932677258122661544271338403563908329541801089772266649545753&interval=1h&fidelity=1&startTs=1783287791&endTs=1784583790",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:20.754Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=56329959474500348932677258122661544271338403563908329541801089772266649545753&interval=1h&fidelity=1&startTs=1781991791&endTs=1783287790",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:21.165Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    },
+    {
+      "source": "clob-prices-history",
+      "source_url": "https://clob.polymarket.com/prices-history?market=56329959474500348932677258122661544271338403563908329541801089772266649545753&interval=1h&fidelity=1&startTs=1780695791&endTs=1781991790",
+      "data_status": "recorded",
+      "retrieved_at": "2026-09-03T21:43:21.607Z",
+      "http_status": 200,
+      "attempts": 1,
+      "retryable": false
+    }
+  ],
+  "sanitizer": "status-only-normalizer-v1; no secrets or profile metadata retained",
+  "limitations": [
+    "Recorded replay is not live and does not establish Anthropic attribution."
+  ]
+}

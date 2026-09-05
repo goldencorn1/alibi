@@ -1,0 +1,65 @@
+{
+  "name": "alibi-trust-agent-demo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.9 <27"
+  },
+  "scripts": {
+    "dev": "next dev --hostname 127.0.0.1",
+    "build": "next build",
+    "start": "next start --hostname 127.0.0.1",
+    "demo": "next dev --hostname 127.0.0.1",
+    "setup-and-demo": "npm ci && npm run demo",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test",
+    "verify": "npm run typecheck && npm run lint && npm run test && npm run build",
+    "verify:live": "tsx scripts/verify-demo.ts --mode live",
+    "verify:offline": "tsx scripts/verify-demo.ts --mode recorded",
+    "select-demo": "tsx scripts/select-demo-data.ts",
+    "capture-recorded": "tsx scripts/capture-recorded.ts",
+    "buyer-agent": "tsx scripts/buyer-agent.ts",
+    "web-payment": "tsx scripts/web-payment.ts"
+    ,"package-extension": "tsx scripts/package-extension.ts"
+    ,"mcp:verify": "tsx scripts/mcp-client-verification.ts"
+    ,"erc8004:preflight": "tsx scripts/erc8004-preflight.ts"
+    ,"contracts:compile": "hardhat compile"
+    ,"contracts:smoke": "tsx scripts/local-chain-smoke.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.123.0",
+    "@huggingface/transformers": "3.7.0",
+    "@modelcontextprotocol/client": "2.0.0",
+    "@modelcontextprotocol/server": "2.0.0",
+    "@openzeppelin/contracts": "5.4.0",
+    "@x402/core": "^2.24.0",
+    "@x402/evm": "^2.24.0",
+    "@x402/fetch": "^2.24.0",
+    "@x402/next": "^2.24.0",
+    "hardhat": "3.0.0",
+    "next": "^16.3.4",
+    "pg": "8.16.3",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "viem": "^2.56.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^26.4.1",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitest/coverage-v8": "^5.0.0",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.3.4",
+    "postcss": "^8.5.28",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.13",
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.0"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "model": "onnx-community/all-MiniLM-L6-v2-ONNX",
+  "revision": "aff7a1dc4e8a1ea593e6ea21e95c22ef0a25966f",
+  "task": "feature-extraction",
+  "dimensions": 384,
+  "pooling": "mean",
+  "normalize": true,
+  "runtime": "@huggingface/transformers@3.7.0",
+  "license": "Apache-2.0",
+  "allow_remote_models": false,
+  "embedding_api_key": "NOT_REQUIRED",
+  "download_status": "verified_before_ingestion",
+  "files": [
+    {"path":"onnx/model_q4.onnx","bytes":69663,"sha256":"e4dcb918111189b7686147e309379832fce83d4ecbf17c395961749b5788c786"},
+    {"path":"onnx/model_q4.onnx_data","bytes":54429696,"sha256":"56fb7a55115e900196115a74e399beb45c2f41ae00b99525d46fb52935c4ee2a"},
+    {"path":"config.json","bytes":794,"sha256":"fe5da868b77bdb104140822a5af0837cb6450ad6de8ff3dfcc8dd44ddd3e3ae7"},
+    {"path":"tokenizer.json","bytes":533808,"sha256":"07805d116826679de90b4edeb2222269c4b8753bc0981be4399f732b2708e904"},
+    {"path":"tokenizer_config.json","bytes":1463,"sha256":"e10bb633ba0d7f69ed342ae7de607f36b39ce53b455fbda69c71700bf57e6f66"},
+    {"path":"special_tokens_map.json","bytes":695,"sha256":"5d5b662e421ea9fac075174bb0688ee0d9431699900b90662acd44b2a350503a"},
+    {"path":"vocab.txt","bytes":231508,"sha256":"07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3"},
+    {"path":"README.md","bytes":1972,"sha256":"ba8527d6567522135bc337410075125987bf0be47700489a8e1cad172b104658"},
+    {"path":".gitattributes","bytes":1761,"sha256":"5eb33170d4b83c5e7fd73cdeb7dcdb950fdb12d06d57352985243b7f18bff526"}
+  ],
+  "source": "https://huggingface.co/onnx-community/all-MiniLM-L6-v2-ONNX/tree/aff7a1dc4e8a1ea593e6ea21e95c22ef0a25966f",
+  "limitations": ["Local model is approved for retrieval similarity only; it does not create evidence or attribution facts."]
+}

@@ -1,0 +1,96 @@
+{
+  "artifact": "MAC-CLUSTER-LANGUAGE-SOURCE-PREFLIGHT",
+  "recorded_at": "2026-09-05T05:09:29.300Z",
+  "data_status": "live",
+  "network_policy": "bounded read-only public requests; no paid calls; no payment or chain activity",
+  "providers": [
+    {
+      "name": "GDELT DOC 2.0",
+      "priority": "P0",
+      "endpoint": "https://api.gdeltproject.org/api/v2/doc/doc",
+      "http_status": null,
+      "response_bytes": 0,
+      "result": "unavailable",
+      "observed_error": "DNS/connection timeout within 12 seconds",
+      "source_state": "unknown",
+      "calibration": { "sample_count": 0, "absolute_error_p95_seconds": null },
+      "limitation": "Discovery-only; seendate may only be first_seen_at and never published_at."
+    },
+    {
+      "name": "HKSAR ISD English RSS",
+      "priority": "P0",
+      "endpoint": "https://www.info.gov.hk/gia/rss/general_en.xml",
+      "http_status": 200,
+      "response_bytes": 386725,
+      "response_sha256": "9d7fe0e6396ccfc3606abd276152d2c62d2f36f2eafc5ce2244c436c7bcc6334",
+      "result": "validated_shape",
+      "source_state": "found_if_qualified_pair_exists_otherwise_unknown",
+      "timestamp_observed": "pubDate; second precision in RSS payload",
+      "calibration": { "sample_count": 0, "absolute_error_p95_seconds": null }
+    },
+    {
+      "name": "HKSAR ISD Traditional Chinese RSS",
+      "priority": "P0",
+      "endpoint": "https://www.info.gov.hk/gia/rss/general_zh.xml",
+      "http_status": 200,
+      "response_bytes": 301485,
+      "response_sha256": "0b38cdc9b55a768b1714b8d7260fdedd5acf4517326df50f4fb50eaf8e0a454f",
+      "result": "validated_shape",
+      "source_state": "found_if_qualified_pair_exists_otherwise_unknown",
+      "timestamp_observed": "pubDate; second precision in RSS payload",
+      "calibration": { "sample_count": 0, "absolute_error_p95_seconds": null }
+    },
+    {
+      "name": "Federal Register Public Inspection",
+      "priority": "P0",
+      "endpoint": "https://www.federalregister.gov/api/v1/public-inspection-documents.json?per_page=1",
+      "http_status": 200,
+      "response_bytes": 229,
+      "response_sha256": "fe3df1bcd7fe301f54fcbdfb19dab9a981db91d22cd1655690d287c9902bfdc2",
+      "result": "temporarily_unavailable",
+      "source_state": "unknown",
+      "observed_error": "Official response reported Public Inspection list unavailable during the observed window",
+      "calibration": { "sample_count": 0, "absolute_error_p95_seconds": null }
+    },
+    {
+      "name": "HKMA public press releases English",
+      "priority": "P1",
+      "endpoint": "https://api.hkma.gov.hk/public/press-releases?lang=en",
+      "http_status": 200,
+      "response_bytes": 17668,
+      "response_sha256": "17a63800916fe5b55042fea5e903b14807af5a067bd78f5bc9c8abee291236e6",
+      "result": "validated_shape",
+      "timestamp_observed": "result.records[].date; date-only in observed list",
+      "source_state": "unknown_for_minute_order",
+      "calibration": { "sample_count": 0, "absolute_error_p95_seconds": null }
+    },
+    {
+      "name": "SEC EDGAR submissions",
+      "priority": "P1",
+      "endpoint": "https://data.sec.gov/submissions/CIK0000320193.json",
+      "http_status": 200,
+      "response_bytes": 164121,
+      "response_sha256": "7c67278a0c4009db2cfd62ac23fbdb16d935867ad44fdfde9eaef77837386440",
+      "result": "validated_shape",
+      "timestamp_observed": "filings.recent[].acceptanceDateTime and filingDate",
+      "source_state": "found_for_filing_coverage_only",
+      "calibration": { "sample_count": 0, "absolute_error_p95_seconds": null }
+    }
+  ],
+  "adapter_smoke": {
+    "retrieved_at": "2026-09-05T05:24:50.913Z",
+    "provider": "hksar-isd",
+    "english_records": 100,
+    "traditional_chinese_records": 100,
+    "coverage_complete": true,
+    "coverage_ratio": 1,
+    "actual_coverage_start": "2026-09-02T07:00:00.000Z",
+    "actual_coverage_end": "2026-09-05T04:03:47.000Z",
+    "timestamp_precision": "second",
+    "page_count": 2,
+    "source_state": "found",
+    "provider_state": "documented",
+    "calibration": { "sample_count": 0, "absolute_error_p95_seconds": null }
+  },
+  "calibration_policy": "At least 30 independent samples per provider/language/timestamp cohort; uncertainty is null until absolute-error P95 exists."
+}

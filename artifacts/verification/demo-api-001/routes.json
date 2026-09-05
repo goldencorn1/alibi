@@ -1,0 +1,24 @@
+{
+  "verification": "DEMO-API-READINESS-001 v0.1",
+  "observed_at": "2026-09-05T06:03:08Z",
+  "base_url": "http://127.0.0.1:3000",
+  "routes": [
+    {"method":"POST","path":"/summary","status":200,"data_status":"recorded","result":"summary"},
+    {"method":"POST","path":"/attribution","status":200,"data_status":"recorded","result":"free_unattributed_valid_recorded"},
+    {"method":"POST","path":"/attribution","status":402,"data_status":"recorded","result":"payment_required_empty_input","payment_required_header":true},
+    {"method":"POST","path":"/api/v1/summary","status":200,"data_status":"recorded","result":"summary"},
+    {"method":"POST","path":"/api/v1/attribution","status":200,"data_status":"recorded","result":"free_unattributed_valid_recorded"},
+    {"method":"POST","path":"/api/v1/attribution","status":402,"data_status":"recorded","result":"payment_required_empty_input","payment_required_header":true},
+    {"method":"POST","path":"/api/summary","status":404,"result":"route_absent"},
+    {"method":"POST","path":"/api/attribution","status":404,"result":"route_absent"},
+    {"method":"GET","path":"/health","status":200,"data_status":"recorded","result":"health"},
+    {"method":"GET","path":"/api/v1/health","status":200,"data_status":"recorded","result":"health"},
+    {"method":"GET","path":"/audit?run_id=<observed-run-id>&format=json","status":200,"data_status":"recorded","result":"audit_json"},
+    {"method":"GET","path":"/audit?run_id=<observed-run-id>&format=markdown","status":200,"data_status":"recorded","result":"audit_markdown"}
+  ],
+  "notes": [
+    "No /api/summary or /api/attribution adapter exists and none was added.",
+    "Valid recorded detail is free only because the current result is fully unattributed.",
+    "No payment, signing, settlement, or chain transaction was attempted."
+  ]
+}

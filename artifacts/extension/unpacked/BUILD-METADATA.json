@@ -1,0 +1,10 @@
+{
+  "status": "local_unpacked",
+  "generated_at": "2026-09-05T05:30:34.001Z",
+  "data_status": "recorded",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "public_release": false
+}

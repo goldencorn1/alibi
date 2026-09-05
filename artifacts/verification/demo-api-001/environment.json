@@ -1,0 +1,18 @@
+{
+  "verification": "DEMO-API-READINESS-001 v0.1",
+  "observed_at": "2026-09-05T06:09:42Z",
+  "runtime": {"node":"v24.19.0","npm":"11.17.0","next":"16.3.4","react":"19.2.8","typescript":"6.0.3","tailwind":"4.3.3","x402_packages":"2.24.0"},
+  "env_presence_only": {
+    "set_in_local_env": ["MAX_EXTERNAL_API_COST_USD","APP_BASE_URL","ALIBI_DATA_MODE","ANTHROPIC_MODEL","X402_FACILITATOR_URL","X402_NETWORK","ALIBI_MODEL_PATH","LOCAL_CHAIN_RPC_URL"],
+    "empty_in_local_env": ["ANTHROPIC_API_KEY","ALIBI_PAYMENT_ADDRESS","BASE_SEPOLIA_RPC_URL","DATABASE_URL","ALIBI_SUBSCRIPTION_CONTRACT_ADDRESS","ERC8004_CLIENT_ADDRESS","ERC8004_AGENT_ID"],
+    "not_present_in_process_environment": ["ANTHROPIC_API_KEY","X402_FACILITATOR_URL","X402_NETWORK","ALIBI_PAYMENT_ADDRESS","BUYER_AGENT_PRIVATE_KEY","DATABASE_URL","COURTLISTENER_API_TOKEN","POLYMARKET_API_KEY","BASE_SEPOLIA_RPC_URL"]
+  },
+  "protected_hashes": {
+    "SPEC-ALIBI-PLATFORM.md":"6066b9888b6e914e0068c693dd7acec444f4302c7633b9e2f39e443a91c1328c",
+    "PLAN-ALIBI-PLATFORM.md":"0c362b5e567f3051997b874da1f3f4e5e70839e3b62bebbe5dd9cdc9862eceaf",
+    "package.json":"9b44171d4053e1f1986e095ccab519c84fc86bfdac7455c471b8e82ec992d9b0",
+    "package-lock.json":"ab2f2883e03dc5563d4175d217748509a9eead740f56446961ba3239032d17b8",
+    "next.config.ts":"1717de44afb15015a1faaa3fb97746d9716e164f2d5587a721ba8cc21e840536"
+  },
+  "write_policy": "Only DEMO-RUNBOOK.md, API-TEST-REPORT.md, LIVE-READINESS.md, CHANGELOG.md entry, and artifacts/verification/demo-api-001 were allowed. No product source, dependency, schema, payment, Spec, Plan, or environment file was changed."
+}
