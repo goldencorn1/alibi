@@ -6,14 +6,17 @@ export interface ParsedTime {
   epochMs: number;
   timestamp_type: TimestampType;
   timestamp_precision: TimestampPrecision;
-  timestamp_uncertainty_seconds: number | null;
+  /** C13: MINUTES, not seconds. See `LanguageSource` in contracts. */
+  source_timestamp_uncertainty_minutes: number | null;
 }
 
 export function parseTime(
   raw: string,
   timestampType: TimestampType = "published",
   precision: TimestampPrecision = "second",
-  uncertaintySeconds: number | null = precision === "date" ? 43_200 : null,
+  // C13: minutes. A date-only row is +/-12h, which is 720 minutes (was 43_200
+  // seconds). Non-date precision stays `null` (unknown), never 0.
+  uncertaintyMinutes: number | null = precision === "date" ? 720 : null,
 ): ParsedTime | null {
   const epochMs = Date.parse(raw);
   if (!raw || Number.isNaN(epochMs)) return null;
@@ -23,7 +26,7 @@ export function parseTime(
     epochMs,
     timestamp_type: timestampType,
     timestamp_precision: precision,
-    timestamp_uncertainty_seconds: uncertaintySeconds,
+    source_timestamp_uncertainty_minutes: uncertaintyMinutes,
   };
 }
 

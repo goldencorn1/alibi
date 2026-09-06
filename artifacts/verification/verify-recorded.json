@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "verification_mode": "recorded",
   "status": "passed",
-  "generated_at": "2026-09-05T08:37:13.113Z",
+  "generated_at": "2026-09-06T01:32:07.274Z",
   "results": [
     {
       "preset": "market",
@@ -11,8 +11,8 @@
       "market_count": 3,
       "price_count": 18599,
       "trade_count": 0,
-      "window_count": 98,
-      "unattributed_count": 98,
+      "window_count": 121,
+      "unattributed_count": 121,
       "evidence_count": 0,
       "attribution_verified": false,
       "wallet": null

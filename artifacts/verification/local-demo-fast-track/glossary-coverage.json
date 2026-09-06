@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.1.0",
+  "scope": "Agent Console and A2A Console visible technical terms",
+  "visible_terms": [
+    "agent_evidence", "agent_attribution", "agent_quality_risk", "agent_audit_report",
+    "worker_input", "worker_market_data", "worker_repricing", "worker_evidence", "worker_attribution", "worker_wallet_analysis", "worker_policy_verification", "worker_report", "worker_payment",
+    "a2a_console", "caller_agent", "a2a_request", "execution_trace", "machine_response", "input_schema", "output_schema", "pricing_class", "availability", "agent_name", "analysis_window", "request_delay", "request_size", "minimum_coverage", "maximum_lead_rate", "minimum_retained_return", "address_list", "capability_status", "payment_settlement", "headers", "mcp_tools", "request_timestamp",
+    "metric_status", "metric_data_status", "worker_events", "worker_latency", "worker_retries", "worker_errors", "metric_policy_flags", "metric_run_id", "metric_limitations",
+    "worker_input_sources", "worker_input_coverage", "worker_input_cost", "worker_market_data_sources", "worker_market_data_coverage", "worker_market_data_cost", "worker_repricing_windows", "worker_repricing_coverage", "worker_repricing_cost", "worker_evidence_sources", "worker_evidence_coverage", "worker_evidence_cost", "worker_attribution_windows", "worker_attribution_coverage", "worker_attribution_cost", "worker_wallet_observed_trades", "worker_wallet_analysis_coverage", "worker_wallet_analysis_cost", "worker_policy_attributed_windows", "worker_policy_verification_coverage", "worker_policy_verification_cost", "worker_report_markets", "worker_report_coverage", "worker_report_cost", "worker_payment_sources", "worker_payment_coverage", "worker_payment_cost", "worker_total_tracked_cost",
+    "status_pending", "status_running", "status_ok", "status_blocked", "status_failed", "status_insufficient", "status_skipped", "status_completed", "status_partial", "status_pass", "status_fail", "status_unknown", "value_na", "value_none",
+    "flag_coverage_below_gate", "flag_unattributed", "flag_payment_required", "flag_credentials_missing", "flag_not_requested", "flag_no_verified_evidence", "flag_recorded_replay", "flag_synthetic_test", "flag_audit_partial", "flag_rag_degraded", "flag_database_unavailable", "flag_provider_unavailable", "flag_stale_data", "flag_not_enabled", "flag_live_unverified"
+  ],
+  "mapped_terms": [
+    "agent_evidence", "agent_attribution", "agent_quality_risk", "agent_audit_report",
+    "worker_input", "worker_market_data", "worker_repricing", "worker_evidence", "worker_attribution", "worker_wallet_analysis", "worker_policy_verification", "worker_report", "worker_payment",
+    "a2a_console", "caller_agent", "a2a_request", "execution_trace", "machine_response", "input_schema", "output_schema", "pricing_class", "availability", "agent_name", "analysis_window", "request_delay", "request_size", "minimum_coverage", "maximum_lead_rate", "minimum_retained_return", "address_list", "capability_status", "payment_settlement", "headers", "mcp_tools", "request_timestamp",
+    "metric_status", "metric_data_status", "worker_events", "worker_latency", "worker_retries", "worker_errors", "metric_policy_flags", "metric_run_id", "metric_limitations",
+    "worker_input_sources", "worker_input_coverage", "worker_input_cost", "worker_market_data_sources", "worker_market_data_coverage", "worker_market_data_cost", "worker_repricing_windows", "worker_repricing_coverage", "worker_repricing_cost", "worker_evidence_sources", "worker_evidence_coverage", "worker_evidence_cost", "worker_attribution_windows", "worker_attribution_coverage", "worker_attribution_cost", "worker_wallet_observed_trades", "worker_wallet_analysis_coverage", "worker_wallet_analysis_cost", "worker_policy_attributed_windows", "worker_policy_verification_coverage", "worker_policy_verification_cost", "worker_report_markets", "worker_report_coverage", "worker_report_cost", "worker_payment_sources", "worker_payment_coverage", "worker_payment_cost", "worker_total_tracked_cost",
+    "status_pending", "status_running", "status_ok", "status_blocked", "status_failed", "status_insufficient", "status_skipped", "status_completed", "status_partial", "status_pass", "status_fail", "status_unknown", "value_na", "value_none",
+    "flag_coverage_below_gate", "flag_unattributed", "flag_payment_required", "flag_credentials_missing", "flag_not_requested", "flag_no_verified_evidence", "flag_recorded_replay", "flag_synthetic_test", "flag_audit_partial", "flag_rag_degraded", "flag_database_unavailable", "flag_provider_unavailable", "flag_stale_data", "flag_not_enabled", "flag_live_unverified"
+  ],
+  "unmapped_terms": [],
+  "duplicate_term_ids": [],
+  "pending_definition": 0,
+  "coverage_percentage": 100,
+  "status": "PASS",
+  "runtime_verification": {
+    "a2a_console_local_recorded_request": true,
+    "agent_console_4_agents_9_workers": true,
+    "termhelp_aria_labels": true,
+    "note": "Runtime values are backed by the focused and full Playwright runs recorded for this execution."
+  }
+}

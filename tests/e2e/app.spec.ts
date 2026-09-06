@@ -6,7 +6,7 @@ test.beforeEach(async ({ page }) => {
 
 test("recorded wallet preset shows the coverage gate", async ({ page }) => {
   await page.goto("/");
-  await page.getByRole("button", { name: /Wallet A/ }).click();
+  await page.getByTestId("alibi-app").getByRole("button", { name: /Wallet A/ }).click();
   await page.getByRole("button", { name: "Analyze", exact: true }).click();
   await expect(page.getByTestId("state-insufficient")).toBeVisible();
   await expect(page.getByTestId("summary-card")).toContainText(/recorded/i);

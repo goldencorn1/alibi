@@ -8,6 +8,19 @@
   --line: #d8d0c0;
   --accent: #cf4b32;
   --green: #2d6a4f;
+
+  /* Console surfaces: the dark agent-telemetry theme. Previously inlined as raw
+     hex in app/page-client.tsx; named here so the palette has one source. */
+  --console-bg: #18221f;
+  --console-edge: #0d1512;
+  --console-ink: #f7f3ea;
+  --console-panel: #202d29;
+  --console-panel-edge: #354940;
+
+  /* Light-surface accents used by empty states, evidence cards and notices. */
+  --surface-sunk: #f1ece2;
+  --evidence-line: #9ec3ab;
+  --warn-surface: #fff1cf;
 }
 
 * { box-sizing: border-box; }
@@ -22,8 +35,11 @@ body {
 }
 
 ::selection { background: var(--accent); color: var(--paper); }
-button, input, select { font: inherit; caret-color: var(--accent); }
+button, input, select, textarea { font: inherit; caret-color: var(--accent); }
 button { cursor: pointer; }
+input, select, textarea { max-width: 100%; border: 1px solid var(--line); border-radius: 0.45rem; background: var(--card); color: var(--ink); padding: 0.55rem 0.65rem; }
+textarea { width: 100%; resize: vertical; overflow-wrap: anywhere; }
+.field-label { display: inline-flex; align-items: center; gap: 0.25rem; margin-bottom: 0.35rem; font-size: 0.72rem; font-weight: 700; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
 button:disabled { cursor: not-allowed; }
 @media (forced-colors: active) {
@@ -32,19 +48,29 @@ button:disabled { cursor: not-allowed; }
 
 .font-prose { font-family: ui-sans-serif, system-ui, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
 .safe-wrap { overflow-wrap: anywhere; word-break: break-word; }
-.term-help-wrap { display: inline-flex; align-items: center; vertical-align: middle; }
+.term-help-wrap {
+  display: inline-flex;
+  flex: 0 0 auto;
+  width: 1.15rem;
+  height: 1.15rem;
+  align-items: center;
+  justify-content: center;
+  margin-inline-start: 0.2rem;
+  vertical-align: middle;
+}
 .term-help-button {
   display: inline-grid;
-  width: 1.5rem;
-  height: 1.5rem;
-  min-width: 1.5rem;
-  min-height: 1.5rem;
+  width: 1.05rem;
+  height: 1.05rem;
+  min-width: 1.05rem;
+  min-height: 1.05rem;
   place-items: center;
+  padding: 0;
   border: 1px solid currentColor;
   border-radius: 999px;
   color: var(--accent);
   background: transparent;
-  font-size: 0.72rem;
+  font-size: 0.62rem;
   font-weight: 800;
   line-height: 1;
 }

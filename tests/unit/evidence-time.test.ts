@@ -22,7 +22,10 @@ function source(language: "en" | "zh-Hant", published: string, precision: "secon
     retrieved_at: "2026-09-04T12:30:00.000Z",
     timestamp_type: precision === "date" ? "date_only" : "published",
     timestamp_precision: precision,
-    timestamp_uncertainty_seconds: precision === "date" ? 43_200 : 0,
+    // C13: MINUTES. Was `precision === "date" ? 43_200 : 0` in seconds; 12h is
+    // now 720 minutes, and a precise row carries ~1 minute rather than 0,
+    // because no real feed warrants a claim of zero uncertainty.
+    source_timestamp_uncertainty_minutes: precision === "date" ? 720 : 1,
     content_hash: "a".repeat(64),
     connector_status: "healthy",
   };
@@ -74,8 +77,9 @@ describe("documented_language_window", () => {
   });
 
   it("returns indeterminate when calibrated timestamp intervals overlap", () => {
-    const local = { ...source("zh-Hant", "2026-09-04T12:00:00.000Z"), timestamp_uncertainty_seconds: 600 };
-    const english = { ...source("en", "2026-09-04T12:05:00.000Z"), timestamp_uncertainty_seconds: 600 };
+    // C13: 600 seconds is 10 minutes; the intervals are unchanged in real time.
+    const local = { ...source("zh-Hant", "2026-09-04T12:00:00.000Z"), source_timestamp_uncertainty_minutes: 10 };
+    const english = { ...source("en", "2026-09-04T12:05:00.000Z"), source_timestamp_uncertainty_minutes: 10 };
     const window = evaluateLanguageWindow(local, english, { cutoff: "2026-09-04T13:00:00.000Z", dataStatus: "recorded" });
     expect(window.release_order).toBe("indeterminate");
     expect(window.gap).toBe("gap_closed");

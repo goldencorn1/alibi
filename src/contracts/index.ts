@@ -152,6 +152,12 @@ export const DISCLAIMER =
 
 export const DEFAULTS = {
   observationWindowMinutes: 60,
+  /**
+   * @deprecated C15 abolished this linear gate; the engine applies
+   * `REPRICING_DELTA_LOGODDS_THRESHOLD` (clipped-logit magnitude) instead.
+   * Retained only as the historical Spec constant. Do not use it as a
+   * threshold and do not publish it as the effective threshold.
+   */
   absoluteChangeThreshold: 0.08,
   walletWindowDays: 90,
   coverageThreshold: 0.4,
@@ -340,7 +346,21 @@ export interface LanguageSource {
   retrieved_at: string;
   timestamp_type: TimestampType;
   timestamp_precision: TimestampPrecision;
-  timestamp_uncertainty_seconds: number | null;
+  /**
+   * C13: half-width of the timestamp uncertainty interval, in MINUTES.
+   *
+   * Renamed from `timestamp_uncertainty_seconds`. The previous name declared
+   * seconds while callers and the release-order arithmetic disagreed about the
+   * unit, so a value of 60 could mean either one minute or one hour: a silent
+   * 60x error. The `_minutes` suffix is load-bearing; any arithmetic converting
+   * this to milliseconds must multiply by 60_000, never 1_000.
+   *
+   * Calibrated magnitudes: SEC EDGAR acceptance ~0.1, vertical/primary
+   * publishers ~1, aggregators such as GDELT ~15, date-only rows 720 (12h).
+   * `null` means the uncertainty is unknown, which is not the same as zero.
+   * 0 asserts a perfectly certain timestamp and no real source warrants it.
+   */
+  source_timestamp_uncertainty_minutes: number | null;
   content_hash: string;
   connector_status: "healthy" | "unavailable" | "unknown";
   requested_start?: string | null;
@@ -382,7 +402,8 @@ export interface SourceCoverage {
   coverage_complete: boolean;
   timestamp_precision: TimestampPrecision;
   retrieved_at?: string | null;
-  timestamp_uncertainty_seconds?: number | null;
+  /** C13: MINUTES, not seconds. See `LanguageSource`. */
+  source_timestamp_uncertainty_minutes?: number | null;
   source_state: ClusterSourceState;
   unknown_reasons: string[];
   requested_start?: string | null;
@@ -405,8 +426,19 @@ export interface RepricingWindow {
   end_at: string;
   start_price: number;
   end_price: number;
+  /**
+   * Linear |p_j - p_i|. Retained for backward compatibility and display only.
+   * C15: this scale compresses tail moves ~5x and is no longer the detection
+   * gate. Use `repricing_delta_logodds` for magnitude comparisons.
+   */
   absolute_change: number;
+  /**
+   * C15: clipped-logit (log-odds) difference, the authoritative repricing
+   * magnitude. Null when either endpoint price cannot be parsed.
+   */
+  repricing_delta_logodds?: number | null;
   direction: "UP" | "DOWN";
+  /** Log-odds scale gate; see REPRICING_DELTA_LOGODDS_THRESHOLD. */
   threshold: number;
   observation_window_minutes: 60;
   sample_fidelity_minutes: number | null;
@@ -433,7 +465,22 @@ export interface WalletMetrics {
   analysis_end: string;
   observed_trades: number;
   aligned_trades: number;
-  coverage_rate: number;
+  /**
+   * C6: nullable. With zero observed trades the rate is undefined, and the
+   * previous `observed.length === 0 ? 0 : ...` collapsed "no samples" into the
+   * same value as "measured 0% alignment" - the strongest possible negative
+   * claim, fabricated from no evidence.
+   *
+   * `null` means not computable and MUST be accompanied by
+   * `coverage_rate_status = "unavailable"` and a `coverage_rate_reason_code`.
+   * Never substitute 0 for an absent rate, and never treat `null` as passing
+   * the coverage gate.
+   */
+  coverage_rate: number | null;
+  /** C6: required companion to `coverage_rate`. */
+  coverage_rate_status: MetricStatus;
+  /** C6: why the rate is unavailable; `null` only when status is `complete`. */
+  coverage_rate_reason_code: ReasonCode | null;
   attributable_profitable_trades: number;
   early_profitable_trades: number;
   information_lead_rate: number | null;
@@ -442,6 +489,27 @@ export interface WalletMetrics {
   alignments: WalletTradeAlignment[];
   limitations: string[];
   data_status: DataStatus;
+  /** D8: per-metric envelopes carrying computability, window and provenance. */
+  metric_envelopes: WalletMetricEnvelopes;
+}
+
+/**
+ * D8 envelopes for the wallet surface.
+ *
+ * `flip_rate` and `median_exposure_minutes` are typed as envelopes and never as
+ * bare numbers, because there is no measurement behind them: the `/trades` feed
+ * exposes no exit leg. Keeping them envelope-only makes "we did not observe
+ * this" the sole representable answer, so no caller can read a 0.
+ */
+export interface WalletMetricEnvelopes {
+  coverage_rate: MetricEnvelope<number>;
+  information_lead_rate: MetricEnvelope<number>;
+  /** Always unavailable: requested 90d exceeds measured ~20.72d of history. */
+  ninety_day_trade_count: MetricEnvelope<number>;
+  /** Always unavailable: no exit events observed. Never 0. */
+  flip_rate: MetricEnvelope<number>;
+  /** Always unavailable: no exit events observed. Never 0. */
+  median_exposure_minutes: MetricEnvelope<number>;
 }
 
 export interface DataSourceStatus {
@@ -475,6 +543,143 @@ export type ErrorCode =
   | "mcp_unavailable"
   | "stale_data";
 
+/**
+ * The only legal reason codes. A metric that cannot be computed must report
+ * `value = null` together with a `metric_status` and one of these codes.
+ * Filling an uncomputable metric with 0 is forbidden: it collapses
+ * "zero samples" and "genuinely zero" into the same value.
+ */
+export const REASON_CODES = [
+  "incomplete_window",
+  "pagination_cap",
+  "exit_events_unavailable",
+  "profile_endpoint_unverified",
+  "provider_unavailable",
+  "coverage_below_gate",
+  "sentinel_unknown",
+  "timestamp_uncertain",
+] as const;
+
+export type ReasonCode = (typeof REASON_CODES)[number];
+
+/**
+ * D8 — `metric_status` answers exactly one question: is this metric computable
+ * from what we actually observed? It says NOTHING about where the bytes came
+ * from. That is `data_status`'s only job. The two axes are independent and
+ * MUST NOT be conflated:
+ *
+ *   - `recorded` is NOT "uncomputable". A recorded fixture can yield a
+ *     perfectly `complete` metric.
+ *   - `unavailable` is NOT "the data source was fake". A `live` source that
+ *     only covers 20 of a requested 90 days is `live` + `unavailable`.
+ *
+ * Every pair in the 4x4 grid is legal. Any code that derives one from the
+ * other is a bug.
+ *
+ * Values:
+ *   - `complete`              fully covered requested window, all integrity
+ *                             checks passed; the value stands on its own.
+ *   - `partial`               computed, but over less than the requested
+ *                             window or sample. Value is present and MUST be
+ *                             read together with `observed_window`/`coverage`.
+ *   - `unavailable`           not computable. `value` MUST be null.
+ *   - `insufficient_evidence` samples exist but fall below the evidentiary
+ *                             gate, so publishing a number would overstate
+ *                             what we know. `value` MUST be null.
+ *   - `not_enabled`           retained (not part of the D8 four) for features
+ *                             that are switched off rather than unmeasurable,
+ *                             e.g. the subscription surface. "Off" is not the
+ *                             same claim as "we tried and could not compute
+ *                             it", so it is not folded into `unavailable`.
+ */
+export const METRIC_STATUSES = [
+  "complete",
+  "partial",
+  "unavailable",
+  "insufficient_evidence",
+  "not_enabled",
+] as const;
+
+export type MetricStatus = (typeof METRIC_STATUSES)[number];
+
+/** Statuses whose contract requires `value === null`. */
+export const NULL_VALUE_METRIC_STATUSES = ["unavailable", "insufficient_evidence", "not_enabled"] as const;
+
+export interface TimeWindowRef {
+  start: string | null;
+  end: string | null;
+}
+
+/**
+ * How `as_of` was obtained. `client_clock` is deliberately absent: the local
+ * completion time is never an acceptable freshness claim. See `deriveAsOf`.
+ */
+export type AsOfSource = "response_date" | "last_modified" | "age_adjusted" | "payload_field" | "unknown";
+
+export interface SourceProvenance {
+  source: string;
+  source_url: string | null;
+  endpoint: string | null;
+  data_status: DataStatus;
+  retrieved_at: string | null;
+  http_status: number | null;
+  response_hash: string | null;
+}
+
+/**
+ * Rate-limit observability. `UNKNOWN` is the honest default: not having seen a
+ * 429 is not evidence that no limit exists, only that we did not hit it.
+ */
+export type RateLimitState = "UNKNOWN" | "OBSERVED_LIMITED";
+
+/**
+ * D8 metric envelope. Every published metric travels with its own
+ * computability verdict, the window it actually covers, and enough
+ * provenance to re-fetch and re-verify it.
+ *
+ * Invariant: when `metric_status` is one of `NULL_VALUE_METRIC_STATUSES`,
+ * `value` MUST be null and `reason_code` MUST be set. Filling an uncomputable
+ * metric with 0 is forbidden — see `REASON_CODES`.
+ */
+export interface MetricEnvelope<T> {
+  value: T | null;
+  unit: string;
+  requested_window: TimeWindowRef | null;
+  observed_window: TimeWindowRef | null;
+  /** Server-derived freshness. Never the client's completion time. */
+  as_of: string | null;
+  as_of_source: AsOfSource;
+  sample_size: number | null;
+  eligible_sample_size: number | null;
+  coverage: number | null;
+  /** Data-origin mode ONLY. Not a computability signal. */
+  data_status: DataStatus;
+  /** Computability ONLY. Not a data-origin signal. */
+  metric_status: MetricStatus;
+  reason_code: ReasonCode | null;
+  source_provenance: SourceProvenance[];
+  calculation_version: string;
+  limitations: string[];
+  retrieved_at: string | null;
+  source_url: string | null;
+  http_status: number | null;
+  response_hash: string | null;
+  rate_limit_state: RateLimitState;
+}
+
+export function isReasonCode(value: unknown): value is ReasonCode {
+  return typeof value === "string" && (REASON_CODES as readonly string[]).includes(value);
+}
+
+export function isMetricStatus(value: unknown): value is MetricStatus {
+  return typeof value === "string" && (METRIC_STATUSES as readonly string[]).includes(value);
+}
+
+/** True when the status contract forbids a non-null value. */
+export function requiresNullValue(status: MetricStatus): boolean {
+  return (NULL_VALUE_METRIC_STATUSES as readonly string[]).includes(status);
+}
+
 export interface ApiErrorEnvelope {
   error: {
     code: ErrorCode;
@@ -493,8 +698,26 @@ export interface ReportMeta {
   analyzed_at: string;
   analysis_window: {
     observation_minutes: 60;
-    wallet_days: 90;
-    threshold: 0.08;
+    /**
+     * C20: previously the literal type `90`, which asserted a 90-day wallet
+     * window as a compile-time fact. Measured `/trades` coverage reaches only
+     * ~20.72 days, so the window is variable and must be reported as measured.
+     * Never silently shorten the requested window and never extrapolate: when
+     * the requested window is not fully covered, report the 90-day metric as
+     * `wallet_days_status = "unavailable"` with
+     * `wallet_days_reason_code = "incomplete_window"` and a null metric value.
+     */
+    wallet_days: number;
+    wallet_days_requested?: number;
+    wallet_days_status?: MetricStatus;
+    wallet_days_reason_code?: ReasonCode | null;
+    /**
+     * Widened from the literal `0.08`; see C15 recalibration in
+     * engine/repricing.ts. This is a clipped-logit (log-odds) magnitude, NOT a
+     * linear probability delta. The abolished linear 0.08 gate is not
+     * comparable to it: log-odds are unbounded while |p_j - p_i| <= 1.
+     */
+    threshold: number;
     coverage_threshold: 0.4;
   };
   coverage_rate: number | null;
@@ -515,7 +738,8 @@ export interface SummaryReport {
   repricing_count: number;
   unattributed_count: number;
   recent_windows: Array<Pick<RepricingWindow, "id" | "start_at" | "end_at" | "absolute_change" | "direction" | "attribution_status" | "data_status">>;
-  wallet_metrics: Pick<WalletMetrics, "wallet" | "coverage_rate" | "information_lead_rate" | "status" | "data_status"> | null;
+  /** C6: `coverage_rate` may be null, so its status fields travel with it. */
+  wallet_metrics: Pick<WalletMetrics, "wallet" | "coverage_rate" | "coverage_rate_status" | "coverage_rate_reason_code" | "information_lead_rate" | "status" | "data_status"> | null;
   cluster_alerts?: ClusterAlert[];
   language_windows?: LanguageWindow[];
   source_coverage?: SourceCoverage;

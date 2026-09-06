@@ -5,7 +5,7 @@ import { analyze } from "@/src/engine/analyze";
 import { buildDetail } from "@/src/report/build";
 import { paymentRequiredResponse, protectAttribution, shouldUseConfiguredX402 } from "@/src/payment/server";
 import { withPaymentIdempotency } from "@/src/payment/idempotency";
-import { freeUnattributedDetailResponse, isFreeUnattributedResult } from "@/src/api/platform";
+import { freeDetailResponse, isBillableResult } from "@/src/api/platform";
 import { createAuditRun, getActiveAuditRun, AuditReportAgent } from "@/src/observability/audit-agent";
 
 export const runtime = "nodejs";
@@ -51,15 +51,31 @@ export async function POST(request: NextRequest): Promise<Response> {
     const requestedRunId = idempotentRequest.headers.get("x-alibi-run-id");
     const activeRun = requestedRunId ? getActiveAuditRun(requestedRunId) : undefined;
     const auditRun = activeRun ?? await createAuditRun(preflightInput ?? "attribution-request");
-    if (preflightInput) {
-      const preflight = await analyze(preflightInput, requestedMode, { auditRun });
-      if (isFreeUnattributedResult(preflight)) {
-        const paymentWorker = await auditRun.startWorker("payment", { data_status: requestedMode, policy_flags: ["unattributed"] });
-        await auditRun.completeWorker(paymentWorker, { data_status: requestedMode, policy_flags: ["unattributed"] });
-        const reportWorker = await auditRun.startWorker("report", { data_status: requestedMode, output_artifact: `artifacts/agent-runs/${auditRun.run_id}/report.json` });
-        await auditRun.completeWorker(reportWorker, { data_status: requestedMode, output_artifact: `artifacts/agent-runs/${auditRun.run_id}/report.json` });
-        return freeUnattributedDetailResponse(preflight, auditRun.run_id);
+    // Billing must never precede validation: without a usable input there is nothing
+    // to analyse and therefore nothing billable, so answer 400 instead of a 402.
+    if (!preflightInput) {
+      await auditRun.skipWorker("payment", { data_status: requestedMode, policy_flags: ["not_requested"] });
+      return errorResponse("invalid_input", "Request body must include an 'input' string.", requestedMode, false, 400, { run_id: auditRun.run_id });
+    }
+    // Hard rule: analyse first, then bill only when billable_result_count > 0.
+    const preflight = await analyze(preflightInput, requestedMode, { auditRun });
+    if (!isBillableResult(preflight)) {
+      const artifact = `artifacts/agent-runs/${auditRun.run_id}/report.json`;
+      if (preflight.ok) {
+        // Zero charge, but payment was evaluated and deliberately waived: keep the
+        // baseline "ok" + unattributed bookkeeping the audit contract expects.
+        const freeStatus = preflight.bundle.data_status;
+        const paymentWorker = await auditRun.startWorker("payment", { data_status: freeStatus, policy_flags: ["unattributed"] });
+        await auditRun.completeWorker(paymentWorker, { data_status: freeStatus, policy_flags: ["unattributed"] });
+        const reportWorker = await auditRun.startWorker("report", { data_status: freeStatus, output_artifact: artifact });
+        await auditRun.completeWorker(reportWorker, { data_status: freeStatus, output_artifact: artifact });
+      } else {
+        // Analysis failed, so payment was never requested at all.
+        await auditRun.skipWorker("payment", { data_status: preflight.data_status, policy_flags: ["not_requested"] });
+        const reportWorker = await auditRun.startWorker("report", { data_status: preflight.data_status, output_artifact: artifact });
+        await auditRun.failWorker(reportWorker, preflight.code, { data_status: preflight.data_status, output_artifact: artifact });
       }
+      return freeDetailResponse(preflight, auditRun.run_id);
     }
     const paymentWorker = await auditRun.startWorker("payment", { data_status: requestedMode, policy_flags: requestedMode === "recorded" ? ["recorded_replay"] : [] });
 

@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 import { fetchJsonWithRetry } from "@/src/data/http";
-import { LanguageSource, SourceCoverage } from "@/src/contracts";
+import { LanguageCode, LanguageSource, SourceCoverage } from "@/src/contracts";
 
 export interface DiscoveryRecord {
   url: string;
@@ -26,6 +26,25 @@ function parseDiscoveryTimestamp(value: string | null | undefined): string | nul
   return Number.isFinite(parsed) ? new Date(parsed).toISOString() : null;
 }
 
+/**
+ * C27: GDELT reports a language per article, but the value was read and then
+ * discarded in favour of a hard-coded `"other"`, destroying real provenance.
+ * `LanguageCode` is a closed union, so the raw value is normalized rather than
+ * cast: recognized languages are preserved, anything genuinely outside the
+ * union falls back to `"other"`. A missing value also yields `"other"`, since
+ * `LanguageCode` has no "unknown" member.
+ */
+export function normalizeDiscoveryLanguage(raw: string | null | undefined): LanguageCode {
+  const value = raw?.trim().toLowerCase();
+  if (!value) return "other";
+  if (value === "en" || value === "eng" || value === "english" || value.startsWith("en-")) return "en";
+  // GDELT does not consistently distinguish Han script, so only an explicit
+  // script or region marker may promote a value to a specific variant.
+  if (value === "zh-hant" || value === "zh-tw" || value === "zh-hk" || value === "zh-mo") return "zh-Hant";
+  if (value === "zh-hans" || value === "zh-cn" || value === "zh-sg") return "zh-Hans";
+  return "other";
+}
+
 export function discoveryOnly(records: DiscoveryRecord[]): DiscoveryOnlyResult {
   return {
     verified: false,
@@ -33,7 +52,7 @@ export function discoveryOnly(records: DiscoveryRecord[]): DiscoveryOnlyResult {
       url: record.url,
       publisher: record.publisher,
       title: record.title,
-      language: "other",
+      language: normalizeDiscoveryLanguage(record.language),
       source_tier: "aggregator",
       official_release_id: null,
       original_or_translation: "unknown",
@@ -42,7 +61,12 @@ export function discoveryOnly(records: DiscoveryRecord[]): DiscoveryOnlyResult {
       retrieved_at: record.retrieved_at,
       timestamp_type: "first_seen",
       timestamp_precision: "unknown",
-      timestamp_uncertainty_seconds: null,
+      // C4/C13: minutes. GDELT `seendate` is a crawl-observation time with a
+      // known lag of roughly 15 minutes behind publication. Previously `null`,
+      // which claimed the uncertainty was unknown when it is in fact measured;
+      // that let downstream code treat aggregator timing as unbounded instead
+      // of bounded-but-coarse. 15 is the documented magnitude, not a guess.
+      source_timestamp_uncertainty_minutes: 15,
       content_hash: record.content_hash,
       connector_status: "healthy",
       provider: "gdelt",

@@ -8,7 +8,13 @@ export type BaseTermId =
   | "market_novelty_ratio" | "herding_pattern" | "confidence" | "timestamp_uncertainty" | "x402"
   | "payment_required" | "base_sepolia" | "mcp" | "erc8004" | "provider_unavailable"
   | "upstream_unavailable" | "unavailable" | "loading" | "empty" | "success" | "error"
-  | "payment_invalid" | "timeout" | "unsupported_language" | "cluster_without_verified_source";
+  | "payment_invalid" | "timeout" | "unsupported_language" | "cluster_without_verified_source"
+  | "wallet_discovery" | "leaderboard" | "recorded_snapshot" | "wallet_detail" | "volume_usd"
+  | "realized_pnl_7d" | "source_pnl" | "source_volume" | "win_rate" | "flip_rate" | "median_exposure_minutes" | "portfolio_value"
+  | "observed_trades" | "avg_buy_price" | "last_trade_at" | "profile_age_days" | "first_deposit_at"
+  | "active_markets" | "category_mix" | "rebate_income" | "lead_rate" | "language_lead_rate"
+  | "sample_size" | "verdict_distribution" | "source_langs_checked" | "indexes_checked" | "discriminability"
+  | "data_provenance" | "cutoff" | "coverage" | "outcome" | "attribution_surface" | "fit_surface" | "detail_not_captured";
 
 export type ConsoleTermId =
   | "agent_evidence" | "agent_attribution" | "agent_quality_risk" | "agent_audit_report"
@@ -23,10 +29,15 @@ export type ConsoleTermId =
   | "worker_input_cost" | "worker_market_data_cost" | "worker_repricing_cost" | "worker_evidence_cost"
   | "worker_attribution_cost" | "worker_wallet_analysis_cost" | "worker_policy_verification_cost" | "worker_report_cost" | "worker_payment_cost"
   | "worker_total_tracked_cost" | "status_pending" | "status_running" | "status_ok" | "status_blocked" | "status_failed"
-  | "status_insufficient" | "status_skipped" | "status_completed" | "status_partial" | "value_na" | "value_none"
+  | "status_insufficient" | "status_skipped" | "status_completed" | "status_partial" | "status_pass" | "status_fail" | "status_unknown" | "value_na" | "value_none"
   | "flag_coverage_below_gate" | "flag_unattributed" | "flag_payment_required" | "flag_credentials_missing" | "flag_not_requested"
   | "flag_no_verified_evidence" | "flag_recorded_replay" | "flag_synthetic_test" | "flag_audit_partial" | "flag_rag_degraded"
-  | "flag_database_unavailable" | "flag_provider_unavailable" | "flag_stale_data" | "flag_not_enabled" | "flag_live_unverified";
+  | "flag_database_unavailable" | "flag_provider_unavailable" | "flag_stale_data" | "flag_not_enabled" | "flag_live_unverified"
+  | "a2a_console" | "caller_agent" | "a2a_request" | "execution_trace" | "machine_response"
+  | "input_schema" | "output_schema" | "pricing_class" | "availability" | "agent_name"
+  | "analysis_window" | "request_delay" | "request_size" | "minimum_coverage" | "maximum_lead_rate"
+  | "minimum_retained_return" | "address_list" | "capability_status" | "payment_settlement"
+  | "headers" | "mcp_tools" | "request_timestamp";
 
 export type TermId = BaseTermId | ConsoleTermId;
 
@@ -87,6 +98,40 @@ const baseGlossary = {
   timeout: entry("timeout", "请求超时", "Request Timed Out", "请求在允许时间内未完成；不生成补造结果。", "The request did not complete within the allowed time; no fabricated result is generated."),
   unsupported_language: entry("unsupported_language", "不支持的语言", "Unsupported Language", "来源语言不在已验证范围；保留原文和语言标签。", "Source language is outside the verified set; preserve original text and language label."),
   cluster_without_verified_source: entry("cluster_without_verified_source", "无已验证信源的集群", "Cluster Without Verified Source", "集群规则成立但当前没有合格公开来源；不称内幕集群或协同操纵。", "Cluster rules pass but no qualified public source is found; do not call it an insider cluster or coordinated manipulation."),
+  wallet_discovery: entry("wallet_discovery", "钱包发现", "Wallet Discovery", "展示公开来源中的钱包记录和可复现入口；不推断身份、意图或未来表现。", "Shows public-source wallet records and reproducible entry points; does not infer identity, intent, or future performance."),
+  leaderboard: entry("leaderboard", "排行榜", "Leaderboard", "来源快照中的排序记录，不是 Alibi 计算的策略评级或投资排名。", "Ranked records from a source snapshot, not an Alibi strategy rating or investment ranking."),
+  recorded_snapshot: entry("recorded_snapshot", "已记录快照", "Recorded Snapshot", "在指定时间保存的公开响应；必须显示 captured-at 和来源，不能冒充实时。", "A public response saved at a specified time; captured-at and source must be shown, and it is not live."),
+  wallet_detail: entry("wallet_detail", "钱包详情", "Wallet Detail", "已有 recorded 钱包 fixture 的分析入口；结果受覆盖率、证据和限制约束。", "An analysis entry for an existing recorded wallet fixture; results remain subject to coverage, evidence, and limitations."),
+  volume_usd: entry("volume_usd", "成交量（美元）", "Volume (USD)", "来源响应中的成交量字段；不是 Alibi 已验证的收益或可部署资金。", "The source response's volume field; not verified return or deployable capital from Alibi."),
+  realized_pnl_7d: entry("realized_pnl_7d", "7日已实现盈亏", "7-day Realized PnL", "当前首页不从排行榜推导该指标；没有可信 payload 时保持不可用。", "The homepage does not derive this metric from the leaderboard; it remains unavailable without a trusted payload."),
+  source_pnl: entry("source_pnl", "来源 PnL", "Source PnL", "排行榜来源响应中的 PnL 字段，窗口由来源请求决定；不改称 7 日已实现盈亏。", "The leaderboard source response's PnL field, with its window defined by the source request; it is not relabeled as 7-day realized PnL."),
+  source_volume: entry("source_volume", "来源成交量", "Source Volume", "排行榜来源响应中的成交量字段，窗口由来源请求决定；不是 Alibi 推导指标。", "The leaderboard source response's volume field, with its window defined by the source request; not an Alibi-derived metric."),
+  win_rate: entry("win_rate", "胜率", "Win Rate", "只有可信交易结果和完整定义时才可计算；当前未接入时保持不可用。", "Computable only with trusted trade outcomes and a complete definition; unavailable when not connected."),
+  flip_rate: entry("flip_rate", "反转率", "Flip Rate", "需要可识别的进出场腿；当前 recorded 数据未提供时保持不可用，不填 0。", "Requires identifiable entry and exit legs; unavailable when the recorded data does not provide them, never filled as zero."),
+  median_exposure_minutes: entry("median_exposure_minutes", "中位持仓时长（分钟）", "Median Exposure (minutes)", "需要可识别的进出场腿；当前未观测到足够数据时保持不可用。", "Requires identifiable entry and exit legs; unavailable when sufficient data is not observed."),
+  portfolio_value: entry("portfolio_value", "组合价值", "Portfolio Value", "当前排行榜响应没有可信组合价值字段；不由浏览器补算。", "The current leaderboard response has no trusted portfolio-value field; the browser does not calculate it."),
+  observed_trades: entry("observed_trades", "观察到的交易数", "Observed Trades", "指定分析范围内实际观测到的交易条数，不等于完整历史。", "Number of trades actually observed within the analysis scope; not a complete history."),
+  outcome: entry("outcome", "结果", "Outcome", "市场结果或交易方向的原始字段；不构成建议或因果判断。", "The source outcome or trade-direction field; not a recommendation or causal judgment."),
+  attribution_surface: entry("attribution_surface", "归因面板", "Attribution Surface", "展示时间关系和证据状态；未归因或证据不足时明确弃权。", "Shows temporal relations and evidence state; explicitly abstains when unattributed or insufficient."),
+  fit_surface: entry("fit_surface", "适配面板", "Fit Surface", "当前 API 未提供可信适配结果时显示不可用，不补算、不推荐。", "Shows unavailable when the current API provides no trusted fit result; no client calculation or recommendation."),
+  detail_not_captured: entry("detail_not_captured", "未记录详情", "Detail Not Captured", "当前 snapshot 只有排行榜字段，没有该钱包的 recorded Alibi 详情；不调用未知或付费路径。", "The snapshot has leaderboard fields but no recorded Alibi detail for this wallet; no unknown or paid path is called."),
+  avg_buy_price: entry("avg_buy_price", "平均买入价", "Average Buy Price", "只有可信交易价格和明确样本范围时才可计算；当前排行榜快照不提供。", "Computable only with trusted trade prices and a defined sample; not provided by the current leaderboard snapshot."),
+  last_trade_at: entry("last_trade_at", "最后交易时间", "Last Trade At", "当前可信钱包详情中的最后观测交易时间；缺失时保持不可用。", "The last observed trade time in a trusted wallet detail; unavailable when absent."),
+  profile_age_days: entry("profile_age_days", "资料年龄（天）", "Profile Age (days)", "依据公开资料字段计算的单个资料年龄；不是账户、钱包或链上地址年龄。", "Age of a public profile field; not account, wallet, or on-chain address age."),
+  first_deposit_at: entry("first_deposit_at", "首次入金时间", "First Deposit At", "只有可信入金记录时才可显示；当前排行榜快照不提供。", "Shown only when trusted deposit records exist; not provided by the current leaderboard snapshot."),
+  active_markets: entry("active_markets", "活跃市场数", "Active Markets", "指定观察范围内实际出现的市场数量，不表示未来活动或偏好。", "Number of markets actually observed in the stated scope; not future activity or preference."),
+  category_mix: entry("category_mix", "类别构成", "Category Mix", "指定观察范围内的类别分布；缺少分类数据时不可用。", "Category distribution in the stated scope; unavailable when classification data is absent."),
+  rebate_income: entry("rebate_income", "返佣收入", "Rebate Income", "只有可信返佣记录时才可显示；当前排行榜快照不提供。", "Shown only with trusted rebate records; not provided by the current leaderboard snapshot."),
+  lead_rate: entry("lead_rate", "先手率", "Lead Rate", "在已定义覆盖和证据门槛下计算的时间关系指标，不表示信息优势或投资成功率。", "A temporal relation metric under defined coverage and evidence gates; not information advantage or investment success probability."),
+  language_lead_rate: entry("language_lead_rate", "语言先手率", "Language Lead Rate", "当前校准和证据不足时保持不可用；不推断语言能力或内幕来源。", "Unavailable when calibration or evidence is insufficient; does not infer language ability or privileged access."),
+  sample_size: entry("sample_size", "样本量", "Sample Size", "实际纳入当前计算或观察范围的样本数量，不等于完整历史。", "Number of samples actually included in the current calculation or observation scope; not a complete history."),
+  verdict_distribution: entry("verdict_distribution", "结论状态分布", "Verdict Distribution", "当前窗口的有限状态计数，不是对主体的定性判断。", "Counts of bounded states for current windows, not characterization of a person or entity."),
+  source_langs_checked: entry("source_langs_checked", "已检查来源语言", "Source Languages Checked", "实际检查的来源语言集合；不表示任何钱包持有人会这些语言。", "Set of source languages actually checked; does not indicate that any wallet holder speaks them."),
+  indexes_checked: entry("indexes_checked", "已检查索引", "Indexes Checked", "实际查询的公开索引或来源集合，不等于全部互联网信息。", "Public indexes or source sets actually queried; not the whole internet."),
+  discriminability: entry("discriminability", "可区分性", "Discriminability", "评估时间区间是否足以区分有限状态；不提供因果或投资判断。", "Assesses whether timing intervals distinguish bounded states; not causal or investment judgment."),
+  data_provenance: entry("data_provenance", "数据来源链", "Data Provenance", "记录数据来源、时间和状态，用于复现和限制说明。", "Records data source, time, and status for reproduction and limitation disclosure."),
+  cutoff: entry("cutoff", "截止时间", "Cutoff", "用于限制可纳入证据和交易范围的服务端截止时间；不使用未来数据。", "Server-derived cutoff that limits eligible evidence and trades; no future data is used."),
+  coverage: entry("coverage", "覆盖率", "Coverage", "按当前面板的实际 contract 解释可评估数据范围；unknown 或 n/a 不补为零。", "Interprets the evaluable data scope under the current panel contract; unknown or n/a is not filled as zero."),
 } satisfies Record<BaseTermId, GlossaryEntry>;
 
 const agent = (id: ConsoleTermId, zh: string, en: string, zhDef: string, enDef: string) => entry(id, zh, en, zhDef, enDef, "这是运行角色说明，不是身份、能力、风险或投资判断。", "This describes a runtime role, not identity, capability, risk, or investment judgment.");
@@ -154,6 +199,9 @@ const consoleGlossary = {
   status_skipped: state("status_skipped", "跳过", "Skipped", "该 Worker 在当前运行中未被请求或不适用。", "The Worker was not requested or is not applicable in this run."),
   status_completed: state("status_completed", "已完成", "Completed", "审计运行已完成。", "The audit run completed."),
   status_partial: state("status_partial", "部分完成", "Partial", "审计运行仅部分步骤完成，限制仍适用。", "Only part of the audit run completed; limitations still apply."),
+  status_pass: state("status_pass", "通过", "Pass", "该集群维度满足当前规则，但不是协调、因果或内幕证据。", "The cluster dimension satisfies its current rule; this is not evidence of coordination, causality, or insider activity."),
+  status_fail: state("status_fail", "未通过", "Fail", "该集群维度未满足当前规则，不表示主体失败或违法。", "The cluster dimension does not satisfy its current rule; this does not mean a person failed or acted unlawfully."),
+  status_unknown: state("status_unknown", "未知", "Unknown", "当前数据不足以确定该状态；不补算、不补零。", "Current data is insufficient to determine this state; no calculation or zero fill is made."),
   value_na: state("value_na", "不适用", "n/a", "该指标不适用于当前 Worker 或无法计算；不等于 0，也不等于免费。", "The metric is not applicable or cannot be computed for this Worker; it is not zero or free."),
   value_none: state("value_none", "无", "none", "本次没有记录该值或错误；不保证上游数据完整。", "No value or error was recorded for this run; upstream completeness is not guaranteed."),
   flag_coverage_below_gate: flag("flag_coverage_below_gate", "coverage_below_gate", "覆盖率低于门槛的机器标记。", "Machine flag indicating coverage is below the gate."),
@@ -171,6 +219,28 @@ const consoleGlossary = {
   flag_stale_data: flag("flag_stale_data", "stale_data", "数据可能超过当前 freshness 边界。", "Data may be outside the current freshness boundary."),
   flag_not_enabled: flag("flag_not_enabled", "not_enabled", "该能力在当前环境未启用。", "The capability is not enabled in the current environment."),
   flag_live_unverified: flag("flag_live_unverified", "live_unverified", "实时数据尚未完成验证。", "Live data has not completed verification."),
+  a2a_console: entry("a2a_console", "A2A 控制台", "A2A Console", "展示调用 Agent 如何通过 Alibi 的本地 API 或 MCP 获取机器可读的证据服务结果。", "Shows how a caller agent uses Alibi's local API or MCP for machine-readable evidence-service results.", "不代表实时服务、支付已结算或 ERC-8004 已注册。", "It does not represent live service, settled payment, or ERC-8004 registration."),
+  caller_agent: entry("caller_agent", "调用 Agent", "Caller Agent", "发起本次本地请求的外部或上游 Agent 角色；不表示身份或权限已验证。", "The external or upstream agent role initiating this local request; identity and authorization are not verified."),
+  a2a_request: entry("a2a_request", "A2A 请求", "A2A Request", "面向 Agent-to-Agent 调用的结构化请求，包含已支持的地址和策略参数。", "A structured Agent-to-Agent request containing supported addresses and policy parameters."),
+  execution_trace: entry("execution_trace", "Alibi 执行轨迹", "Alibi Execution Trace", "当前本地运行记录的状态、Worker 和限制；不是市场事件时间线。", "The current local run's states, Workers, and limitations; not a market-event timeline."),
+  machine_response: entry("machine_response", "机器可读响应", "Machine-readable Response", "可供调用 Agent 解析的 JSON 响应；字段名和枚举保持现有英文 contract。", "JSON output for a caller agent; field names and enums remain the existing English contract."),
+  input_schema: entry("input_schema", "输入 schema", "Input Schema", "描述接口接受的字段和类型范围；不代表请求已被执行。", "Describes accepted fields and type ranges; it does not mean a request was executed."),
+  output_schema: entry("output_schema", "输出 schema", "Output Schema", "描述接口可能返回的结构和状态；不把 unavailable 变成 ready。", "Describes possible output structure and states; it does not turn unavailable into ready."),
+  pricing_class: entry("pricing_class", "价格类别", "Pricing Class", "说明当前能力的免费、仅记录或现有 x402 条件边界；不表示本次发生付款。", "Describes the free, recorded-only, or existing x402 boundary; it does not mean payment occurred."),
+  availability: entry("availability", "可用性", "Availability", "当前本地环境中能力的可调用状态；recorded_only、unavailable 和 not_verified 不等于 live。", "Whether a capability is callable in the local environment; recorded_only, unavailable, and not_verified are not live."),
+  agent_name: entry("agent_name", "Agent 名称", "Agent Name", "调用方提供的运行角色名称，仅用于请求上下文。", "The caller-supplied runtime role name, used only as request context."),
+  analysis_window: entry("analysis_window", "分析窗口", "Analysis Window", "调用方请求的观察时间范围；不改变服务端既有证据规则。", "The caller-requested observation range; it does not change the server's existing evidence rules."),
+  request_delay: entry("request_delay", "我的延迟", "My Delay", "调用方提供的延迟参数，仅作为筛选请求输入；当前 recorded 快照不足时不补算结果。", "A caller-provided delay parameter for screening; no result is filled when the recorded snapshot lacks metrics."),
+  request_size: entry("request_size", "我的规模", "My Size", "调用方提供的美元规模参数；不表示实际成交、余额或投资能力。", "A caller-provided USD size parameter; it does not represent an actual trade, balance, or investment ability."),
+  minimum_coverage: entry("minimum_coverage", "最低覆盖率", "Minimum Coverage", "调用方要求的最低可评估覆盖率；缺少覆盖数据时保持 unavailable。", "The caller's minimum evaluable-coverage threshold; remains unavailable when coverage data is missing."),
+  maximum_lead_rate: entry("maximum_lead_rate", "最高先手率", "Maximum Lead Rate", "调用方提供的先手率上限；不表示预测或投资建议。", "A caller-provided upper bound for lead rate; not a prediction or investment advice."),
+  minimum_retained_return: entry("minimum_retained_return", "最低保留收益", "Minimum Retained Return", "调用方提供的策略参数；当前本地 screening 不执行收益或交易计算。", "A caller-provided policy parameter; the local screening path performs no return or trading calculation."),
+  address_list: entry("address_list", "钱包地址列表", "Wallet Address List", "本次请求中提交的公开 EVM 地址集合；不表示身份、控制权或资金能力。", "The set of public EVM addresses submitted in this request; not identity, control, or financial capacity."),
+  capability_status: entry("capability_status", "能力状态", "Capability Status", "当前接口能力的状态标签；必须和实际实现及数据模式一致。", "A status label for the current interface capability; it must match the implementation and data mode."),
+  payment_settlement: entry("payment_settlement", "支付结算", "Payment Settlement", "记录本地演示是否发生结算；当前演示保持 not_performed。", "Records whether settlement occurred in the local demo; this demo remains not_performed."),
+  headers: entry("headers", "Headers", "Headers", "HTTP 请求或响应的元数据；本地演示只观察，不伪造支付签名。", "HTTP request or response metadata; the local demo observes it and does not forge payment signatures."),
+  mcp_tools: entry("mcp_tools", "MCP 工具", "MCP Tools", "当前本地 MCP catalog 中实际注册的工具集合；未注册工具不会被显示为 ready。", "The tools actually registered in the local MCP catalog; unregistered tools are not shown as ready."),
+  request_timestamp: entry("request_timestamp", "请求时间", "Request Timestamp", "本次本地请求开始时记录的时间，不是信源发布时间或市场反应时间。", "The time recorded for this local request, not source publication time or market reaction time."),
 } satisfies Record<ConsoleTermId, GlossaryEntry>;
 
 export const GLOSSARY: Record<TermId, GlossaryEntry> = { ...baseGlossary, ...consoleGlossary };
@@ -195,10 +265,20 @@ export const WORKER_METRIC_TERM_IDS = {
 
 export const CONSOLE_VISIBLE_TERM_IDS: readonly TermId[] = [
   ...Object.values(PLATFORM_AGENT_TERM_IDS), ...Object.values(WORKER_TERM_IDS),
+  "a2a_console", "caller_agent", "a2a_request", "execution_trace", "machine_response", "input_schema", "output_schema", "pricing_class", "availability", "agent_name", "analysis_window", "request_delay", "request_size", "minimum_coverage", "maximum_lead_rate", "minimum_retained_return", "address_list", "capability_status", "payment_settlement", "headers", "mcp_tools", "request_timestamp",
   "metric_status", "metric_data_status", "worker_events", "worker_latency", "worker_retries", "worker_errors", "metric_policy_flags", "metric_run_id", "metric_limitations",
   ...Object.values(WORKER_METRIC_TERM_IDS).flatMap((terms) => Object.values(terms)), "worker_total_tracked_cost",
-  "status_pending", "status_running", "status_ok", "status_blocked", "status_failed", "status_insufficient", "status_skipped", "status_completed", "status_partial", "value_na", "value_none",
+  "status_pending", "status_running", "status_ok", "status_blocked", "status_failed", "status_insufficient", "status_skipped", "status_completed", "status_partial", "status_pass", "status_fail", "status_unknown", "value_na", "value_none",
   "flag_coverage_below_gate", "flag_unattributed", "flag_payment_required", "flag_credentials_missing", "flag_not_requested", "flag_no_verified_evidence", "flag_recorded_replay", "flag_synthetic_test", "flag_audit_partial", "flag_rag_degraded", "flag_database_unavailable", "flag_provider_unavailable", "flag_stale_data", "flag_not_enabled", "flag_live_unverified",
+];
+
+export const WALLET_DISCOVERY_VISIBLE_TERM_IDS: readonly TermId[] = [
+  "wallet_discovery", "leaderboard", "recorded_snapshot", "wallet_detail", "data_provenance", "cutoff",
+  "recorded", "data_status", "realized_pnl_7d", "source_pnl", "source_volume", "win_rate", "avg_buy_price",
+  "flip_rate", "median_exposure_minutes", "lead_rate", "coverage", "value_na", "observed_trades", "profile_age_days",
+  "last_trade_at", "first_deposit_at", "active_markets", "category_mix", "portfolio_value", "rebate_income",
+  "outcome", "attribution_surface", "fit_surface", "detail_not_captured", "unattributed", "indeterminate",
+  "language_window", "documented_language_window", "timestamp_uncertainty", "status_completed", "status_unknown",
 ];
 
 export function glossaryEntry(termId: TermId): GlossaryEntry { return GLOSSARY[termId]; }
@@ -210,7 +290,7 @@ export function workerMetricTermId(workerId: keyof typeof WORKER_METRIC_TERM_IDS
 }
 
 export function statusTermId(value: string): TermId {
-  const map: Record<string, ConsoleTermId> = { pending: "status_pending", running: "status_running", ok: "status_ok", blocked: "status_blocked", failed: "status_failed", insufficient: "status_insufficient", skipped: "status_skipped", completed: "status_completed", partial: "status_partial", "n/a": "value_na", none: "value_none" };
+  const map: Record<string, ConsoleTermId> = { pending: "status_pending", running: "status_running", ok: "status_ok", blocked: "status_blocked", failed: "status_failed", insufficient: "status_insufficient", skipped: "status_skipped", completed: "status_completed", complete: "status_completed", partial: "status_partial", pass: "status_pass", fail: "status_fail", unknown: "status_unknown", "n/a": "value_na", none: "value_none" };
   return map[value] ?? "error";
 }
 

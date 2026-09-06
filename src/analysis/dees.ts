@@ -7,5 +7,8 @@ export function calculateDEES(wallet: WalletMetrics | null): DEESMetrics {
   const execution = wallet.observed_trades;
   const alignment = execution === 0 ? null : wallet.aligned_trades / execution;
   const strategy = wallet.information_lead_rate === null ? null : (supported / Math.max(1, execution)) * wallet.information_lead_rate;
-  return { wallet: wallet.wallet, decision_count: execution, evidence_supported_decisions: supported, execution_count: wallet.aligned_trades, execution_alignment: alignment, strategy_score: strategy, coverage_rate: wallet.coverage_rate, status: wallet.coverage_rate >= 0.4 ? "eligible" : "insufficient_evidence", data_status: wallet.data_status };
+  // C6: a null coverage rate is not eligible. Written as an explicit null check
+  // so it does not depend on `null >= 0.4` coercing to false.
+  const eligible = wallet.coverage_rate !== null && wallet.coverage_rate >= 0.4;
+  return { wallet: wallet.wallet, decision_count: execution, evidence_supported_decisions: supported, execution_count: wallet.aligned_trades, execution_alignment: alignment, strategy_score: strategy, coverage_rate: wallet.coverage_rate, status: eligible ? "eligible" : "insufficient_evidence", data_status: wallet.data_status };
 }

@@ -29,10 +29,44 @@ export function isFreeUnattributedResult(result: AnalysisResult): result is Extr
   return result.ok && result.bundle.windows.length > 0 && result.bundle.evidence.length === 0 && result.bundle.windows.every((window) => window.attribution_status === "unattributed") && !result.bundle.source_coverage?.unavailable_connectors.length;
 }
 
-export function freeUnattributedDetailResponse(result: Extract<AnalysisResult, { ok: true }>, runId: string): Response {
+/**
+ * §4 billing gate. Counts the results a caller could legitimately be charged for.
+ * Returns 0 — meaning "must stay free, never emit 402" — when:
+ *   - the analysis failed (invalid_input / upstream_unavailable),
+ *   - any required connector was unavailable (provider unavailable),
+ *   - there is no verified evidence at all,
+ *   - every window is `unattributed` or `insufficient_evidence`.
+ * Only `information_consistent` / `capital_consistent` windows are billable.
+ */
+export function billableResultCount(result: AnalysisResult): number {
+  if (!result.ok) return 0;
+  const bundle = result.bundle;
+  if (bundle.source_coverage?.unavailable_connectors.length) return 0;
+  if (bundle.evidence.length === 0) return 0;
+  return bundle.windows.filter(
+    (window) => window.attribution_status === "information_consistent" || window.attribution_status === "capital_consistent",
+  ).length;
+}
+
+export function isBillableResult(result: AnalysisResult): boolean {
+  return billableResultCount(result) > 0;
+}
+
+/**
+ * The free response for any non-billable outcome: 200 for a usable report,
+ * or the plain error envelope for a failed analysis. Never emits 402.
+ * `free_unattributed` is the only non-paid value in the `paid_access.access`
+ * contract, so it also labels insufficient-evidence and unavailable outcomes.
+ */
+export function freeDetailResponse(result: AnalysisResult, runId: string): Response {
+  if (!result.ok) return analysisError(result, runId);
   const detail = JSON.parse(JSON.stringify(assembleDetail({ ...result.bundle, run_id: runId }))) as import("@/src/contracts").DetailReport;
   detail.paid_access.access = "free_unattributed";
   return NextResponse.json(detail, { status: 200, headers: { "cache-control": "no-store" } });
+}
+
+export function freeUnattributedDetailResponse(result: Extract<AnalysisResult, { ok: true }>, runId: string): Response {
+  return freeDetailResponse(result, runId);
 }
 
 export function safePlatformStatus() {

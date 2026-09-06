@@ -1,223 +1,637 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="82" failures="0" errors="0" time="7.617461877">
-    <testsuite name="tests/contract/contracts.test.ts" timestamp="2026-09-05T09:41:36.450Z" hostname="0000deMacBook-Pro.local" tests="4" failures="0" errors="0" skipped="0" time="0.002375875">
-        <testcase classname="tests/contract/contracts.test.ts" name="approved contract constants &gt; keeps the Spec defaults immutable" time="0.001167875">
+<testsuites name="vitest tests" tests="277" failures="0" errors="0" time="4.132341502">
+    <testsuite name="tests/contract/contracts.test.ts" timestamp="2026-09-06T01:47:44.300Z" hostname="0000deMacBook-Pro.local" tests="4" failures="0" errors="0" skipped="0" time="0.004507">
+        <testcase classname="tests/contract/contracts.test.ts" name="approved contract constants &gt; keeps the Spec defaults immutable" time="0.002354875">
         </testcase>
-        <testcase classname="tests/contract/contracts.test.ts" name="approved contract constants &gt; recognizes only the four approved data statuses" time="0.000124959">
+        <testcase classname="tests/contract/contracts.test.ts" name="approved contract constants &gt; recognizes only the four approved data statuses" time="0.000825125">
         </testcase>
-        <testcase classname="tests/contract/contracts.test.ts" name="approved contract constants &gt; validates wallet shape without implying identity" time="0.00017675">
+        <testcase classname="tests/contract/contracts.test.ts" name="approved contract constants &gt; validates wallet shape without implying identity" time="0.000199583">
         </testcase>
-        <testcase classname="tests/contract/contracts.test.ts" name="approved contract constants &gt; clamps confidence and preserves conservative status precedence" time="0.000177791">
-        </testcase>
-    </testsuite>
-    <testsuite name="tests/erc8004/erc8004.test.ts" timestamp="2026-09-05T09:41:36.451Z" hostname="0000deMacBook-Pro.local" tests="3" failures="0" errors="0" skipped="0" time="0.002573042">
-        <testcase classname="tests/erc8004/erc8004.test.ts" name="ERC-8004 bounded integration &gt; locks the approved registries and validation boundary" time="0.001020042">
-        </testcase>
-        <testcase classname="tests/erc8004/erc8004.test.ts" name="ERC-8004 bounded integration &gt; requires owner=payment and a distinct client" time="0.0002085">
-        </testcase>
-        <testcase classname="tests/erc8004/erc8004.test.ts" name="ERC-8004 bounded integration &gt; exposes one root identity and no validation claim" time="0.000155417">
+        <testcase classname="tests/contract/contracts.test.ts" name="approved contract constants &gt; clamps confidence and preserves conservative status precedence" time="0.000189875">
         </testcase>
     </testsuite>
-    <testsuite name="tests/extension/extension.test.ts" timestamp="2026-09-05T09:41:36.452Z" hostname="0000deMacBook-Pro.local" tests="2" failures="0" errors="0" skipped="0" time="0.004069458">
-        <testcase classname="tests/extension/extension.test.ts" name="MV3 extension boundary &gt; uses minimal read-only permissions" time="0.002521166">
+    <testsuite name="tests/erc8004/erc8004.test.ts" timestamp="2026-09-06T01:47:44.301Z" hostname="0000deMacBook-Pro.local" tests="3" failures="0" errors="0" skipped="0" time="0.002075708">
+        <testcase classname="tests/erc8004/erc8004.test.ts" name="ERC-8004 bounded integration &gt; locks the approved registries and validation boundary" time="0.000918292">
         </testcase>
-        <testcase classname="tests/extension/extension.test.ts" name="MV3 extension boundary &gt; does not declare wallet or signing capabilities" time="0.000278375">
+        <testcase classname="tests/erc8004/erc8004.test.ts" name="ERC-8004 bounded integration &gt; requires owner=payment and a distinct client" time="0.000217583">
         </testcase>
-    </testsuite>
-    <testsuite name="tests/integration/api.test.ts" timestamp="2026-09-05T09:41:36.452Z" hostname="0000deMacBook-Pro.local" tests="6" failures="0" errors="0" skipped="0" time="6.281475542">
-        <testcase classname="tests/integration/api.test.ts" name="API payment boundary &gt; keeps recorded mode on the root 402 envelope and preserves x402 terms" time="0.052570125">
-        </testcase>
-        <testcase classname="tests/integration/api.test.ts" name="API payment boundary &gt; preserves live mode on the root 402 envelope" time="3.055489958">
-        </testcase>
-        <testcase classname="tests/integration/api.test.ts" name="API payment boundary &gt; keeps the v1 platform detail boundary mode-aware and unpaid" time="3.025014">
-        </testcase>
-        <testcase classname="tests/integration/api.test.ts" name="API payment boundary &gt; uses the request mode in the configured x402 unpaid callback" time="0.000772666">
-        </testcase>
-        <testcase classname="tests/integration/api.test.ts" name="API payment boundary &gt; keeps normal recorded Summary status and reports database availability separately" time="0.085518125">
-        </testcase>
-        <testcase classname="tests/integration/api.test.ts" name="API payment boundary &gt; returns recorded unattributed detail without a payment challenge" time="0.060911667">
+        <testcase classname="tests/erc8004/erc8004.test.ts" name="ERC-8004 bounded integration &gt; exposes one root identity and no validation claim" time="0.000147666">
         </testcase>
     </testsuite>
-    <testsuite name="tests/integration/audit.test.ts" timestamp="2026-09-05T09:41:36.453Z" hostname="0000deMacBook-Pro.local" tests="2" failures="0" errors="0" skipped="0" time="0.542461292">
-        <testcase classname="tests/integration/audit.test.ts" name="Audit &amp; Report Agent integration &gt; records a recorded summary run, exposes all logical workers, and exports Markdown" time="0.16858025">
+    <testsuite name="tests/extension/extension.test.ts" timestamp="2026-09-06T01:47:44.302Z" hostname="0000deMacBook-Pro.local" tests="2" failures="0" errors="0" skipped="0" time="0.002925833">
+        <testcase classname="tests/extension/extension.test.ts" name="MV3 extension boundary &gt; uses minimal read-only permissions" time="0.001802208">
         </testcase>
-        <testcase classname="tests/integration/audit.test.ts" name="Audit &amp; Report Agent integration &gt; records a free unattributed detail result without persisting a payment challenge" time="0.372947792">
-        </testcase>
-    </testsuite>
-    <testsuite name="tests/integration/cluster-language.test.ts" timestamp="2026-09-05T09:41:36.453Z" hostname="0000deMacBook-Pro.local" tests="1" failures="0" errors="0" skipped="0" time="0.219874709">
-        <testcase classname="tests/integration/cluster-language.test.ts" name="cluster/language report integration &gt; keeps recorded status and exposes conservative cluster fields" time="0.219037791">
+        <testcase classname="tests/extension/extension.test.ts" name="MV3 extension boundary &gt; does not declare wallet or signing capabilities" time="0.000233125">
         </testcase>
     </testsuite>
-    <testsuite name="tests/integration/payment-idempotency.test.ts" timestamp="2026-09-05T09:41:36.453Z" hostname="0000deMacBook-Pro.local" tests="3" failures="0" errors="0" skipped="0" time="0.0157285">
-        <testcase classname="tests/integration/payment-idempotency.test.ts" name="bounded payment identifier replay &gt; replays the same terminal response and does not call the handler twice" time="0.006094875">
+    <testsuite name="tests/integration/api.test.ts" timestamp="2026-09-06T01:47:44.302Z" hostname="0000deMacBook-Pro.local" tests="8" failures="0" errors="0" skipped="0" time="0.705181584">
+        <testcase classname="tests/integration/api.test.ts" name="x402 challenge envelope &gt; keeps recorded mode on the root 402 envelope and preserves x402 terms" time="0.014909833">
         </testcase>
-        <testcase classname="tests/integration/payment-idempotency.test.ts" name="bounded payment identifier replay &gt; fails closed for an identifier reused with a different request" time="0.002075583">
+        <testcase classname="tests/integration/api.test.ts" name="x402 challenge envelope &gt; preserves live mode on the root 402 envelope" time="0.000719875">
         </testcase>
-        <testcase classname="tests/integration/payment-idempotency.test.ts" name="bounded payment identifier replay &gt; coalesces concurrent duplicate requests" time="0.006648041">
+        <testcase classname="tests/integration/api.test.ts" name="x402 challenge envelope &gt; keeps the v1 platform detail boundary mode-aware" time="0.001246375">
         </testcase>
-    </testsuite>
-    <testsuite name="tests/integration/platform.test.ts" timestamp="2026-09-05T09:41:36.453Z" hostname="0000deMacBook-Pro.local" tests="1" failures="0" errors="0" skipped="0" time="0.210204667">
-        <testcase classname="tests/integration/platform.test.ts" name="v0.7 platform orchestrator &gt; runs one deterministic orchestrator and keeps recorded status visible" time="0.209502459">
+        <testcase classname="tests/integration/api.test.ts" name="x402 challenge envelope &gt; fails closed to a free 503 without a challenge when no payment address is configured" time="0.000498875">
         </testcase>
-    </testsuite>
-    <testsuite name="tests/integration/synthetic.test.ts" timestamp="2026-09-05T09:41:36.453Z" hostname="0000deMacBook-Pro.local" tests="2" failures="0" errors="0" skipped="0" time="0.005604834">
-        <testcase classname="tests/integration/synthetic.test.ts" name="synthetic contract and fault path &gt; keeps synthetic data out of the user Demo presets" time="0.002101916">
+        <testcase classname="tests/integration/api.test.ts" name="API payment boundary &gt; never emits a payment challenge for a non-billable input" time="0.092842291">
         </testcase>
-        <testcase classname="tests/integration/synthetic.test.ts" name="synthetic contract and fault path &gt; keeps synthetic data explicit and becomes unattributed when live Anthropic is unavailable" time="0.002544041">
+        <testcase classname="tests/integration/api.test.ts" name="API payment boundary &gt; uses the request mode in the configured x402 unpaid callback" time="0.000309958">
         </testcase>
-    </testsuite>
-    <testsuite name="tests/mcp/mcp.test.ts" timestamp="2026-09-05T09:41:36.453Z" hostname="0000deMacBook-Pro.local" tests="3" failures="0" errors="0" skipped="0" time="0.002719334">
-        <testcase classname="tests/mcp/mcp.test.ts" name="MCP local eight-tool contract &gt; has exactly eight read-only tools" time="0.001300542">
+        <testcase classname="tests/integration/api.test.ts" name="API payment boundary &gt; keeps normal recorded Summary status and reports database availability separately" time="0.313821">
         </testcase>
-        <testcase classname="tests/mcp/mcp.test.ts" name="MCP local eight-tool contract &gt; does not expose a secret in tool output" time="0.000325834">
-        </testcase>
-        <testcase classname="tests/mcp/mcp.test.ts" name="MCP local eight-tool contract &gt; keeps detail behind the payment boundary" time="0.000226667">
+        <testcase classname="tests/integration/api.test.ts" name="API payment boundary &gt; returns recorded unattributed detail without a payment challenge" time="0.278978666">
         </testcase>
     </testsuite>
-    <testsuite name="tests/rag/rag.test.ts" timestamp="2026-09-05T09:41:36.454Z" hostname="0000deMacBook-Pro.local" tests="3" failures="0" errors="0" skipped="0" time="0.22578375">
-        <testcase classname="tests/rag/rag.test.ts" name="local RAG contract &gt; locks the approved model and never requires an embedding API key" time="0.001230625">
+    <testsuite name="tests/integration/audit.test.ts" timestamp="2026-09-06T01:47:44.303Z" hostname="0000deMacBook-Pro.local" tests="2" failures="0" errors="0" skipped="0" time="1.354387625">
+        <testcase classname="tests/integration/audit.test.ts" name="Audit &amp; Report Agent integration &gt; records a recorded summary run, exposes all logical workers, and exports Markdown" time="0.349948167">
         </testcase>
-        <testcase classname="tests/rag/rag.test.ts" name="local RAG contract &gt; uses explicit degraded keyword fallback when local inference is unavailable" time="0.215259125">
-        </testcase>
-        <testcase classname="tests/rag/rag.test.ts" name="local RAG contract &gt; does not return vector results from a missing model" time="0.008172041">
+        <testcase classname="tests/integration/audit.test.ts" name="Audit &amp; Report Agent integration &gt; records a free unattributed detail result without persisting a payment challenge" time="1.003451625">
         </testcase>
     </testsuite>
-    <testsuite name="tests/unit/cluster-language.test.ts" timestamp="2026-09-05T09:41:36.454Z" hostname="0000deMacBook-Pro.local" tests="6" failures="0" errors="0" skipped="0" time="0.015660875">
-        <testcase classname="tests/unit/cluster-language.test.ts" name="cluster_without_verified_source &gt; passes the deterministic formal gate with five addresses" time="0.008209083">
-        </testcase>
-        <testcase classname="tests/unit/cluster-language.test.ts" name="cluster_without_verified_source &gt; deduplicates baseline rows before applying the minimum-sample gate" time="0.001718458">
-        </testcase>
-        <testcase classname="tests/unit/cluster-language.test.ts" name="cluster_without_verified_source &gt; uses a left-open/right-closed window and excludes SELL" time="0.002160292">
-        </testcase>
-        <testcase classname="tests/unit/cluster-language.test.ts" name="cluster_without_verified_source &gt; blocks formal alerts when the source state is unknown" time="0.001043">
-        </testcase>
-        <testcase classname="tests/unit/cluster-language.test.ts" name="cluster_without_verified_source &gt; blocks a contradictory not_found result when coverage is incomplete" time="0.001245375">
-        </testcase>
-        <testcase classname="tests/unit/cluster-language.test.ts" name="cluster_without_verified_source &gt; returns insufficient_baseline instead of filling missing history" time="0.000443583">
+    <testsuite name="tests/integration/cluster-language.test.ts" timestamp="2026-09-06T01:47:44.303Z" hostname="0000deMacBook-Pro.local" tests="1" failures="0" errors="0" skipped="0" time="0.72828675">
+        <testcase classname="tests/integration/cluster-language.test.ts" name="cluster/language report integration &gt; keeps recorded status and exposes conservative cluster fields" time="0.727474042">
         </testcase>
     </testsuite>
-    <testsuite name="tests/unit/decimal.test.ts" timestamp="2026-09-05T09:41:36.454Z" hostname="0000deMacBook-Pro.local" tests="2" failures="0" errors="0" skipped="0" time="0.004743416">
-        <testcase classname="tests/unit/decimal.test.ts" name="fixed-point arithmetic &gt; parses decimal strings without binary threshold drift" time="0.002846541">
+    <testsuite name="tests/integration/leaderboard-route.test.ts" timestamp="2026-09-06T01:47:44.303Z" hostname="0000deMacBook-Pro.local" tests="13" failures="0" errors="0" skipped="0" time="0.079418792">
+        <testcase classname="tests/integration/leaderboard-route.test.ts" name="GET /api/v1/leaderboard &gt; returns the 20 recorded rows and never claims to be live" time="0.022125375">
         </testcase>
-        <testcase classname="tests/unit/decimal.test.ts" name="fixed-point arithmetic &gt; rejects invalid size, price and over-precise values" time="0.000467208">
+        <testcase classname="tests/integration/leaderboard-route.test.ts" name="GET /api/v1/leaderboard &gt; carries an as_of from the capture that predates the test run" time="0.006363583">
         </testcase>
-    </testsuite>
-    <testsuite name="tests/unit/evidence-time.test.ts" timestamp="2026-09-05T09:41:36.454Z" hostname="0000deMacBook-Pro.local" tests="11" failures="0" errors="0" skipped="0" time="0.007822791">
-        <testcase classname="tests/unit/evidence-time.test.ts" name="documented_language_window &gt; requires precise paired public timestamps for a language gap" time="0.001345625">
+        <testcase classname="tests/integration/leaderboard-route.test.ts" name="GET /api/v1/leaderboard &gt; marks exactly one wallet as captured in detail" time="0.0063945">
         </testcase>
-        <testcase classname="tests/unit/evidence-time.test.ts" name="documented_language_window &gt; keeps date-only timing unknown" time="0.000289917">
+        <testcase classname="tests/integration/leaderboard-route.test.ts" name="GET /api/v1/leaderboard &gt; reports every metric of the 19 uncaptured wallets as null and never as 0" time="0.013974084">
         </testcase>
-        <testcase classname="tests/unit/evidence-time.test.ts" name="documented_language_window &gt; does not verify a pair from publisher equality alone" time="0.000170958">
+        <testcase classname="tests/integration/leaderboard-route.test.ts" name="GET /api/v1/leaderboard &gt; keeps upstream row fields real for all 20 rows" time="0.006402875">
         </testcase>
-        <testcase classname="tests/unit/evidence-time.test.ts" name="documented_language_window &gt; does not let discovery-only observations pass official-id pairing" time="0.000094625">
+        <testcase classname="tests/integration/leaderboard-route.test.ts" name="GET /api/v1/leaderboard &gt; lists the unranked attribution wallets separately with rank null" time="0.006578416">
         </testcase>
-        <testcase classname="tests/unit/evidence-time.test.ts" name="documented_language_window &gt; accepts an official cross-link only with normalized publisher, topic and date" time="0.000140667">
+        <testcase classname="tests/integration/leaderboard-route.test.ts" name="GET /api/v1/wallets/[address]/metrics &gt; rejects a malformed address as a bad request" time="0.001575">
         </testcase>
-        <testcase classname="tests/unit/evidence-time.test.ts" name="documented_language_window &gt; returns indeterminate when calibrated timestamp intervals overlap" time="0.000157291">
+        <testcase classname="tests/integration/leaderboard-route.test.ts" name="GET /api/v1/wallets/[address]/metrics &gt; returns 200 with detail_captured false rather than 404 for an uncaptured wallet" time="0.006748625">
         </testcase>
-        <testcase classname="tests/unit/evidence-time.test.ts" name="documented_language_window &gt; does not derive not_found from incomplete or date-only coverage" time="0.000125875">
+        <testcase classname="tests/integration/leaderboard-route.test.ts" name="GET /api/v1/wallets/[address]/metrics &gt; serves the captured wallet with envelopes whose nulls still carry reasons" time="0.002952541">
         </testcase>
-        <testcase classname="tests/unit/evidence-time.test.ts" name="documented_language_window &gt; keeps GDELT seendate as discovery first-seen, never published_at" time="0.00156725">
+        <testcase classname="tests/integration/leaderboard-route.test.ts" name="GET /api/v1/wallets/[address]/metrics &gt; keeps the Fit group unavailable for every wallet" time="0.002944375">
         </testcase>
-        <testcase classname="tests/unit/evidence-time.test.ts" name="documented_language_window &gt; normalizes bilingual RSS items with public provenance" time="0.0019115">
+        <testcase classname="tests/integration/leaderboard-route.test.ts" name="GET /api/v1/wallets/[address]/metrics &gt; abstains from attribution rather than publishing a lead rate" time="0.000585792">
         </testcase>
-        <testcase classname="tests/unit/evidence-time.test.ts" name="documented_language_window &gt; reads the HKMA result.records shape without promoting date-only rows" time="0.000672292">
+        <testcase classname="tests/integration/leaderboard-route.test.ts" name="GET /api/v1/wallets/[address]/metrics &gt; distinguishes a probed-but-unqualified wallet from one never probed" time="0.000668875">
         </testcase>
-        <testcase classname="tests/unit/evidence-time.test.ts" name="documented_language_window &gt; keeps a late language observation as a new revision" time="0.00016925">
+        <testcase classname="tests/integration/leaderboard-route.test.ts" name="GET /api/v1/wallets/[address]/metrics &gt; never labels a recorded reply as live and sets no-store" time="0.000595625">
         </testcase>
     </testsuite>
-    <testsuite name="tests/unit/glossary.test.ts" timestamp="2026-09-05T09:41:36.455Z" hostname="0000deMacBook-Pro.local" tests="3" failures="0" errors="0" skipped="0" time="0.002228333">
-        <testcase classname="tests/unit/glossary.test.ts" name="approved glossary &gt; has unique approved definitions with no pending entries" time="0.0009615">
+    <testsuite name="tests/integration/payment-billing-order.test.ts" timestamp="2026-09-06T01:47:44.304Z" hostname="0000deMacBook-Pro.local" tests="20" failures="0" errors="0" skipped="0" time="0.030757791">
+        <testcase classname="tests/integration/payment-billing-order.test.ts" name="§4 billing gate: analyse first, bill only when billable_result_count &gt; 0 &gt; counts zero for unattributed-only windows" time="0.001183958">
         </testcase>
-        <testcase classname="tests/unit/glossary.test.ts" name="approved glossary &gt; keeps D1 BUY-only and D4 conservative" time="0.000323">
+        <testcase classname="tests/integration/payment-billing-order.test.ts" name="§4 billing gate: analyse first, bill only when billable_result_count &gt; 0 &gt; counts zero for insufficient_evidence windows" time="0.000174125">
         </testcase>
-        <testcase classname="tests/unit/glossary.test.ts" name="approved glossary &gt; covers every displayed metric and protected status" time="0.000121041">
+        <testcase classname="tests/integration/payment-billing-order.test.ts" name="§4 billing gate: analyse first, bill only when billable_result_count &gt; 0 &gt; counts zero when any required connector is unavailable" time="0.000110209">
         </testcase>
-    </testsuite>
-    <testsuite name="tests/unit/http.test.ts" timestamp="2026-09-05T09:41:36.455Z" hostname="0000deMacBook-Pro.local" tests="2" failures="0" errors="0" skipped="0" time="0.019648875">
-        <testcase classname="tests/unit/http.test.ts" name="bounded upstream HTTP adapter &gt; retries a 429 with Retry-After and returns the successful attempt" time="0.018094375">
+        <testcase classname="tests/integration/payment-billing-order.test.ts" name="§4 billing gate: analyse first, bill only when billable_result_count &gt; 0 &gt; counts zero when there is no verified evidence" time="0.000112542">
         </testcase>
-        <testcase classname="tests/unit/http.test.ts" name="bounded upstream HTTP adapter &gt; returns a structured timeout/upstream error after the configured attempt limit" time="0.000789167">
+        <testcase classname="tests/integration/payment-billing-order.test.ts" name="§4 billing gate: analyse first, bill only when billable_result_count &gt; 0 &gt; counts zero for a failed analysis (invalid input and upstream unavailable are free)" time="0.000112541">
         </testcase>
-    </testsuite>
-    <testsuite name="tests/unit/i18n.test.ts" timestamp="2026-09-05T09:41:36.456Z" hostname="0000deMacBook-Pro.local" tests="2" failures="0" errors="0" skipped="0" time="0.002167125">
-        <testcase classname="tests/unit/i18n.test.ts" name="UI locale contract &gt; defaults invalid or missing locale values to Simplified Chinese" time="0.000892625">
+        <testcase classname="tests/integration/payment-billing-order.test.ts" name="§4 billing gate: analyse first, bill only when billable_result_count &gt; 0 &gt; counts only attributed windows as billable" time="0.000102583">
         </testcase>
-        <testcase classname="tests/unit/i18n.test.ts" name="UI locale contract &gt; keeps identical typed dictionary keys in both locales" time="0.000543709">
+        <testcase classname="tests/integration/payment-billing-order.test.ts" name="zero-address safety: never broadcast an uncollectable challenge &gt; rejects unset, blank, malformed, and zero payTo values" time="0.000202375">
         </testcase>
-    </testsuite>
-    <testsuite name="tests/unit/markdown.test.ts" timestamp="2026-09-05T09:41:36.456Z" hostname="0000deMacBook-Pro.local" tests="1" failures="0" errors="0" skipped="0" time="0.001793833">
-        <testcase classname="tests/unit/markdown.test.ts" name="Audit Markdown renderer &gt; localizes headings while preserving raw IDs, statuses, URLs, flags, and disclaimer" time="0.001117459">
+        <testcase classname="tests/integration/payment-billing-order.test.ts" name="zero-address safety: never broadcast an uncollectable challenge &gt; returns a free provider_unavailable instead of a 402 when no address is configured" time="0.007818958">
         </testcase>
-    </testsuite>
-    <testsuite name="tests/unit/observability.test.ts" timestamp="2026-09-05T09:41:36.456Z" hostname="0000deMacBook-Pro.local" tests="3" failures="0" errors="0" skipped="0" time="0.004221917">
-        <testcase classname="tests/unit/observability.test.ts" name="audit observability contract &gt; validates a safe event and enforces monotonically increasing sequences" time="0.00279075">
+        <testcase classname="tests/integration/payment-billing-order.test.ts" name="zero-address safety: never broadcast an uncollectable challenge &gt; returns a free provider_unavailable when the address is the zero address" time="0.000650042">
         </testcase>
-        <testcase classname="tests/unit/observability.test.ts" name="audit observability contract &gt; rejects credentials, payment signatures, JWTs, and private-key-shaped text" time="0.000349125">
+        <testcase classname="tests/integration/payment-billing-order.test.ts" name="zero-address safety: never broadcast an uncollectable challenge &gt; never treats a zero-address deployment as x402-configured" time="0.000211875">
         </testcase>
-        <testcase classname="tests/unit/observability.test.ts" name="audit observability contract &gt; rejects absolute artifact paths and out-of-budget event cost" time="0.000232458">
+        <testcase classname="tests/integration/payment-billing-order.test.ts" name="zero-address safety: never broadcast an uncollectable challenge &gt; emits a single well-formed 402 once a real recipient is configured" time="0.001260791">
         </testcase>
-    </testsuite>
-    <testsuite name="tests/unit/parser.test.ts" timestamp="2026-09-05T09:41:36.456Z" hostname="0000deMacBook-Pro.local" tests="2" failures="0" errors="0" skipped="0" time="0.002566625">
-        <testcase classname="tests/unit/parser.test.ts" name="parseInput &gt; accepts wallet, market, event and profile inputs" time="0.001584541">
+        <testcase classname="tests/integration/payment-billing-order.test.ts" name="C12 multi-endpoint billing allowlist &gt; normalizes absolute urls and trailing slashes to a bare path" time="0.00009725">
         </testcase>
-        <testcase classname="tests/unit/parser.test.ts" name="parseInput &gt; rejects malformed and unsupported inputs before any upstream call" time="0.000232584">
+        <testcase classname="tests/integration/payment-billing-order.test.ts" name="C12 multi-endpoint billing allowlist &gt; allows every endpoint on the billing table" time="0.000511042">
         </testcase>
-    </testsuite>
-    <testsuite name="tests/unit/payment.test.ts" timestamp="2026-09-05T09:41:36.456Z" hostname="0000deMacBook-Pro.local" tests="2" failures="0" errors="0" skipped="0" time="0.002248875">
-        <testcase classname="tests/unit/payment.test.ts" name="x402 payment policy &gt; accepts only the approved Base Sepolia exact terms" time="0.001124041">
+        <testcase classname="tests/integration/payment-billing-order.test.ts" name="C12 multi-endpoint billing allowlist &gt; rejects free endpoints and unknown resources" time="0.000168083">
         </testcase>
-        <testcase classname="tests/unit/payment.test.ts" name="x402 payment policy &gt; rejects wrong network, asset, amount, recipient, and resource policy" time="0.00033375">
+        <testcase classname="tests/integration/payment-billing-order.test.ts" name="C12 multi-endpoint billing allowlist &gt; rejects a zero-address recipient even when the terms are otherwise valid" time="0.000074625">
+        </testcase>
+        <testcase classname="tests/integration/payment-billing-order.test.ts" name="C12 multi-endpoint billing allowlist &gt; still rejects wrong network, asset, and amount" time="0.000148042">
+        </testcase>
+        <testcase classname="tests/integration/payment-billing-order.test.ts" name="C12 multi-endpoint billing allowlist &gt; refuses to bill an off-table resource even with a valid recipient" time="0.000183917">
+        </testcase>
+        <testcase classname="tests/integration/payment-billing-order.test.ts" name="payment retry reads the same frozen result &gt; does not recompute or re-settle when the paid request is retried" time="0.012945125">
+        </testcase>
+        <testcase classname="tests/integration/payment-billing-order.test.ts" name="payment retry reads the same frozen result &gt; does not leak the payment signature into the replayed snapshot" time="0.000770083">
+        </testcase>
+        <testcase classname="tests/integration/payment-billing-order.test.ts" name="payment retry reads the same frozen result &gt; lets the client retry after a 402 challenge instead of pinning the identifier" time="0.000721208">
         </testcase>
     </testsuite>
-    <testsuite name="tests/unit/provider.test.ts" timestamp="2026-09-05T09:41:36.456Z" hostname="0000deMacBook-Pro.local" tests="3" failures="0" errors="0" skipped="0" time="0.004047333">
-        <testcase classname="tests/unit/provider.test.ts" name="Anthropic attribution contract &gt; accepts only supplied evidence IDs in an explicitly synthetic response" time="0.001459417">
+    <testsuite name="tests/integration/payment-idempotency.test.ts" timestamp="2026-09-06T01:47:44.306Z" hostname="0000deMacBook-Pro.local" tests="3" failures="0" errors="0" skipped="0" time="0.032023875">
+        <testcase classname="tests/integration/payment-idempotency.test.ts" name="bounded payment identifier replay &gt; replays the same terminal response and does not call the handler twice" time="0.010294417">
         </testcase>
-        <testcase classname="tests/unit/provider.test.ts" name="Anthropic attribution contract &gt; downgrades a response with no valid cited evidence to unattributed" time="0.000261">
+        <testcase classname="tests/integration/payment-idempotency.test.ts" name="bounded payment identifier replay &gt; fails closed for an identifier reused with a different request" time="0.008241">
         </testcase>
-        <testcase classname="tests/unit/provider.test.ts" name="Anthropic attribution contract &gt; rejects invalid JSON and exposes missing live credentials without calling another provider" time="0.001436583">
-        </testcase>
-    </testsuite>
-    <testsuite name="tests/unit/report-assembler.test.ts" timestamp="2026-09-05T09:41:36.457Z" hostname="0000deMacBook-Pro.local" tests="1" failures="0" errors="0" skipped="0" time="0.003346542">
-        <testcase classname="tests/unit/report-assembler.test.ts" name="report assembler &gt; builds the public Summary and Detail contracts without changing the bundle" time="0.002236917">
+        <testcase classname="tests/integration/payment-idempotency.test.ts" name="bounded payment identifier replay &gt; coalesces concurrent duplicate requests" time="0.011293">
         </testcase>
     </testsuite>
-    <testsuite name="tests/unit/repricing.test.ts" timestamp="2026-09-05T09:41:36.457Z" hostname="0000deMacBook-Pro.local" tests="2" failures="0" errors="0" skipped="0" time="0.003604584">
-        <testcase classname="tests/unit/repricing.test.ts" name="detectRepricingWindows &gt; uses the inclusive 0.08 threshold and 60-minute boundary" time="0.002499666">
-        </testcase>
-        <testcase classname="tests/unit/repricing.test.ts" name="detectRepricingWindows &gt; sorts input and deduplicates overlapping windows" time="0.000332709">
+    <testsuite name="tests/integration/platform.test.ts" timestamp="2026-09-06T01:47:44.306Z" hostname="0000deMacBook-Pro.local" tests="1" failures="0" errors="0" skipped="0" time="0.742733375">
+        <testcase classname="tests/integration/platform.test.ts" name="v0.7 platform orchestrator &gt; runs one deterministic orchestrator and keeps recorded status visible" time="0.741960833">
         </testcase>
     </testsuite>
-    <testsuite name="tests/unit/source-calibration.test.ts" timestamp="2026-09-05T09:41:36.457Z" hostname="0000deMacBook-Pro.local" tests="3" failures="0" errors="0" skipped="0" time="0.003227459">
-        <testcase classname="tests/unit/source-calibration.test.ts" name="timestamp calibration &gt; refuses to create a safety bound below thirty independent samples" time="0.001660792">
+    <testsuite name="tests/integration/synthetic.test.ts" timestamp="2026-09-06T01:47:44.306Z" hostname="0000deMacBook-Pro.local" tests="2" failures="0" errors="0" skipped="0" time="0.006169583">
+        <testcase classname="tests/integration/synthetic.test.ts" name="synthetic contract and fault path &gt; keeps synthetic data out of the user Demo presets" time="0.001440709">
         </testcase>
-        <testcase classname="tests/unit/source-calibration.test.ts" name="timestamp calibration &gt; uses absolute-error nearest-rank P95 at the minimum sample count" time="0.000277166">
-        </testcase>
-        <testcase classname="tests/unit/source-calibration.test.ts" name="timestamp calibration &gt; does not substitute the median for the safety bound" time="0.000442084">
+        <testcase classname="tests/integration/synthetic.test.ts" name="synthetic contract and fault path &gt; keeps synthetic data explicit and becomes unattributed when live Anthropic is unavailable" time="0.003903083">
         </testcase>
     </testsuite>
-    <testsuite name="tests/unit/ui-state.test.ts" timestamp="2026-09-05T09:41:36.457Z" hostname="0000deMacBook-Pro.local" tests="1" failures="0" errors="0" skipped="0" time="0.001886333">
-        <testcase classname="tests/unit/ui-state.test.ts" name="single-page UI state mapping &gt; maps HTTP and report outcomes to the approved six states" time="0.001096792">
+    <testsuite name="tests/mcp/mcp.test.ts" timestamp="2026-09-06T01:47:44.306Z" hostname="0000deMacBook-Pro.local" tests="3" failures="0" errors="0" skipped="0" time="0.002427292">
+        <testcase classname="tests/mcp/mcp.test.ts" name="MCP local eight-tool contract &gt; has exactly eight read-only tools" time="0.001288708">
+        </testcase>
+        <testcase classname="tests/mcp/mcp.test.ts" name="MCP local eight-tool contract &gt; does not expose a secret in tool output" time="0.000282958">
+        </testcase>
+        <testcase classname="tests/mcp/mcp.test.ts" name="MCP local eight-tool contract &gt; keeps detail behind the payment boundary" time="0.000129167">
         </testcase>
     </testsuite>
-    <testsuite name="tests/unit/wallet.test.ts" timestamp="2026-09-05T09:41:36.457Z" hostname="0000deMacBook-Pro.local" tests="2" failures="0" errors="0" skipped="0" time="0.003427083">
-        <testcase classname="tests/unit/wallet.test.ts" name="calculateWalletMetrics &gt; gates lead rate below 40% coverage" time="0.00218825">
+    <testsuite name="tests/rag/rag.test.ts" timestamp="2026-09-06T01:47:44.307Z" hostname="0000deMacBook-Pro.local" tests="3" failures="0" errors="0" skipped="0" time="0.164645958">
+        <testcase classname="tests/rag/rag.test.ts" name="local RAG contract &gt; locks the approved model and never requires an embedding API key" time="0.001206958">
         </testcase>
-        <testcase classname="tests/unit/wallet.test.ts" name="calculateWalletMetrics &gt; does not calculate a capability conclusion for missing alignment" time="0.000380708">
+        <testcase classname="tests/rag/rag.test.ts" name="local RAG contract &gt; uses explicit degraded keyword fallback when local inference is unavailable" time="0.153964709">
+        </testcase>
+        <testcase classname="tests/rag/rag.test.ts" name="local RAG contract &gt; does not return vector results from a missing model" time="0.0086205">
         </testcase>
     </testsuite>
-    <testsuite name="tests/websocket/market-ws.test.ts" timestamp="2026-09-05T09:41:36.457Z" hostname="0000deMacBook-Pro.local" tests="6" failures="0" errors="0" skipped="0" time="0.021948875">
-        <testcase classname="tests/websocket/market-ws.test.ts" name="public Polymarket market websocket replay &gt; deduplicates events and records reconnect" time="0.001576916">
+    <testsuite name="tests/unit/a2a-local.test.ts" timestamp="2026-09-06T01:47:44.307Z" hostname="0000deMacBook-Pro.local" tests="3" failures="0" errors="0" skipped="0" time="0.01394675">
+        <testcase classname="tests/unit/a2a-local.test.ts" name="local A2A recorded surface &gt; screens multiple public addresses without inventing unavailable metrics" time="0.0070625">
         </testcase>
-        <testcase classname="tests/websocket/market-ws.test.ts" name="public Polymarket market websocket replay &gt; marks a stream stale without treating it as live" time="0.000145333">
+        <testcase classname="tests/unit/a2a-local.test.ts" name="local A2A recorded surface &gt; fails closed for live screening without relabelling it recorded" time="0.00374075">
         </testcase>
-        <testcase classname="tests/websocket/market-ws.test.ts" name="public Polymarket market websocket replay &gt; uses a bounded REST fallback and reconciles after reconnect" time="0.000318792">
+        <testcase classname="tests/unit/a2a-local.test.ts" name="local A2A recorded surface &gt; describes only the actual local MCP catalog and unimplemented capabilities honestly" time="0.001121708">
         </testcase>
-        <testcase classname="tests/websocket/market-ws.test.ts" name="public Polymarket market websocket replay &gt; paginates until the cursor ends and deduplicates hydration rows" time="0.000580625">
+    </testsuite>
+    <testsuite name="tests/unit/cluster-language.test.ts" timestamp="2026-09-06T01:47:44.307Z" hostname="0000deMacBook-Pro.local" tests="6" failures="0" errors="0" skipped="0" time="0.017151459">
+        <testcase classname="tests/unit/cluster-language.test.ts" name="cluster_without_verified_source &gt; passes the deterministic formal gate with five addresses" time="0.006769417">
         </testcase>
-        <testcase classname="tests/websocket/market-ws.test.ts" name="public Polymarket market websocket replay &gt; uses the four bounded hydration attempts without changing live status" time="0.016815459">
+        <testcase classname="tests/unit/cluster-language.test.ts" name="cluster_without_verified_source &gt; deduplicates baseline rows before applying the minimum-sample gate" time="0.001601625">
         </testcase>
-        <testcase classname="tests/websocket/market-ws.test.ts" name="public Polymarket market websocket replay &gt; hydrates a market trigger from the public Data API and reconciles duplicate rows" time="0.001503125">
+        <testcase classname="tests/unit/cluster-language.test.ts" name="cluster_without_verified_source &gt; uses a left-open/right-closed window and excludes SELL" time="0.003168917">
+        </testcase>
+        <testcase classname="tests/unit/cluster-language.test.ts" name="cluster_without_verified_source &gt; blocks formal alerts when the source state is unknown" time="0.001250834">
+        </testcase>
+        <testcase classname="tests/unit/cluster-language.test.ts" name="cluster_without_verified_source &gt; blocks a contradictory not_found result when coverage is incomplete" time="0.001205167">
+        </testcase>
+        <testcase classname="tests/unit/cluster-language.test.ts" name="cluster_without_verified_source &gt; returns insufficient_baseline instead of filling missing history" time="0.000453416">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/decimal.test.ts" timestamp="2026-09-06T01:47:44.308Z" hostname="0000deMacBook-Pro.local" tests="2" failures="0" errors="0" skipped="0" time="0.003520791">
+        <testcase classname="tests/unit/decimal.test.ts" name="fixed-point arithmetic &gt; parses decimal strings without binary threshold drift" time="0.001429625">
+        </testcase>
+        <testcase classname="tests/unit/decimal.test.ts" name="fixed-point arithmetic &gt; rejects invalid size, price and over-precise values" time="0.000176">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/evidence-time-units.test.ts" timestamp="2026-09-06T01:47:44.308Z" hostname="0000deMacBook-Pro.local" tests="7" failures="0" errors="0" skipped="0" time="0.007702583">
+        <testcase classname="tests/unit/evidence-time-units.test.ts" name="source_timestamp_uncertainty_minutes is denominated in minutes &gt; keeps a precise EDGAR acceptance timestamp below one minute, not at 60" time="0.004352">
+        </testcase>
+        <testcase classname="tests/unit/evidence-time-units.test.ts" name="source_timestamp_uncertainty_minutes is denominated in minutes &gt; expresses a date-only row as 720 minutes rather than 43200 seconds" time="0.000302875">
+        </testcase>
+        <testcase classname="tests/unit/evidence-time-units.test.ts" name="source_timestamp_uncertainty_minutes is denominated in minutes &gt; records the known GDELT aggregator lag as 15 minutes instead of null (C4)" time="0.000274375">
+        </testcase>
+        <testcase classname="tests/unit/evidence-time-units.test.ts" name="source_timestamp_uncertainty_minutes is denominated in minutes &gt; never claims zero uncertainty for a Hong Kong RSS item (C26)" time="0.000948083">
+        </testcase>
+        <testcase classname="tests/unit/evidence-time-units.test.ts" name="source_timestamp_uncertainty_minutes is denominated in minutes &gt; preserves the real GDELT language instead of hard-coding other (C27)" time="0.000212541">
+        </testcase>
+        <testcase classname="tests/unit/evidence-time-units.test.ts" name="release-order arithmetic converts minutes with the 60000 factor &gt; treats a 30-second gap under 1-minute uncertainty as indeterminate" time="0.000243916">
+        </testcase>
+        <testcase classname="tests/unit/evidence-time-units.test.ts" name="release-order arithmetic converts minutes with the 60000 factor &gt; still resolves an order when the gap exceeds the combined uncertainty" time="0.000087625">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/evidence-time.test.ts" timestamp="2026-09-06T01:47:44.309Z" hostname="0000deMacBook-Pro.local" tests="11" failures="0" errors="0" skipped="0" time="0.011239208">
+        <testcase classname="tests/unit/evidence-time.test.ts" name="documented_language_window &gt; requires precise paired public timestamps for a language gap" time="0.003098625">
+        </testcase>
+        <testcase classname="tests/unit/evidence-time.test.ts" name="documented_language_window &gt; keeps date-only timing unknown" time="0.000426959">
+        </testcase>
+        <testcase classname="tests/unit/evidence-time.test.ts" name="documented_language_window &gt; does not verify a pair from publisher equality alone" time="0.0002375">
+        </testcase>
+        <testcase classname="tests/unit/evidence-time.test.ts" name="documented_language_window &gt; does not let discovery-only observations pass official-id pairing" time="0.000084458">
+        </testcase>
+        <testcase classname="tests/unit/evidence-time.test.ts" name="documented_language_window &gt; accepts an official cross-link only with normalized publisher, topic and date" time="0.000135791">
+        </testcase>
+        <testcase classname="tests/unit/evidence-time.test.ts" name="documented_language_window &gt; returns indeterminate when calibrated timestamp intervals overlap" time="0.000157375">
+        </testcase>
+        <testcase classname="tests/unit/evidence-time.test.ts" name="documented_language_window &gt; does not derive not_found from incomplete or date-only coverage" time="0.000123084">
+        </testcase>
+        <testcase classname="tests/unit/evidence-time.test.ts" name="documented_language_window &gt; keeps GDELT seendate as discovery first-seen, never published_at" time="0.00160775">
+        </testcase>
+        <testcase classname="tests/unit/evidence-time.test.ts" name="documented_language_window &gt; normalizes bilingual RSS items with public provenance" time="0.002117709">
+        </testcase>
+        <testcase classname="tests/unit/evidence-time.test.ts" name="documented_language_window &gt; reads the HKMA result.records shape without promoting date-only rows" time="0.000745708">
+        </testcase>
+        <testcase classname="tests/unit/evidence-time.test.ts" name="documented_language_window &gt; keeps a late language observation as a new revision" time="0.000474042">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/glossary-safety.test.ts" timestamp="2026-09-06T01:47:44.310Z" hostname="0000deMacBook-Pro.local" tests="27" failures="0" errors="0" skipped="0" time="0.041240584">
+        <testcase classname="tests/unit/glossary-safety.test.ts" name="glossary structural integrity &gt; has no duplicate term ids" time="0.001214375">
+        </testcase>
+        <testcase classname="tests/unit/glossary-safety.test.ts" name="glossary structural integrity &gt; keys each entry under its own term_id" time="0.001146334">
+        </testcase>
+        <testcase classname="tests/unit/glossary-safety.test.ts" name="glossary structural integrity &gt; has zero pending definitions" time="0.000205375">
+        </testcase>
+        <testcase classname="tests/unit/glossary-safety.test.ts" name="glossary structural integrity &gt; reports PASS with no unmapped or duplicate console terms" time="0.000223">
+        </testcase>
+        <testcase classname="tests/unit/glossary-safety.test.ts" name="bilingual completeness &gt; provides a non-empty label and definition in every locale" time="0.003366667">
+        </testcase>
+        <testcase classname="tests/unit/glossary-safety.test.ts" name="bilingual completeness &gt; provides both locales whenever a limitation is present" time="0.000593417">
+        </testcase>
+        <testcase classname="tests/unit/glossary-safety.test.ts" name="bilingual completeness &gt; keeps identical locale key sets on every entry" time="0.002729334">
+        </testcase>
+        <testcase classname="tests/unit/glossary-safety.test.ts" name="bilingual completeness &gt; keeps identical key sets across dictionary locales" time="0.000207083">
+        </testcase>
+        <testcase classname="tests/unit/glossary-safety.test.ts" name="bilingual completeness &gt; carries no placeholder or untranslated marker text" time="0.028141875">
+        </testcase>
+        <testcase classname="tests/unit/glossary-safety.test.ts" name="output policy: no asserted claims about persons &gt; never asserts &quot;knew first&quot;" time="0.000376166">
+        </testcase>
+        <testcase classname="tests/unit/glossary-safety.test.ts" name="output policy: no asserted claims about persons &gt; never asserts &quot;speaks Chinese&quot;" time="0.000183709">
+        </testcase>
+        <testcase classname="tests/unit/glossary-safety.test.ts" name="output policy: no asserted claims about persons &gt; never asserts &quot;better judgment&quot;" time="0.000092416">
+        </testcase>
+        <testcase classname="tests/unit/glossary-safety.test.ts" name="output policy: no asserted claims about persons &gt; never asserts &quot;worth following&quot;" time="0.000060916">
+        </testcase>
+        <testcase classname="tests/unit/glossary-safety.test.ts" name="output policy: no asserted claims about persons &gt; never asserts &quot;decide whether to follow&quot;" time="0.00007675">
+        </testcase>
+        <testcase classname="tests/unit/glossary-safety.test.ts" name="output policy: no asserted claims about persons &gt; never asserts &quot;decide how to follow&quot;" time="0.000063792">
+        </testcase>
+        <testcase classname="tests/unit/glossary-safety.test.ts" name="output policy: no asserted claims about persons &gt; never asserts &quot;他是先知道&quot;" time="0.000052">
+        </testcase>
+        <testcase classname="tests/unit/glossary-safety.test.ts" name="output policy: no asserted claims about persons &gt; never asserts &quot;先知道&quot;" time="0.000053916">
+        </testcase>
+        <testcase classname="tests/unit/glossary-safety.test.ts" name="output policy: no asserted claims about persons &gt; never asserts &quot;决定跟不跟&quot;" time="0.000049708">
+        </testcase>
+        <testcase classname="tests/unit/glossary-safety.test.ts" name="output policy: no asserted claims about persons &gt; never asserts &quot;决定怎么跟&quot;" time="0.000052875">
+        </testcase>
+        <testcase classname="tests/unit/glossary-safety.test.ts" name="output policy: no asserted claims about persons &gt; never asserts &quot;值不值得跟单&quot;" time="0.000066583">
+        </testcase>
+        <testcase classname="tests/unit/glossary-safety.test.ts" name="output policy: insider wording only under negation &gt; still ships the existing safety disclaimers" time="0.000319458">
+        </testcase>
+        <testcase classname="tests/unit/glossary-safety.test.ts" name="output policy: insider wording only under negation &gt; negates every insider mention" time="0.000345583">
+        </testcase>
+        <testcase classname="tests/unit/glossary-safety.test.ts" name="TermId surface is not narrowed &gt; resolves every runtime-constructed worker term id" time="0.000157792">
+        </testcase>
+        <testcase classname="tests/unit/glossary-safety.test.ts" name="TermId surface is not narrowed &gt; resolves the error-code and state term ids the UI falls back to" time="0.00009175">
+        </testcase>
+        <testcase classname="tests/unit/glossary-safety.test.ts" name="TermId surface is not narrowed &gt; resolves every cluster dimension term id" time="0.0000695">
+        </testcase>
+        <testcase classname="tests/unit/glossary-safety.test.ts" name="TermId surface is not narrowed &gt; resolves the wallet-discovery and provenance term ids" time="0.000080125">
+        </testcase>
+        <testcase classname="tests/unit/glossary-safety.test.ts" name="locale typing &gt; keeps zh-CN and en as the supported locales" time="0.000046">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/glossary.test.ts" timestamp="2026-09-06T01:47:44.312Z" hostname="0000deMacBook-Pro.local" tests="3" failures="0" errors="0" skipped="0" time="0.0023905">
+        <testcase classname="tests/unit/glossary.test.ts" name="approved glossary &gt; has unique approved definitions with no pending entries" time="0.001105708">
+        </testcase>
+        <testcase classname="tests/unit/glossary.test.ts" name="approved glossary &gt; keeps D1 BUY-only and D4 conservative" time="0.000299583">
+        </testcase>
+        <testcase classname="tests/unit/glossary.test.ts" name="approved glossary &gt; covers every displayed metric and protected status" time="0.000123541">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/http.test.ts" timestamp="2026-09-06T01:47:44.312Z" hostname="0000deMacBook-Pro.local" tests="2" failures="0" errors="0" skipped="0" time="0.021310625">
+        <testcase classname="tests/unit/http.test.ts" name="bounded upstream HTTP adapter &gt; retries a 429 with Retry-After and returns the successful attempt" time="0.019647125">
+        </testcase>
+        <testcase classname="tests/unit/http.test.ts" name="bounded upstream HTTP adapter &gt; returns a structured timeout/upstream error after the configured attempt limit" time="0.000844959">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/i18n.test.ts" timestamp="2026-09-06T01:47:44.312Z" hostname="0000deMacBook-Pro.local" tests="2" failures="0" errors="0" skipped="0" time="0.002350042">
+        <testcase classname="tests/unit/i18n.test.ts" name="UI locale contract &gt; defaults invalid or missing locale values to Simplified Chinese" time="0.000962375">
+        </testcase>
+        <testcase classname="tests/unit/i18n.test.ts" name="UI locale contract &gt; keeps identical typed dictionary keys in both locales" time="0.000599666">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/markdown.test.ts" timestamp="2026-09-06T01:47:44.313Z" hostname="0000deMacBook-Pro.local" tests="1" failures="0" errors="0" skipped="0" time="0.002321834">
+        <testcase classname="tests/unit/markdown.test.ts" name="Audit Markdown renderer &gt; localizes headings while preserving raw IDs, statuses, URLs, flags, and disclaimer" time="0.001497458">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/observability.test.ts" timestamp="2026-09-06T01:47:44.313Z" hostname="0000deMacBook-Pro.local" tests="3" failures="0" errors="0" skipped="0" time="0.003567542">
+        <testcase classname="tests/unit/observability.test.ts" name="audit observability contract &gt; validates a safe event and enforces monotonically increasing sequences" time="0.002238042">
+        </testcase>
+        <testcase classname="tests/unit/observability.test.ts" name="audit observability contract &gt; rejects credentials, payment signatures, JWTs, and private-key-shaped text" time="0.000299583">
+        </testcase>
+        <testcase classname="tests/unit/observability.test.ts" name="audit observability contract &gt; rejects absolute artifact paths and out-of-budget event cost" time="0.00021075">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/p1-contract-units.test.ts" timestamp="2026-09-06T01:47:44.313Z" hostname="0000deMacBook-Pro.local" tests="10" failures="0" errors="0" skipped="0" time="0.006192375">
+        <testcase classname="tests/unit/p1-contract-units.test.ts" name="C15 clipped-logit repricing scale &gt; anchors the log-odds threshold to the approved 0.08 linear gate at p=0.50" time="0.001411625">
+        </testcase>
+        <testcase classname="tests/unit/p1-contract-units.test.ts" name="C15 clipped-logit repricing scale &gt; stops compressing tail moves, which the linear scale under-weighted ~5x" time="0.00014625">
+        </testcase>
+        <testcase classname="tests/unit/p1-contract-units.test.ts" name="C15 clipped-logit repricing scale &gt; reuses the D5 clipped logit so 0 and 1 do not produce infinities" time="0.000221792">
+        </testcase>
+        <testcase classname="tests/unit/p1-contract-units.test.ts" name="C15 clipped-logit repricing scale &gt; gates detection on log-odds magnitude and publishes the field" time="0.00227325">
+        </testcase>
+        <testcase classname="tests/unit/p1-contract-units.test.ts" name="C15 clipped-logit repricing scale &gt; rejects moves below the recalibrated gate without falling back to 0" time="0.000181208">
+        </testcase>
+        <testcase classname="tests/unit/p1-contract-units.test.ts" name="C22 publication skew tolerance &gt; tightens the tolerance well below the previous 24h allowance" time="0.00011775">
+        </testcase>
+        <testcase classname="tests/unit/p1-contract-units.test.ts" name="C22 publication skew tolerance &gt; flags timestamps beyond the tolerance as timestamp_uncertain, not valid" time="0.000386042">
+        </testcase>
+        <testcase classname="tests/unit/p1-contract-units.test.ts" name="C22 publication skew tolerance &gt; does not treat a future timestamp as a valid publication time" time="0.000156334">
+        </testcase>
+        <testcase classname="tests/unit/p1-contract-units.test.ts" name="reason code vocabulary &gt; permits exactly the eight approved codes" time="0.000204917">
+        </testcase>
+        <testcase classname="tests/unit/p1-contract-units.test.ts" name="reason code vocabulary &gt; rejects codes outside the approved set" time="0.000137917">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/p2-metric-envelope.test.ts" timestamp="2026-09-06T01:47:44.314Z" hostname="0000deMacBook-Pro.local" tests="32" failures="0" errors="0" skipped="0" time="0.017142542">
+        <testcase classname="tests/unit/p2-metric-envelope.test.ts" name="D8 metric_status is a computability axis only &gt; carries the four D8 values, with not_enabled kept as a distinct case" time="0.001361958">
+        </testcase>
+        <testcase classname="tests/unit/p2-metric-envelope.test.ts" name="D8 metric_status is a computability axis only &gt; rejects data_status values as metric statuses and vice versa" time="0.000251833">
+        </testcase>
+        <testcase classname="tests/unit/p2-metric-envelope.test.ts" name="D8 metric_status is a computability axis only &gt; allows every combination of the two axes independently" time="0.002195208">
+        </testcase>
+        <testcase classname="tests/unit/p2-metric-envelope.test.ts" name="D8 metric_status is a computability axis only &gt; refuses to build an uncomputable envelope that carries a value" time="0.000648041">
+        </testcase>
+        <testcase classname="tests/unit/p2-metric-envelope.test.ts" name="D8 metric_status is a computability axis only &gt; refuses an uncomputable envelope with no reason_code" time="0.000146041">
+        </testcase>
+        <testcase classname="tests/unit/p2-metric-envelope.test.ts" name="D8 90-day metrics are unavailable by measurement &gt; reports incomplete_window with a null value, never 0 and never extrapolated" time="0.000337542">
+        </testcase>
+        <testcase classname="tests/unit/p2-metric-envelope.test.ts" name="D8 exit-derived metrics are unavailable, not zero &gt; reports flip_rate as exit_events_unavailable" time="0.000252958">
+        </testcase>
+        <testcase classname="tests/unit/p2-metric-envelope.test.ts" name="D8 exit-derived metrics are unavailable, not zero &gt; reports median_exposure_minutes as exit_events_unavailable in minutes" time="0.002079333">
+        </testcase>
+        <testcase classname="tests/unit/p2-metric-envelope.test.ts" name="D8 exit-derived metrics are unavailable, not zero &gt; records that side=BUY-only data is the reason, so /trades.side is not reused" time="0.002729875">
+        </testcase>
+        <testcase classname="tests/unit/p2-metric-envelope.test.ts" name="D8 window completeness is judged, not assumed &gt; marks complete only when history reaches the requested start and paging finished" time="0.000196666">
+        </testcase>
+        <testcase classname="tests/unit/p2-metric-envelope.test.ts" name="D8 window completeness is judged, not assumed &gt; downgrades to partial with pagination_cap when the pager stopped early" time="0.000072916">
+        </testcase>
+        <testcase classname="tests/unit/p2-metric-envelope.test.ts" name="D8 window completeness is judged, not assumed &gt; downgrades to partial when history does not reach the requested start" time="0.000111333">
+        </testcase>
+        <testcase classname="tests/unit/p2-metric-envelope.test.ts" name="D8 window completeness is judged, not assumed &gt; reports unavailable, not zero coverage, when nothing was observed" time="0.000079625">
+        </testcase>
+        <testcase classname="tests/unit/p2-metric-envelope.test.ts" name="D8 window completeness is judged, not assumed &gt; downgrades to partial when integrity checks fail even if the range looks right" time="0.000060667">
+        </testcase>
+        <testcase classname="tests/unit/p2-metric-envelope.test.ts" name="as_of is derived from the response, never the client clock &gt; subtracts age from date so cache staleness is not hidden" time="0.000118958">
+        </testcase>
+        <testcase classname="tests/unit/p2-metric-envelope.test.ts" name="as_of is derived from the response, never the client clock &gt; uses the date header when no age is present" time="0.000059166">
+        </testcase>
+        <testcase classname="tests/unit/p2-metric-envelope.test.ts" name="as_of is derived from the response, never the client clock &gt; falls back to last-modified before giving up" time="0.000058166">
+        </testcase>
+        <testcase classname="tests/unit/p2-metric-envelope.test.ts" name="as_of is derived from the response, never the client clock &gt; prefers a payload-supplied timestamp when the response carries one" time="0.000039583">
+        </testcase>
+        <testcase classname="tests/unit/p2-metric-envelope.test.ts" name="as_of is derived from the response, never the client clock &gt; returns unknown rather than inventing a client timestamp" time="0.000533292">
+        </testcase>
+        <testcase classname="tests/unit/p2-metric-envelope.test.ts" name="as_of is derived from the response, never the client clock &gt; ignores a zero or malformed age instead of shifting the timestamp" time="0.000718417">
+        </testcase>
+        <testcase classname="tests/unit/p2-metric-envelope.test.ts" name="wallet metrics expose D8 envelopes &gt; returns a well-formed envelope for every wallet metric" time="0.000800083">
+        </testcase>
+        <testcase classname="tests/unit/p2-metric-envelope.test.ts" name="wallet metrics expose D8 envelopes &gt; keeps the 90-day and exit-derived metrics unavailable with codes and no zeros" time="0.000228125">
+        </testcase>
+        <testcase classname="tests/unit/p2-metric-envelope.test.ts" name="wallet metrics expose D8 envelopes &gt; marks a measured rate partial when pagination completeness is unproven" time="0.000241291">
+        </testcase>
+        <testcase classname="tests/unit/p2-metric-envelope.test.ts" name="wallet metrics expose D8 envelopes &gt; reports an unavailable coverage envelope, not 0, when no trades are observed" time="0.00018975">
+        </testcase>
+        <testcase classname="tests/unit/p2-metric-envelope.test.ts" name="wallet metrics expose D8 envelopes &gt; does not use the client clock for as_of by default" time="0.000120458">
+        </testcase>
+        <testcase classname="tests/unit/p2-metric-envelope.test.ts" name="wallet metrics expose D8 envelopes &gt; threads a server-derived as_of through every envelope when supplied" time="0.000171791">
+        </testcase>
+        <testcase classname="tests/unit/p2-metric-envelope.test.ts" name="C20/D8 report meta declares the 90-day window unavailable &gt; publishes the requested window with an explicit unavailable status" time="0.000203333">
+        </testcase>
+        <testcase classname="tests/unit/p2-metric-envelope.test.ts" name="C24 MCP catalog data_status reflects real behaviour &gt; no longer hardcodes recorded for all eight tools" time="0.000274291">
+        </testcase>
+        <testcase classname="tests/unit/p2-metric-envelope.test.ts" name="C24 MCP catalog data_status reflects real behaviour &gt; follows the app mode for tools that actually serve analysis data" time="0.000313917">
+        </testcase>
+        <testcase classname="tests/unit/p2-metric-envelope.test.ts" name="C24 MCP catalog data_status reflects real behaviour &gt; labels hardcoded stub handlers synthetic rather than recorded" time="0.000507833">
+        </testcase>
+        <testcase classname="tests/unit/p2-metric-envelope.test.ts" name="C24 MCP catalog data_status reflects real behaviour &gt; reports process state as live in both modes" time="0.000245834">
+        </testcase>
+        <testcase classname="tests/unit/p2-metric-envelope.test.ts" name="C24 MCP catalog data_status reflects real behaviour &gt; documents the basis for every tool and stays read-only" time="0.000396042">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/parser.test.ts" timestamp="2026-09-06T01:47:44.316Z" hostname="0000deMacBook-Pro.local" tests="2" failures="0" errors="0" skipped="0" time="0.002652">
+        <testcase classname="tests/unit/parser.test.ts" name="parseInput &gt; accepts wallet, market, event and profile inputs" time="0.001617542">
+        </testcase>
+        <testcase classname="tests/unit/parser.test.ts" name="parseInput &gt; rejects malformed and unsupported inputs before any upstream call" time="0.000212208">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/payment.test.ts" timestamp="2026-09-06T01:47:44.316Z" hostname="0000deMacBook-Pro.local" tests="2" failures="0" errors="0" skipped="0" time="0.004032084">
+        <testcase classname="tests/unit/payment.test.ts" name="x402 payment policy &gt; accepts only the approved Base Sepolia exact terms" time="0.001629083">
+        </testcase>
+        <testcase classname="tests/unit/payment.test.ts" name="x402 payment policy &gt; rejects wrong network, asset, amount, recipient, and resource policy" time="0.00068975">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/provider.test.ts" timestamp="2026-09-06T01:47:44.316Z" hostname="0000deMacBook-Pro.local" tests="3" failures="0" errors="0" skipped="0" time="0.002808125">
+        <testcase classname="tests/unit/provider.test.ts" name="Anthropic attribution contract &gt; accepts only supplied evidence IDs in an explicitly synthetic response" time="0.001342834">
+        </testcase>
+        <testcase classname="tests/unit/provider.test.ts" name="Anthropic attribution contract &gt; downgrades a response with no valid cited evidence to unattributed" time="0.000162375">
+        </testcase>
+        <testcase classname="tests/unit/provider.test.ts" name="Anthropic attribution contract &gt; rejects invalid JSON and exposes missing live credentials without calling another provider" time="0.000557667">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/report-assembler.test.ts" timestamp="2026-09-06T01:47:44.317Z" hostname="0000deMacBook-Pro.local" tests="1" failures="0" errors="0" skipped="0" time="0.003089875">
+        <testcase classname="tests/unit/report-assembler.test.ts" name="report assembler &gt; builds the public Summary and Detail contracts without changing the bundle" time="0.002366833">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/repricing.test.ts" timestamp="2026-09-06T01:47:44.317Z" hostname="0000deMacBook-Pro.local" tests="2" failures="0" errors="0" skipped="0" time="0.005245208">
+        <testcase classname="tests/unit/repricing.test.ts" name="detectRepricingWindows &gt; uses the inclusive 0.32 log-odds threshold and 60-minute boundary" time="0.004074375">
+        </testcase>
+        <testcase classname="tests/unit/repricing.test.ts" name="detectRepricingWindows &gt; sorts input and deduplicates overlapping windows" time="0.000389125">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/sentinel-outcome-index.test.ts" timestamp="2026-09-06T01:47:44.317Z" hostname="0000deMacBook-Pro.local" tests="19" failures="0" errors="0" skipped="0" time="0.010433125">
+        <testcase classname="tests/unit/sentinel-outcome-index.test.ts" name="D7 sentinel outcomeIndex=999 normalizes to unknown &gt; maps 999 to null and — the load-bearing assertion — not to 0" time="0.001424">
+        </testcase>
+        <testcase classname="tests/unit/sentinel-outcome-index.test.ts" name="D7 sentinel outcomeIndex=999 normalizes to unknown &gt; rejects every falsy/default stand-in for the unknown index" time="0.000277958">
+        </testcase>
+        <testcase classname="tests/unit/sentinel-outcome-index.test.ts" name="D7 sentinel outcomeIndex=999 normalizes to unknown &gt; produces neither YES nor NO for the sentinel" time="0.000200209">
+        </testcase>
+        <testcase classname="tests/unit/sentinel-outcome-index.test.ts" name="D7 sentinel outcomeIndex=999 normalizes to unknown &gt; does not let a plausible outcome string backfill the sentinel index" time="0.000367084">
+        </testcase>
+        <testcase classname="tests/unit/sentinel-outcome-index.test.ts" name="D7 sentinel outcomeIndex=999 normalizes to unknown &gt; keeps the sentinel out of same-side computation, as null not false" time="0.000214958">
+        </testcase>
+        <testcase classname="tests/unit/sentinel-outcome-index.test.ts" name="D7 sentinel outcomeIndex=999 normalizes to unknown &gt; keeps the sentinel out of economic direction" time="0.000860542">
+        </testcase>
+        <testcase classname="tests/unit/sentinel-outcome-index.test.ts" name="D7 sentinel outcomeIndex=999 normalizes to unknown &gt; reports metric_status/reason_code through the approved envelope" time="0.00144025">
+        </testcase>
+        <testcase classname="tests/unit/sentinel-outcome-index.test.ts" name="D7 legitimate indices are untouched &gt; treats 0 as a real index, not as unknown" time="0.000198375">
+        </testcase>
+        <testcase classname="tests/unit/sentinel-outcome-index.test.ts" name="D7 legitimate indices are untouched &gt; treats 1 as a real index" time="0.000310792">
+        </testcase>
+        <testcase classname="tests/unit/sentinel-outcome-index.test.ts" name="D7 legitimate indices are untouched &gt; still computes direction and same-side for 0/1 pairs" time="0.000426792">
+        </testcase>
+        <testcase classname="tests/unit/sentinel-outcome-index.test.ts" name="D7 legitimate indices are untouched &gt; does not fall back to 0 for missing or malformed indices either" time="0.000807834">
+        </testcase>
+        <testcase classname="tests/unit/sentinel-outcome-index.test.ts" name="D7 measured /activity distribution drives the guard &gt; TRADE rows normalize per the recorded distribution" time="0.000509">
+        </testcase>
+        <testcase classname="tests/unit/sentinel-outcome-index.test.ts" name="D7 measured /activity distribution drives the guard &gt; REDEEM rows normalize per the recorded distribution" time="0.001189209">
+        </testcase>
+        <testcase classname="tests/unit/sentinel-outcome-index.test.ts" name="D7 measured /activity distribution drives the guard &gt; MERGE rows normalize per the recorded distribution" time="0.000088209">
+        </testcase>
+        <testcase classname="tests/unit/sentinel-outcome-index.test.ts" name="D7 measured /activity distribution drives the guard &gt; holds the sentinel on TRADE, not only on REDEEM/MERGE" time="0.000093417">
+        </testcase>
+        <testcase classname="tests/unit/sentinel-outcome-index.test.ts" name="D7 measured /activity distribution drives the guard &gt; has MERGE rows that are entirely unknown" time="0.000159791">
+        </testcase>
+        <testcase classname="tests/unit/sentinel-outcome-index.test.ts" name="D7 /trades needs the same guard &gt; observes the sentinel on /trades, so it is not activity-only" time="0.00013">
+        </testcase>
+        <testcase classname="tests/unit/sentinel-outcome-index.test.ts" name="D7 /trades needs the same guard &gt; normalizes /trades sentinel rows identically to /activity" time="0.000104">
+        </testcase>
+        <testcase classname="tests/unit/sentinel-outcome-index.test.ts" name="D7 /trades needs the same guard &gt; does not treat a zero-sentinel capture as proof of absence" time="0.000064958">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/source-calibration.test.ts" timestamp="2026-09-06T01:47:44.318Z" hostname="0000deMacBook-Pro.local" tests="3" failures="0" errors="0" skipped="0" time="0.002750834">
+        <testcase classname="tests/unit/source-calibration.test.ts" name="timestamp calibration &gt; refuses to create a safety bound below thirty independent samples" time="0.001294375">
+        </testcase>
+        <testcase classname="tests/unit/source-calibration.test.ts" name="timestamp calibration &gt; uses absolute-error nearest-rank P95 at the minimum sample count" time="0.000243">
+        </testcase>
+        <testcase classname="tests/unit/source-calibration.test.ts" name="timestamp calibration &gt; does not substitute the median for the safety bound" time="0.000427125">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/ui-integrity.test.ts" timestamp="2026-09-06T01:47:44.319Z" hostname="0000deMacBook-Pro.local" tests="15" failures="0" errors="0" skipped="0" time="0.004741208">
+        <testcase classname="tests/unit/ui-integrity.test.ts" name="visual token consolidation &gt; keeps the seven baseline brand tokens at their approved values" time="0.0010045">
+        </testcase>
+        <testcase classname="tests/unit/ui-integrity.test.ts" name="visual token consolidation &gt; rejects the Pitch palette" time="0.000261333">
+        </testcase>
+        <testcase classname="tests/unit/ui-integrity.test.ts" name="visual token consolidation &gt; declares every console and surface colour as a named token" time="0.000214292">
+        </testcase>
+        <testcase classname="tests/unit/ui-integrity.test.ts" name="visual token consolidation &gt; leaves no raw hex literal in the client component" time="0.000218709">
+        </testcase>
+        <testcase classname="tests/unit/ui-integrity.test.ts" name="visual token consolidation &gt; preserves the hard-shadow, stamp and focus-visible primitives" time="0.000158709">
+        </testcase>
+        <testcase classname="tests/unit/ui-integrity.test.ts" name="session request count integrity &gt; increments only after the fetch resolves, so failed requests are not counted" time="0.000169583">
+        </testcase>
+        <testcase classname="tests/unit/ui-integrity.test.ts" name="session request count integrity &gt; counts from zero with no fabricated baseline" time="0.000166417">
+        </testcase>
+        <testcase classname="tests/unit/ui-integrity.test.ts" name="no fabricated demo content &gt; contains none of the retired synthetic UI fixtures" time="0.000252333">
+        </testcase>
+        <testcase classname="tests/unit/ui-integrity.test.ts" name="no fabricated demo content &gt; refuses to render synthetic payloads in the user demo" time="0.000097125">
+        </testcase>
+        <testcase classname="tests/unit/ui-integrity.test.ts" name="no fabricated demo content &gt; never echoes the payment challenge and keeps the payload masked" time="0.000179541">
+        </testcase>
+        <testcase classname="tests/unit/ui-integrity.test.ts" name="accessibility &gt; announces loading, error and success regions" time="0.000124834">
+        </testcase>
+        <testcase classname="tests/unit/ui-integrity.test.ts" name="accessibility &gt; keeps the tablist keyboard operable via a roving tabindex" time="0.000171083">
+        </testcase>
+        <testcase classname="tests/unit/ui-integrity.test.ts" name="accessibility &gt; drives the document language from the negotiated locale" time="0.000075875">
+        </testcase>
+        <testcase classname="tests/unit/ui-integrity.test.ts" name="dev origin allowlist &gt; allows loopback dev origins without widening the host binding" time="0.000044209">
+        </testcase>
+        <testcase classname="tests/unit/ui-integrity.test.ts" name="test hooks &gt; preserves the data-testid contract used by the Playwright suite" time="0.000269334">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/ui-state.test.ts" timestamp="2026-09-06T01:47:44.320Z" hostname="0000deMacBook-Pro.local" tests="1" failures="0" errors="0" skipped="0" time="0.001708792">
+        <testcase classname="tests/unit/ui-state.test.ts" name="single-page UI state mapping &gt; maps HTTP and report outcomes to the approved six states" time="0.000970125">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/wallet-discovery-recorded.test.ts" timestamp="2026-09-06T01:47:44.320Z" hostname="0000deMacBook-Pro.local" tests="21" failures="0" errors="0" skipped="0" time="0.028410208">
+        <testcase classname="tests/unit/wallet-discovery-recorded.test.ts" name="wallet-discovery recorded fixtures &gt; marks both fixtures recorded and never mentions synthetic" time="0.001334542">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-recorded.test.ts" name="wallet-discovery recorded fixtures &gt; derives as_of from response headers, not the run clock" time="0.0002655">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-recorded.test.ts" name="wallet-discovery recorded fixtures &gt; keeps upstream rank as a string alongside the numeric cast" time="0.000494042">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-recorded.test.ts" name="wallet-discovery recorded fixtures &gt; records that /trades exposed no exit leg" time="0.000165042">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-recorded.test.ts" name="wallet-discovery recorded fixtures &gt; interprets realizedPnl as decimal USDC, not 6-decimal fixed point" time="0.000149167">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-recorded.test.ts" name="leaderboard service rows &gt; returns exactly 20 rows with real upstream display fields" time="0.002676416">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-recorded.test.ts" name="leaderboard service rows &gt; every row carries full envelopes on every metric" time="0.013568417">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-recorded.test.ts" name="leaderboard service rows &gt; captures detail for exactly one wallet" time="0.000304708">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-recorded.test.ts" name="leaderboard service rows &gt; never reports 0 for the 19 uncaptured wallets" time="0.005229167">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-recorded.test.ts" name="leaderboard service rows &gt; does not derive uncaptured metrics from vol/pnl" time="0.001776417">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-recorded.test.ts" name="detail wallet outcome metrics &gt; computes the /trades-derived 7d metrics from recorded rows" time="0.000181542">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-recorded.test.ts" name="detail wallet outcome metrics &gt; keeps flip_rate and median_exposure_minutes unavailable on exit evidence" time="0.000109833">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-recorded.test.ts" name="detail wallet outcome metrics &gt; reports profile_age_days as profile_endpoint_unverified" time="0.000063834">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-recorded.test.ts" name="detail wallet outcome metrics &gt; withholds realized_pnl_7d and win_rate_7d under the pagination cap" time="0.000128209">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-recorded.test.ts" name="detail wallet outcome metrics &gt; reports activity-window metrics as incomplete_window, not zero" time="0.000089958">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-recorded.test.ts" name="detail wallet outcome metrics &gt; reports provider-less metrics as provider_unavailable" time="0.000071166">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-recorded.test.ts" name="detail wallet outcome metrics &gt; holds every 90-day metric unavailable on incomplete_window" time="0.000158542">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-recorded.test.ts" name="detail wallet outcome metrics &gt; emits no maximum-drawdown metric" time="0.000239875">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-recorded.test.ts" name="detail wallet outcome metrics &gt; uses only safe metric names" time="0.000190458">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-recorded.test.ts" name="detail wallet registry &gt; lists the outcome wallet and both attribution wallets" time="0.000232583">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-recorded.test.ts" name="detail wallet registry &gt; does not inject attribution wallets into the ranked rows" time="0.000048667">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/wallet-discovery-ui.test.ts" timestamp="2026-09-06T01:47:44.322Z" hostname="0000deMacBook-Pro.local" tests="21" failures="0" errors="0" skipped="0" time="0.031496542">
+        <testcase classname="tests/unit/wallet-discovery-ui.test.ts" name="missing-value formatting &gt; renders a null value as an em dash, never as 0" time="0.002272125">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-ui.test.ts" name="missing-value formatting &gt; renders a null ratio as n/a so it cannot be read as 0%" time="0.000298916">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-ui.test.ts" name="missing-value formatting &gt; flags a missing metric so the UI can label it" time="0.000217458">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-ui.test.ts" name="coverage gate &gt; drops a lead rate whose coverage sits under 0.40" time="0.000210458">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-ui.test.ts" name="coverage gate &gt; keeps a value whose coverage clears the gate" time="0.000087292">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-ui.test.ts" name="coverage gate &gt; uses the same 0.40 threshold as the engine" time="0.000061875">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-ui.test.ts" name="leaderboard view model &gt; exposes 20 rows with 8 metric columns" time="0.000565583">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-ui.test.ts" name="leaderboard view model &gt; derives as_of from the capture, strictly before now" time="0.000136458">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-ui.test.ts" name="leaderboard view model &gt; links only the one captured row" time="0.000164875">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-ui.test.ts" name="leaderboard view model &gt; shows an em dash for every metric of the 19 uncaptured rows" time="0.005696333">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-ui.test.ts" name="leaderboard view model &gt; keeps the two attribution wallets out of the ranked rows" time="0.000220708">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-ui.test.ts" name="wallet detail view model &gt; computes real Outcome values for the captured wallet" time="0.000550417">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-ui.test.ts" name="wallet detail view model &gt; nulls every Outcome field for a row-only wallet without 404ing" time="0.000556792">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-ui.test.ts" name="wallet detail view model &gt; gives the unranked attribution wallet a null rank" time="0.000241458">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-ui.test.ts" name="wallet detail view model &gt; says nothing about an address that was never captured" time="0.000233666">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-ui.test.ts" name="wallet detail view model &gt; abstains from every attribution field and lists only legal verdicts" time="0.001816042">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-ui.test.ts" name="wallet detail view model &gt; keeps the Fit group unavailable with all six field names present" time="0.000737417">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-ui.test.ts" name="wallet detail view model &gt; never emits a non-recorded data_status across any group" time="0.000315416">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-ui.test.ts" name="forbidden vocabulary &gt; uses none of the banned causal or advisory phrases" time="0.005753875">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-ui.test.ts" name="forbidden vocabulary &gt; reports exposure as median_exposure_minutes rather than a drawdown" time="0.004991375">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery-ui.test.ts" name="forbidden vocabulary &gt; never presents a recorded surface as live" time="0.005211292">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/wallet-discovery.test.ts" timestamp="2026-09-06T01:47:44.323Z" hostname="0000deMacBook-Pro.local" tests="3" failures="0" errors="0" skipped="0" time="0.003366917">
+        <testcase classname="tests/unit/wallet-discovery.test.ts" name="recorded wallet discovery snapshot &gt; contains exactly twenty source rows with stable ranks and recorded provenance" time="0.002103083">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery.test.ts" name="recorded wallet discovery snapshot &gt; keeps detail presets separate from leaderboard metrics" time="0.000251041">
+        </testcase>
+        <testcase classname="tests/unit/wallet-discovery.test.ts" name="recorded wallet discovery snapshot &gt; has approved bilingual glossary entries for all newly visible wallet fields" time="0.000166834">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/wallet.test.ts" timestamp="2026-09-06T01:47:44.323Z" hostname="0000deMacBook-Pro.local" tests="4" failures="0" errors="0" skipped="0" time="0.006282208">
+        <testcase classname="tests/unit/wallet.test.ts" name="calculateWalletMetrics &gt; gates lead rate below 40% coverage" time="0.003809834">
+        </testcase>
+        <testcase classname="tests/unit/wallet.test.ts" name="calculateWalletMetrics &gt; reports an uncomputable coverage rate as null, never 0, when no trades are observed" time="0.001141">
+        </testcase>
+        <testcase classname="tests/unit/wallet.test.ts" name="calculateWalletMetrics &gt; marks a genuinely measured rate as complete so it stays distinct from null" time="0.000224375">
+        </testcase>
+        <testcase classname="tests/unit/wallet.test.ts" name="calculateWalletMetrics &gt; does not calculate a capability conclusion for missing alignment" time="0.000182041">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/websocket/market-ws.test.ts" timestamp="2026-09-06T01:47:44.324Z" hostname="0000deMacBook-Pro.local" tests="6" failures="0" errors="0" skipped="0" time="0.019706375">
+        <testcase classname="tests/websocket/market-ws.test.ts" name="public Polymarket market websocket replay &gt; deduplicates events and records reconnect" time="0.001904667">
+        </testcase>
+        <testcase classname="tests/websocket/market-ws.test.ts" name="public Polymarket market websocket replay &gt; marks a stream stale without treating it as live" time="0.0001425">
+        </testcase>
+        <testcase classname="tests/websocket/market-ws.test.ts" name="public Polymarket market websocket replay &gt; uses a bounded REST fallback and reconciles after reconnect" time="0.000184209">
+        </testcase>
+        <testcase classname="tests/websocket/market-ws.test.ts" name="public Polymarket market websocket replay &gt; paginates until the cursor ends and deduplicates hydration rows" time="0.000557917">
+        </testcase>
+        <testcase classname="tests/websocket/market-ws.test.ts" name="public Polymarket market websocket replay &gt; uses the four bounded hydration attempts without changing live status" time="0.015185791">
+        </testcase>
+        <testcase classname="tests/websocket/market-ws.test.ts" name="public Polymarket market websocket replay &gt; hydrates a market trigger from the public Data API and reconciles duplicate rows" time="0.000805333">
         </testcase>
     </testsuite>
 </testsuites>

@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-09-06T01:33:25.000Z",
+  "base_url": "http://127.0.0.1:3000",
+  "mode": "recorded",
+  "external_calls": false,
+  "routes": [
+    { "method": "GET", "path": "/health", "http_status": 200, "data_status": "recorded", "fixture_recorded": true, "fixture_synthetic": false },
+    { "method": "GET", "path": "/api/v1/a2a/capabilities", "http_status": 200, "capability_status": "recorded_only", "mcp_tool_count": 8, "erc8004_registration_status": "not_registered" },
+    { "method": "GET", "path": "/api/v1/leaderboard", "http_status": 200, "data_status": "recorded", "rows_returned": 20 },
+    { "method": "GET", "path": "/api/v1/wallet/{address}/metrics", "http_status": 200, "data_status": "recorded", "metric_status": "unavailable", "metrics_are_null": true },
+    { "method": "GET", "path": "/api/v1/wallet/{address}/lead-rate", "http_status": 200, "data_status": "recorded", "metric_status": "unavailable", "lead_rate": null },
+    { "method": "POST", "path": "/api/v1/screen", "http_status": 200, "data_status": "recorded", "requested_wallets": 20, "metric_status": "unavailable", "eligible_values": null, "payment_settlement": "not_performed" },
+    { "method": "POST", "path": "/summary", "http_status": 200, "data_status": "recorded", "audit_run_id_observed": true },
+    { "method": "GET", "path": "/audit?run_id={recorded-run-id}", "http_status": 200, "data_status": "recorded", "logical_worker_count": 9 },
+    { "method": "POST", "path": "/attribution", "http_status": 200, "data_status": "recorded", "access": "free_unattributed", "payment_required_header": false, "payment_settlement": "not_performed" }
+  ],
+  "x402": { "v2_contract_tests": "passed", "network": "eip155:84532", "scheme": "exact", "price": "0.01 USDC", "settlement_attempted": false, "route_level_402_from_recorded_fixtures": "not_reachable_without_billable_evidence" },
+  "safety": { "payment": false, "signing": false, "chain_transaction": false, "migration": false, "paid_external_call": false, "secret_values_logged": false }
+}

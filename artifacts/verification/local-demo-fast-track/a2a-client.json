@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0.0",
+  "client": "scripts/demo-a2a-client.ts",
+  "base_url": "http://127.0.0.1:3000",
+  "http_statuses": { "capabilities": 200, "leaderboard": 200, "wallet_metrics": 200, "wallet_lead_rate": 200, "screen": 200 },
+  "data_status": "recorded",
+  "wallets_requested": 20,
+  "screen": { "metric_status": "unavailable", "eligible": null, "coverage": null, "payment_required": false, "settlement": "not_performed" },
+  "capabilities": { "capability_status": "recorded_only", "mcp_tool_count": 8, "erc8004_registration_status": "not_registered" },
+  "limitations": ["No payment, signing, chain transaction, wallet custody, or investment recommendation was performed.", "A payment challenge, if encountered, is decoded for display only and never settled."],
+  "status": "PASS"
+}

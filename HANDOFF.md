@@ -352,3 +352,72 @@ Do not run any payment, signing, chain, migration, live attribution, paid extern
 ### Current gates and status
 
 `A-GATE=STATIC_PASS_NOT_FINAL_VERIFIED`; `B-GATE=IMPLEMENTED_NOT_E2E_VERIFIED`; `V-GATE=PAUSED_PENDING`; `RUNNABLE_DEMO_COMPLETE=NOT_MARKED`; `FULLY_LIVE_VERIFIED=NOT_MARKED`. Overall project status remains `PARTIALLY_VERIFIED`.
+
+## FAST-TRACK-LOCAL-DEMO + A2A amendment handoff — 2026-09-05/06
+
+### Current checkpoint
+
+- Working directory: `/Users/a0000/polymarket`
+- Branch: `feature/wallet-discovery`
+- HEAD: `81bfa49c0ec5cf9b723fd7a3a50984e680b04876`
+- Local server: stopped; `127.0.0.1:3000` is free; no Next process remains.
+- Worktree: intentionally dirty from earlier approved work. No reset, checkout overwrite, clean, stash, rebase, merge, push or commit was performed in this continuation.
+- Product state: `LOCAL_DEMO_READY=YES`, `RUNNABLE_DEMO_COMPLETE=YES`, overall `PARTIALLY_VERIFIED`, `FULLY_LIVE_VERIFIED=NO`.
+
+### Completed A2A scope
+
+The approved `AMENDMENT-A2A-FIRST-LOCAL-DEMO v0.1` is implemented as a local recorded-only surface. `POST /api/v1/screen` accepts a bounded public wallet list and intentionally returns unavailable metrics when the snapshot cannot support thresholds. `GET /api/v1/a2a/capabilities` reports the actual eight MCP tools, honest recorded-only/not-verified boundaries and ERC-8004 not-registered status. `scripts/demo-a2a-client.ts` exercises the capabilities, leaderboard, wallet metrics/lead-rate and 20-address screen without payment or signing. The A2A Console displays the actual request, recorded audit trace, machine response JSON, copy/export controls and REST/MCP views.
+
+### Task-touched files and final SHA-256
+
+```text
+c89ea8161610676f0fd77e51efffe50a6c8908e243cc6bc261eeec25241b978d  app/page-client.tsx
+909fe8497495676f08b9db022ae5088344c3e867527b676314bfdb8e4203d549  app/globals.css
+3481f029003ed3568e1b26d8ee0de044e4ecb69b5ed5db25b03f75fb32a092ce  src/ui/i18n.ts
+ec309262cad838d650759ac4b9e61168859b9e7333d39218f1ab9a5b974b18e9  src/ui/glossary.ts
+43acb3e61312b6df47088acdda32389a2631210f453ba65a07ebd4b3b0e6b987  app/api/v1/screen/route.ts
+f1d3c8401193de2207dfa614178be01cfa2025e09395e1bdf7fab3e819df646c  app/api/v1/a2a/capabilities/route.ts
+0980ecaf854f1659f9f6496bd09dd049e32cf1710a50d17e37d2707ed3f7b4ba  scripts/demo-a2a-client.ts
+1ad01ced7a0975a29a5fb5053f1e3ce111c41af7d4fec1347004f32392786f2d  tests/e2e/local-demo-fasttrack.spec.ts
+fc3fb34c318d50d7475dbf9d5cf0b1774b05cba21969aa13ed182f7f8065b349  tests/e2e/app.spec.ts
+a60cba2c87a5fbbce4d7424e3a172e5b35b5e8f52a2ee928f66d556740061ba7  tests/unit/a2a-local.test.ts
+5b0d4a06a3999c1289aecc172d2b774764e75080eab933b5c37537998d9d28d3  LOCAL-DEMO-RUNBOOK.md
+991533ef001df068a084a333a9fa511eb6856a1b28bd7829682d2abb2d0c79e1  artifacts/verification/local-demo-fast-track/glossary-coverage.json
+115fe01a607c7dad4abc9048fa13426c29260476ae46b48edac51517f8b3546f  artifacts/verification/local-demo-fast-track/api-smoke.json
+247cc0dbd468e8a8dc955fda520863bc1dc13107cfeb279175d9317c4d5707d1  artifacts/verification/local-demo-fast-track/a2a-client.json
+42937b7c3bd1c12a510cfa458f2f3b3fa3e0e4c6c7fcce2dceecc8a0280b68df  artifacts/verification/local-demo-fast-track/clean-room.json
+6b702af6517a939ff07a14d37c5842ec7bd260cdf3ed8836a54a37623b68238d  artifacts/verification/local-demo-fast-track/protected-hashes.txt
+679aca13209ec39c31e0360043699b6a40c9634a623003f11331663abff43f0f  artifacts/verification/local-demo-fast-track/secret-scan.txt
+```
+
+The new route directories and artifact screenshots are also task output. Existing unrelated dirty files, generated Next metadata, and earlier governance/report history were preserved and are not to be cleaned automatically.
+
+### Verification summary
+
+- `npm test`: 39 files / 250 tests passed.
+- `npm run typecheck`: PASS.
+- `npm run lint`: PASS.
+- `next build --webpack`: PASS.
+- Recorded offline replay: PASS for market, wallet-a and wallet-b.
+- Cluster fixture integrity: CLEAN; Iran blind replay remains `CASE_NOT_REPRODUCED` with nine required artifacts absent.
+- Playwright: 24/24 passed sequentially, including accessibility, i18n, TermHelp, recorded API, A2A Console, mobile, desktop and 200% screenshots.
+- Production build smoke: home 200, health 200, capabilities 200, screen 200; payment settlement not attempted.
+- Glossary gate: 101/101, 100%, unmapped 0, duplicate IDs 0, pending definitions 0.
+
+### Safe resume / demo commands
+
+```text
+cd /Users/a0000/polymarket
+export PATH="/Users/a0000/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:/Applications/ChatGPT.app/Contents/Resources/cua_node/bin:$PATH"
+./node_modules/.bin/next dev --webpack --hostname 127.0.0.1
+./node_modules/.bin/tsx scripts/demo-a2a-client.ts
+```
+
+Do not use `npm run setup-and-demo` because it installs dependencies. Do not run payment, signing, chain, migration, live attribution, paid external calls, public release, or broad cleanup. If future work needs a new dependency, API/data-model/algorithm/payment/database change, or missing external credential, consolidate it into one Change Request.
+
+## UI TermHelp polish handoff — 2026-09-05
+
+- Changed only the TermHelp presentation layer in `app/globals.css` and added a regression assertion in `tests/e2e/i18n-glossary.spec.ts`.
+- The visible `?` icon is now compact; the wrapper has reserved spacing and `flex: 0 0 auto`, and the button has `padding: 0`. No API, algorithm, payment, fixture, database or dependency changes were made for this polish.
+- Verification: 40 Vitest files / 277 tests passed; 25/25 Playwright tests passed sequentially; typecheck and lint passed. `127.0.0.1:3000` is free after server cleanup.
+- The working tree remains intentionally dirty with earlier user-approved work. Do not use reset, clean, checkout overwrite or broad staging to erase unrelated changes. The GitHub sync must use an explicit reviewed file list and must exclude `artifacts/agent-runs/`, secrets, caches and generated dependency directories.

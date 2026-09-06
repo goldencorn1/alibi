@@ -288,13 +288,19 @@ export function evaluateLanguageWindow(
   const pairing = healthyLocal && healthyEnglish && eligibleLocal && eligibleEnglish && (stableOfficialId || crossLinked) ? "verified" : "pairing_unverified";
   const localPrecisionKnown = eligibleLocal?.timestamp_precision === "minute" || eligibleLocal?.timestamp_precision === "second" || eligibleLocal?.timestamp_precision === "subsecond";
   const englishPrecisionKnown = eligibleEnglish?.timestamp_precision === "minute" || eligibleEnglish?.timestamp_precision === "second" || eligibleEnglish?.timestamp_precision === "subsecond";
-  const localUncertainty = eligibleLocal?.timestamp_uncertainty_seconds;
-  const englishUncertainty = eligibleEnglish?.timestamp_uncertainty_seconds;
+  const localUncertainty = eligibleLocal?.source_timestamp_uncertainty_minutes;
+  const englishUncertainty = eligibleEnglish?.source_timestamp_uncertainty_minutes;
   const knownOrder = Number.isFinite(localPublished) && Number.isFinite(englishPublished) && localPrecisionKnown && englishPrecisionKnown && localUncertainty !== null && englishUncertainty !== null;
-  const localStart = localPublished - (localUncertainty ?? 0) * 1000;
-  const localEnd = localPublished + (localUncertainty ?? 0) * 1000;
-  const englishStart = englishPublished - (englishUncertainty ?? 0) * 1000;
-  const englishEnd = englishPublished + (englishUncertainty ?? 0) * 1000;
+  // C13: the uncertainty field is MINUTES, so the conversion to milliseconds is
+  // x 60_000. It was x 1_000 when the field was named `_seconds`; leaving that
+  // factor in place after the rename would have under-stated every interval by
+  // 60x and turned overlapping intervals into false `local_first` /
+  // `english_first` orderings. Unit and factor must change together.
+  const MS_PER_MINUTE = 60_000;
+  const localStart = localPublished - (localUncertainty ?? 0) * MS_PER_MINUTE;
+  const localEnd = localPublished + (localUncertainty ?? 0) * MS_PER_MINUTE;
+  const englishStart = englishPublished - (englishUncertainty ?? 0) * MS_PER_MINUTE;
+  const englishEnd = englishPublished + (englishUncertainty ?? 0) * MS_PER_MINUTE;
   const releaseOrder: ReleaseOrder = !knownOrder || pairing !== "verified"
     ? "unknown"
     : localPublished === englishPublished && localUncertainty === 0 && englishUncertainty === 0

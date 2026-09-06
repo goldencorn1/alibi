@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-09-06T01:38:33.000Z",
+  "vitest": { "test_files": 40, "tests": 277, "passed": 277 },
+  "playwright": { "tests": 25, "passed": 25, "workers": 1, "screenshots": 12 },
+  "typecheck": "PASS",
+  "lint": "PASS",
+  "webpack_build": "PASS",
+  "recorded_offline_replay": { "status": "PASS", "presets": ["market", "wallet-a", "wallet-b"] },
+  "cluster_fixture_integrity": { "status": "CLEAN", "scanned_files": 6, "findings": [] },
+  "production_localhost_smoke": { "home": 200, "health": 200, "capabilities": 200, "screen": 200 },
+  "glossary_gate": { "visible_terms": 101, "mapped_terms": 101, "coverage_percentage": 100, "unmapped_terms": 0, "duplicate_term_ids": 0, "pending_definition": 0 },
+  "term_help_compact_layout": "PASS",
+  "external_spend_usd": 0,
+  "payment_signing_chain_migration_or_paid_call": false,
+  "fully_live_verified": false
+}

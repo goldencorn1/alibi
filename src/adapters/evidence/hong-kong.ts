@@ -30,7 +30,8 @@ export interface HongKongSourceRecord {
   first_seen_at?: string | null;
   timestamp_type?: TimestampType;
   timestamp_precision?: TimestampPrecision;
-  timestamp_uncertainty_seconds?: number | null;
+  /** C13: MINUTES, not seconds. See `LanguageSource` in contracts. */
+  source_timestamp_uncertainty_minutes?: number | null;
   content_hash: string;
   source_tier?: SourceTier;
   provider?: string;
@@ -64,7 +65,7 @@ export function normalizeHongKongRecord(record: HongKongSourceRecord, retrievedA
     retrieved_at: retrievedAt,
     timestamp_type: record.timestamp_type ?? "published",
     timestamp_precision: record.timestamp_precision ?? "unknown",
-    timestamp_uncertainty_seconds: record.timestamp_uncertainty_seconds ?? null,
+    source_timestamp_uncertainty_minutes: record.source_timestamp_uncertainty_minutes ?? null,
     content_hash: record.content_hash,
     connector_status: "healthy",
     ...(record.provider ? { provider: record.provider } : {}),
@@ -187,7 +188,12 @@ export function parseRssRecords(xml: string, language: "en" | "zh-Hant", publish
       first_seen_at: null,
       timestamp_type: parsed ? "published" : "date_only",
       timestamp_precision: parsed ? "second" : "unknown",
-      timestamp_uncertainty_seconds: parsed ? 0 : null,
+      // C13/C26: minutes. Previously `0`, which asserted a perfectly certain
+      // publication instant. An RSS `pubDate` records when the feed item was
+      // generated, not when the release became public, and that lag is real, so
+      // 0 was a calibration error in the optimistic direction. Calibrated to
+      // ~1 minute for a primary publisher feed. Unknown stays `null`, never 0.
+      source_timestamp_uncertainty_minutes: parsed ? 1 : null,
       content_hash: hash,
       source_tier: "primary",
       provider,

@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0.0",
+  "status": "PASS_WITH_SCOPE",
+  "scope": "source-only local verification; dependency installation was intentionally not performed",
+  "checks": {
+    "typecheck": "passed",
+    "lint": "passed",
+    "vitest": "39 files / 250 tests passed",
+    "webpack_build": "passed",
+    "recorded_replay": "passed for market, wallet-a, wallet-b",
+    "fixture_integrity": "clean",
+    "synthetic_user_demo_guard": "passed",
+    "protected_path_write_check": "no amendment write to Spec, Plan, analysis, contracts, payment, database, fixtures, or environment files"
+  },
+  "limitation": "A fresh npm ci clean-room was not run because this approved execution forbids dependency installation; the existing verified node_modules runtime was used.",
+  "external_spend_usd": 0,
+  "payment_or_chain_action": false
+}

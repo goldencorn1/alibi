@@ -87,3 +87,18 @@
 - Completed before pause: centralized typed Glossary, context-specific Worker terms, TermHelp interaction wiring, bilingual recorded UI/Markdown wiring, typecheck, lint, 28 Vitest files/82 tests, and Webpack build.
 - Final browser E2E, screenshots, recorded replay, API/402 smoke, clean-room, Secret scan and Desktop launcher page verification remain pending; no final `RUNNABLE_DEMO_COMPLETE` claim is made for this checkpoint.
 - Protected platform code, Spec/Plan/CR, API, x402, dependencies, fixtures, database and environment files were not modified. No payment, signing, chain transaction, migration or paid external call occurred.
+
+## 1.4.0-fast-track-local-demo-a2a — 2026-09-05/06
+
+- Executed the approved local recorded demo continuation and additive `AMENDMENT-A2A-FIRST-LOCAL-DEMO v0.1`; overall project status remains `PARTIALLY_VERIFIED`.
+- Added the local recorded `POST /api/v1/screen` and `GET /api/v1/a2a/capabilities` surfaces without changing the existing analysis, API, x402, payment, database, fixture or live-provider behavior. Unavailable metrics stay null/unavailable and unimplemented capabilities remain not verified.
+- Added `scripts/demo-a2a-client.ts` and an A2A Console with actual local request JSON, recorded audit trace, machine-readable response JSON, copy/export, REST/MCP views and explicit `settlement=not_performed` boundary.
+- Preserved the actual eight-tool MCP catalog and reported `erc8004.registration_status=not_registered`; no synthetic result, fake metric, payment, signature, chain transaction, migration, paid external call, push or merge was performed.
+- Verification passed: Glossary 101/101 (100%, no unmapped/duplicate/pending), 39 Vitest files/250 tests, typecheck, lint, Webpack build, 24/24 sequential Playwright tests, recorded offline replay, fixture integrity scan and production localhost smoke. Screenshots and API/A2A evidence are under `artifacts/verification/local-demo-fast-track/`.
+- Remaining status: `LOCAL_DEMO_READY=YES`, `X402_CHALLENGE_VERIFIED=YES` (contract only), `X402_SETTLEMENT_PENDING=YES`, `LANGUAGE_CALIBRATION_PENDING=YES`, `FULLY_LIVE_VERIFIED=NO`, `PRODUCTION_READY=NO`. Iran blind replay remains `CASE_NOT_REPRODUCED` because its nine required artifacts are absent.
+
+## 1.4.1-ui-term-help-polish — 2026-09-05
+
+- Reduced the visible TermHelp `?` control and added explicit spacing/flex sizing so glossary icons no longer crowd or overlap adjacent labels; keyboard and touch controls remain independent buttons.
+- Added a browser regression assertion for compact dimensions, zero browser-default padding, reserved label space and non-shrinking layout.
+- Verification after the polish: 40 Vitest files / 277 tests passed, 25/25 sequential Playwright tests passed, including locale, keyboard, mobile, 200% zoom, reduced-motion and A2A scenarios. No API, algorithm, payment, fixture or database behavior changed.

@@ -1,0 +1,240 @@
+{
+  "schema_version": "1.0.0",
+  "fixture_status": "recorded",
+  "data_status": "recorded",
+  "wallet": "0xfe787d2da716d60e8acff57fb87eb13cd4d10319",
+  "leaderboard_rank_30d": 1,
+  "leaderboard_user_name": "ferrariChampions2026",
+  "captured_at": "2026-09-05T16:15:35Z",
+  "observations": {
+    "trades": {
+      "artifact": "artifacts/verification/wallet-discovery-001/tr-l10000.body.json.gz",
+      "source": "data-api-trades",
+      "source_url": "https://data-api.polymarket.com/trades?user=0xfe787d2da716d60e8acff57fb87eb13cd4d10319&limit=10000",
+      "http_status": 200,
+      "response_headers": {
+        "date": "Sat, 05 Sep 2026 16:20:49 GMT",
+        "last-modified": "Sat, 05 Sep 2026 16:20:49 GMT",
+        "age": null
+      },
+      "as_of": "2026-09-05T16:20:49Z",
+      "as_of_source": "response_date",
+      "response_hash": "sha256:4226579dbe2213c876cbcf4039afc603dfc109acd61af2a51a444da85269268d",
+      "response_hash_note": "取自 large-body-hashes.txt，为 gzip 前未压缩原文的哈希。",
+      "rows_returned": 10000,
+      "row_limit_requested": 10000,
+      "offset_cap_observed": 10000,
+      "offset_cap_error": "max historical trades offset of 10000 exceeded",
+      "unique_transaction_hashes": 10000,
+      "duplicate_rows_after_dedup": 0,
+      "side_values_observed": [
+        "BUY"
+      ],
+      "oldest_observed_trade_at": "2026-08-15T23:06:34Z",
+      "newest_observed_trade_at": "2026-09-05T16:20:06Z",
+      "observed_span_days": 20.717731481481483,
+      "window_7d": {
+        "start": "2026-08-29T16:20:49Z",
+        "end": "2026-09-05T16:20:49Z",
+        "window_start_covered": true,
+        "trades_in_window": 3244,
+        "unique_condition_ids_in_window": 1038,
+        "size_sum_in_window": 11819715.98903602,
+        "notional_sum_in_window": 5370650.212946397,
+        "size_weighted_avg_buy_price": 0.4543806482260841
+      },
+      "snapshot_consistency": {
+        "second_snapshot_artifact": "artifacts/verification/wallet-discovery-001/tr-snap2.body.json.gz",
+        "rows_only_in_second_snapshot": 23,
+        "rows_shared": 9977,
+        "note": "两次快照相隔约 31 分钟；第二次多出的行是窗口右端新增交易。指标一律基于第一次快照，不混用。"
+      }
+    },
+    "closed_positions": {
+      "source": "data-api-closed-positions",
+      "source_url": "https://data-api.polymarket.com/closed-positions?user=0xfe787d2da716d60e8acff57fb87eb13cd4d10319&limit=50",
+      "http_status": 200,
+      "response_headers": {
+        "date": "Sat, 05 Sep 2026 16:20:29 GMT",
+        "last-modified": "Sat, 05 Sep 2026 16:20:29 GMT",
+        "age": null
+      },
+      "as_of": "2026-09-05T16:20:29Z",
+      "as_of_source": "response_date",
+      "pages_captured": [
+        {
+          "artifact": "artifacts/verification/wallet-discovery-001/cp-l50.body.json",
+          "offset": 0,
+          "rows": 50,
+          "source_url": "https://data-api.polymarket.com/closed-positions?user=0xfe787d2da716d60e8acff57fb87eb13cd4d10319&limit=50",
+          "response_hash": "sha256:ac5281d16e15f0c06f42242f810c6fcf855c0cec6c580856e85a8d8bfbdcf9d7",
+          "realized_pnl_max": 411927.7706,
+          "realized_pnl_min": 123186.9872
+        },
+        {
+          "artifact": "artifacts/verification/wallet-discovery-001/cp-o40.body.json",
+          "offset": 40,
+          "rows": 50,
+          "source_url": "https://data-api.polymarket.com/closed-positions?user=0xfe787d2da716d60e8acff57fb87eb13cd4d10319&limit=50&offset=40",
+          "response_hash": "sha256:a12e3b6e0c9ba91681f4b9c876a481c55405189d499a38c0f0be7bac4d899261",
+          "realized_pnl_max": 130340.4636,
+          "realized_pnl_min": 96665.4029
+        },
+        {
+          "artifact": "artifacts/verification/wallet-discovery-001/cp-o90.body.json",
+          "offset": 90,
+          "rows": 50,
+          "source_url": "https://data-api.polymarket.com/closed-positions?user=0xfe787d2da716d60e8acff57fb87eb13cd4d10319&limit=50&offset=90",
+          "response_hash": "sha256:b9fd909d53520506f6815586651e9ddb14575ab70e618e15212c2dc1384d4dfd",
+          "realized_pnl_max": 96548.1214,
+          "realized_pnl_min": 80785.7911
+        },
+        {
+          "artifact": "artifacts/verification/wallet-discovery-001/cp-o500.body.json",
+          "offset": 500,
+          "rows": 50,
+          "source_url": "https://data-api.polymarket.com/closed-positions?user=0xfe787d2da716d60e8acff57fb87eb13cd4d10319&limit=50&offset=500",
+          "response_hash": "sha256:da0a062fb64182bdec10aef28e5e1fbd931e703b7be620217fd77ec4040207b0",
+          "realized_pnl_max": 41057.6034,
+          "realized_pnl_min": 38242.6848
+        }
+      ],
+      "sort_order_observed": "realizedPnl DESC",
+      "sort_order_verified_per_page": true,
+      "offset_ranges_captured": [
+        [
+          0,
+          49
+        ],
+        [
+          40,
+          89
+        ],
+        [
+          90,
+          139
+        ],
+        [
+          500,
+          549
+        ]
+      ],
+      "offset_ranges_missing": [
+        [
+          140,
+          499
+        ]
+      ],
+      "unique_positions_observed": 190,
+      "positions_with_positive_pnl": 190,
+      "positions_with_negative_pnl": 0,
+      "positions_with_zero_pnl": 0,
+      "total_positions_lower_bound": 550,
+      "pagination_complete": false,
+      "oldest_observed_position_at": "2026-04-02T06:59:09Z",
+      "newest_observed_position_at": "2026-09-05T02:23:31Z",
+      "window_7d": {
+        "start": "2026-08-29T16:20:29Z",
+        "end": "2026-09-05T16:20:29Z",
+        "positions_in_window": 3,
+        "observed_positive_pnl_sum_lower_bound": 222710.50819999998,
+        "positions_in_window_detail": [
+          {
+            "closed_at": "2026-09-02T23:15:46Z",
+            "realized_pnl": 93136.1395,
+            "avg_price": 0.5348,
+            "cur_price": 1,
+            "title": "Seattle Mariners vs. Boston Red Sox"
+          },
+          {
+            "closed_at": "2026-09-05T02:23:31Z",
+            "realized_pnl": 90293.3415,
+            "avg_price": 0.4648,
+            "cur_price": 1,
+            "title": "San Jose State vs. Eastern Michigan"
+          },
+          {
+            "closed_at": "2026-08-31T22:24:45Z",
+            "realized_pnl": 39281.0272,
+            "avg_price": 0.3405,
+            "cur_price": 1,
+            "title": "US Open WTA: Kimberly Birrell vs Petra Marcinko"
+          }
+        ]
+      },
+      "realized_pnl_scale": {
+        "interpretation": "decimal USDC",
+        "evidence": "realizedPnl / (totalBought * (curPrice - avgPrice))",
+        "sample": 183,
+        "ratio_min": 0.37685912409694017,
+        "ratio_median": 0.9998332187143629,
+        "ratio_max": 0.9999999985183581,
+        "note": "比值集中于 1.0，证明 realizedPnl 已是十进制 USDC，不是 6 位定点整数；不得再除 1e6。"
+      },
+      "selection_bias": "端点按 realizedPnl DESC 排序，offset 500 仍返回满页 50 行且全为正收益，故总仓位数 >= 550，亏损尾部从未进入样本；已观测 190 个仓位 100% 正收益。",
+      "leaderboard_cross_check": {
+        "leaderboard_pnl_30d": 118281.82650032046,
+        "observed_7d_positive_sum": 222710.50819999998,
+        "note": "已观测 7 日正收益之和已接近 30 日榜净 PnL 的两倍，独立佐证亏损腿缺失，样本不可用于净额或胜率。"
+      }
+    },
+    "activity": {
+      "artifact": "artifacts/verification/wallet-discovery-001/act-l500.body.json",
+      "source": "data-api-activity",
+      "source_url": "https://data-api.polymarket.com/activity?user=0xfe787d2da716d60e8acff57fb87eb13cd4d10319&limit=500",
+      "http_status": 200,
+      "response_headers": {
+        "date": "Sat, 05 Sep 2026 16:15:35 GMT",
+        "last-modified": "Sat, 05 Sep 2026 16:15:35 GMT",
+        "age": null
+      },
+      "as_of": "2026-09-05T16:15:35Z",
+      "as_of_source": "response_date",
+      "response_hash": "sha256:4cee19709097b23d85432f4df78bc3382cd8bf9e4feb7cf3b562ad4dbafdd903",
+      "rows_returned": 500,
+      "rows_returned_at_limit_1000": 500,
+      "page_size_ceiling_observed": 500,
+      "offset_cap_observed": 5000,
+      "offset_cap_error": "max historical activity offset of 5000 exceeded",
+      "type_histogram": {
+        "TRADE": 409,
+        "REDEEM": 74,
+        "MERGE": 17
+      },
+      "deposit_events_observed": 0,
+      "reward_events_observed": 0,
+      "redeem_events_observed": 74,
+      "merge_events_observed": 17,
+      "reach_oldest_at": "2026-09-05T08:46:18Z",
+      "reach_newest_at": "2026-09-05T16:15:22Z",
+      "reach_hours": 7.484444444444445,
+      "note": "limit>500 不增加行数（page size 上限 500），offset>5000 直接报错，故 /activity 全量触达远小于 7 日窗口。"
+    }
+  },
+  "endpoints_never_successfully_probed": [
+    {
+      "endpoint": "/public-profile",
+      "reason": "本次采集不存在任何 public-profile artifact，createdAt 从未被观测"
+    },
+    {
+      "endpoint": "/value",
+      "reason": "组合估值端点零实现，未采集"
+    },
+    {
+      "endpoint": "gamma-categories",
+      "reason": "未采集类目映射，无法构造 category_mix"
+    },
+    {
+      "endpoint": "clob-prices-history(this wallet)",
+      "reason": "本钱包未采集重定价序列，无法计算 lead rate"
+    }
+  ],
+  "limitations": [
+    "本文件为 recorded 回放数据，非 live；不得标注为 live。",
+    "所有 as_of 均由响应头推导（date/last-modified/age），不使用运行时刻。",
+    "/trades 观测跨度约 20.72 天且 offset 硬封顶 10000，任何 90 日窗口指标不可满足。",
+    "/trades 全 10000 行 side=BUY，未观测到任何卖出腿；禁止由 side 推导退出行为。",
+    "/closed-positions 按 realizedPnl DESC 排序且分页有缺口（offset 140-499 未采集，总数 >=550 未穷尽），已观测样本 100% 正收益，属选择偏差样本，不能用于计算胜率或净已实现盈亏。",
+    "/activity 触达约 7.48 小时且无 DEPOSIT/REWARD 记录；不能据此断言此类事件不存在。"
+  ]
+}

@@ -16,6 +16,30 @@ export type UiKey =
   | "metadataTitle"
   | "metadataDescription"
   | "sessionRequestCount"
+  | "walletDiscovery"
+  | "leaderboard"
+  | "recordedSnapshot"
+  | "capturedAt"
+  | "source"
+  | "localSource"
+  | "englishSource"
+  | "unknown"
+  | "minutes"
+  | "rank"
+  | "username"
+  | "volume"
+  | "pnl"
+  | "verified"
+  | "recordedDetailPresets"
+  | "openRecordedDetail"
+  | "detailNotCaptured"
+  | "walletDetail"
+  | "outcomeSurface"
+  | "attributionSurface"
+  | "fitSurface"
+  | "notExposed"
+  | "unavailableReason"
+  | "recordedSnapshotNote"
   | "recordedEvidenceFeed"
   | "livePreviewUnavailable"
   | "noRecordedAnalysis"
@@ -87,6 +111,39 @@ export type UiKey =
   | "windows"
   | "evidenceRecords"
   | "agentConsole"
+  | "a2aConsole"
+  | "a2aFlow"
+  | "callerAgent"
+  | "request"
+  | "runAgentRequest"
+  | "requestTimestamp"
+  | "headers"
+  | "requestJson"
+  | "executionTrace"
+  | "machineResponse"
+  | "copyJson"
+  | "copied"
+  | "rest"
+  | "mcpTools"
+  | "inputSchema"
+  | "outputSchema"
+  | "pricingClass"
+  | "availability"
+  | "agentName"
+  | "analysisWindow"
+  | "delay"
+  | "size"
+  | "minimumCoverage"
+  | "maximumLeadRate"
+  | "minimumRetainedReturn"
+  | "addressList"
+  | "a2aReadyNote"
+  | "noA2AResponse"
+  | "a2aRunning"
+  | "a2aRequestFailed"
+  | "notRun"
+  | "paymentChallengeNotSettled"
+  | "capabilityStatus"
   | "runTelemetry"
   | "observation"
   | "noSecrets"
@@ -126,6 +183,30 @@ const EN: UiDictionary = {
   metadataTitle: "Alibi — Timestamp Trust Agent",
   metadataDescription: "Read-only Polymarket repricing and wallet evidence timeline.",
   sessionRequestCount: "Session request count",
+  walletDiscovery: "Wallet Discovery",
+  leaderboard: "Public leaderboard snapshot",
+  recordedSnapshot: "recorded snapshot",
+  capturedAt: "captured at",
+  source: "source",
+  localSource: "Local-language source",
+  englishSource: "English source",
+  unknown: "unknown",
+  minutes: "min",
+  rank: "rank",
+  username: "username",
+  volume: "volume",
+  pnl: "PnL",
+  verified: "verified badge",
+  recordedDetailPresets: "Recorded detail presets",
+  openRecordedDetail: "Open recorded detail",
+  detailNotCaptured: "Detail not captured",
+  walletDetail: "Wallet detail",
+  outcomeSurface: "Outcome",
+  attributionSurface: "Attribution",
+  fitSurface: "Fit",
+  notExposed: "Not exposed by the current API",
+  unavailableReason: "No trusted payload is available for this field.",
+  recordedSnapshotNote: "Values below are source fields from a recorded public response; they are not live and are not Alibi-derived wallet metrics.",
   recordedEvidenceFeed: "Recorded evidence feed",
   livePreviewUnavailable: "Recorded preview is unavailable while live mode is selected.",
   noRecordedAnalysis: "No recorded analysis loaded. Run Analyze to populate this feed.",
@@ -197,6 +278,39 @@ const EN: UiDictionary = {
   windows: "windows",
   evidenceRecords: "evidence records",
   agentConsole: "Agent Console · Audit & Report Agent",
+  a2aConsole: "A2A Console · Evidence Service",
+  a2aFlow: "Caller Agent → Alibi API / MCP → Wallet Discovery → Evidence / Repricing → Attribution → Quality & Risk → Machine-readable Result",
+  callerAgent: "Caller Agent",
+  request: "Request",
+  runAgentRequest: "Run Agent Request",
+  requestTimestamp: "Request timestamp",
+  headers: "Headers",
+  requestJson: "Request JSON",
+  executionTrace: "Alibi execution trace",
+  machineResponse: "Machine-readable response JSON",
+  copyJson: "Copy JSON",
+  copied: "Copied",
+  rest: "REST",
+  mcpTools: "MCP tools",
+  inputSchema: "Input schema",
+  outputSchema: "Output schema",
+  pricingClass: "Pricing class",
+  availability: "Availability",
+  agentName: "Agent name",
+  analysisWindow: "Analysis window",
+  delay: "My delay",
+  size: "My size (USD)",
+  minimumCoverage: "Minimum coverage",
+  maximumLeadRate: "Maximum lead rate",
+  minimumRetainedReturn: "Minimum retained return",
+  addressList: "Wallet addresses",
+  a2aReadyNote: "This local A2A request uses the recorded leaderboard snapshot. Missing wallet metrics remain unavailable; no browser-side calculation is performed.",
+  noA2AResponse: "No A2A response yet. Run the recorded request to populate this panel.",
+  a2aRunning: "Running the recorded A2A request…",
+  a2aRequestFailed: "The local A2A request failed.",
+  notRun: "Not run",
+  paymentChallengeNotSettled: "Payment challenge is observable only; no payment or settlement is performed in this demo.",
+  capabilityStatus: "Capability status",
   runTelemetry: "Run telemetry",
   observation: "observation only",
   noSecrets: "no secrets retained",
@@ -235,6 +349,30 @@ const ZH: UiDictionary = {
   metadataTitle: "Alibi — 时间戳可信代理",
   metadataDescription: "只读分析 Polymarket 重定价与钱包证据时间线。",
   sessionRequestCount: "本地会话请求次数",
+  walletDiscovery: "钱包发现",
+  leaderboard: "公开排行榜快照",
+  recordedSnapshot: "已记录快照",
+  capturedAt: "记录时间",
+  source: "来源",
+  localSource: "本地语言来源",
+  englishSource: "英文来源",
+  unknown: "未知",
+  minutes: "分钟",
+  rank: "排名",
+  username: "用户名",
+  volume: "成交量",
+  pnl: "盈亏",
+  verified: "已验证徽章",
+  recordedDetailPresets: "已记录详情预设",
+  openRecordedDetail: "打开已记录详情",
+  detailNotCaptured: "未记录详情",
+  walletDetail: "钱包详情",
+  outcomeSurface: "结果",
+  attributionSurface: "归因",
+  fitSurface: "适配",
+  notExposed: "当前 API 未提供",
+  unavailableReason: "当前没有可验证的 payload 可用于此字段。",
+  recordedSnapshotNote: "以下数值是公开 recorded 响应中的来源字段，不是实时数据，也不是 Alibi 推导的钱包指标。",
   recordedEvidenceFeed: "已记录证据流",
   livePreviewUnavailable: "当前选择实时模式，已记录预览不可用。",
   noRecordedAnalysis: "尚未加载已记录分析。运行分析后此处会显示结果。",
@@ -306,6 +444,39 @@ const ZH: UiDictionary = {
   windows: "窗口",
   evidenceRecords: "证据记录",
   agentConsole: "Agent Console · 审计与报告代理",
+  a2aConsole: "A2A Console · 证据服务",
+  a2aFlow: "调用 Agent → Alibi API / MCP → 钱包发现 → 证据／重定价 → 归因 → 质量与风险 → 机器可读结果",
+  callerAgent: "调用 Agent",
+  request: "请求",
+  runAgentRequest: "运行 Agent 请求",
+  requestTimestamp: "请求时间",
+  headers: "Headers",
+  requestJson: "请求 JSON",
+  executionTrace: "Alibi 执行轨迹",
+  machineResponse: "机器可读响应 JSON",
+  copyJson: "复制 JSON",
+  copied: "已复制",
+  rest: "REST",
+  mcpTools: "MCP 工具",
+  inputSchema: "输入 schema",
+  outputSchema: "输出 schema",
+  pricingClass: "价格类别",
+  availability: "可用性",
+  agentName: "Agent 名称",
+  analysisWindow: "分析窗口",
+  delay: "我的延迟",
+  size: "我的规模（美元）",
+  minimumCoverage: "最低覆盖率",
+  maximumLeadRate: "最高先手率",
+  minimumRetainedReturn: "最低保留收益",
+  addressList: "钱包地址",
+  a2aReadyNote: "此本地 A2A 请求使用已记录排行榜快照。缺失的钱包指标保持不可用；浏览器不执行补算。",
+  noA2AResponse: "尚未有 A2A 响应。运行已记录请求后，此面板会显示结果。",
+  a2aRunning: "正在运行已记录 A2A 请求……",
+  a2aRequestFailed: "本地 A2A 请求失败。",
+  notRun: "尚未运行",
+  paymentChallengeNotSettled: "Payment challenge 仅供观察；本演示不执行付款或结算。",
+  capabilityStatus: "能力状态",
   runTelemetry: "运行遥测",
   observation: "仅供观察",
   noSecrets: "不保留密钥",
